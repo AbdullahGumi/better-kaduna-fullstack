@@ -4,18 +4,43 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import apiService from "../../services/apiService";
 
+interface Event {
+  id: string;
+  title: string;
+  date: string;
+  location: string;
+  description: string;
+}
+
 const EventList = () => {
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState<Event[]>([]);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const loaderRef = useRef(null);
 
+  // Function to strip HTML tags and get plain text
+  const stripHtml = (html: string): string => {
+    const tmp = document.createElement("DIV");
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || "";
+  };
+
+  // Function to get preview text from HTML content
+  const getPreviewText = (htmlContent: string, maxLength = 200): string => {
+    if (!htmlContent) return "Read the full story...";
+
+    const plainText = stripHtml(htmlContent);
+    if (plainText.length <= maxLength) return plainText;
+
+    return plainText.substring(0, maxLength).trim() + "...";
+  };
+
   const fetchEvents = useCallback(async () => {
     if (isLoading || !hasMore) return;
     setIsLoading(true);
     try {
-      const newEvents = await apiService.getEvents(page);
+      const newEvents: Event[] = await apiService.getEvents(page);
       setEvents((prevEvents) => {
         // Filter out events that already exist to prevent duplicates
         const existingIds = new Set(prevEvents.map((event) => event.id));
@@ -96,7 +121,7 @@ const EventList = () => {
                   <span>📍 {event.location}</span>
                 </div>
                 <p className="text-sm text-gray-600 line-clamp-2">
-                  {event.description}
+                  {getPreviewText(event.description, 100)}
                 </p>
               </div>
             ))}
@@ -137,7 +162,7 @@ const EventList = () => {
                 <span>📍 {event.location}</span>
               </div>
               <p className="text-sm text-gray-600 line-clamp-2">
-                {event.description}
+                {getPreviewText(event.description, 150)}
               </p>
             </div>
           ))}
