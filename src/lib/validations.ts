@@ -28,7 +28,7 @@ export const commentSchema = z.object({
   userName: z.string().min(1).max(100),
   postId: z.string().optional(),
   eventId: z.string().optional(),
-  parentId: z.string().optional(),
+  parentId: z.string().nullable().optional(),
 });
 
 export const userSchema = z.object({

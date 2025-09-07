@@ -6,17 +6,18 @@ import { mdaSchema } from '@/lib/validations';
 import { NotFoundError } from '@/lib/errors';
 
 interface RouteParams {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 // GET /api/mdas/[id] - Get single MDA
 export async function GET(request: NextRequest, { params }: RouteParams) {
+  let id: string = 'unknown';
   try {
-    const { id } = params;
+    id = (await params).id;
 
-    const mda = await prisma.MDA.findUnique({
+    const mda = await prisma.mDA.findUnique({
       where: { id }
     });
 
@@ -28,7 +29,7 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
 
     return NextResponse.json(mda);
   } catch (error) {
-    logger.error("Error fetching MDA", { mdaId: params.id, error });
+    logger.error("Error fetching MDA", { mdaId: id, error });
 
     if (error instanceof NotFoundError) {
       return NextResponse.json(
@@ -49,8 +50,9 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
 
 // PUT /api/mdas/[id] - Update MDA
 export async function PUT(request: NextRequest, { params }: RouteParams) {
+  let id: string = 'unknown';
   try {
-    const { id } = params;
+    id = (await params).id;
     const body = await request.json();
 
     // Validate input
@@ -65,7 +67,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
 
     const { name, content, author, thumbnail } = validationResult.data;
 
-    const mda = await prisma.MDA.update({
+    const mda = await prisma.mDA.update({
       where: { id },
       data: {
         name,
@@ -79,7 +81,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
 
     return NextResponse.json(mda);
   } catch (error) {
-    logger.error("Error updating MDA", { mdaId: params.id, error });
+    logger.error("Error updating MDA", { mdaId: id, error });
 
     // Handle Prisma not found error
     if (error && typeof error === 'object' && 'code' in error && error.code === 'P2025') {
@@ -101,10 +103,11 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
 
 // DELETE /api/mdas/[id] - Delete MDA
 export async function DELETE(request: NextRequest, { params }: RouteParams) {
+  let id: string = 'unknown';
   try {
-    const { id } = params;
+    id = (await params).id;
 
-    await prisma.MDA.delete({
+    await prisma.mDA.delete({
       where: { id }
     });
 
@@ -112,7 +115,7 @@ export async function DELETE(request: NextRequest, { params }: RouteParams) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    logger.error("Error deleting MDA", { mdaId: params.id, error });
+    logger.error("Error deleting MDA", { mdaId: id, error });
 
     // Handle Prisma not found error
     if (error && typeof error === 'object' && 'code' in error && error.code === 'P2025') {

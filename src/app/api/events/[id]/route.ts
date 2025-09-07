@@ -6,15 +6,16 @@ import { eventSchema } from '@/lib/validations';
 import { NotFoundError } from '@/lib/errors';
 
 interface RouteParams {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 // GET /api/events/[id] - Get single event
 export async function GET(request: NextRequest, { params }: RouteParams) {
+  let id: string = 'unknown';
   try {
-    const { id } = params;
+    id = (await params).id;
 
     const event = await prisma.event.findUnique({
       where: { id }
@@ -28,7 +29,7 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
 
     return NextResponse.json(event);
   } catch (error) {
-    logger.error("Error fetching event", { eventId: params.id, error });
+    logger.error("Error fetching event", { eventId: id, error });
 
     if (error instanceof NotFoundError) {
       return NextResponse.json(
@@ -49,8 +50,9 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
 
 // PUT /api/events/[id] - Update event
 export async function PUT(request: NextRequest, { params }: RouteParams) {
+  let id: string = 'unknown';
   try {
-    const { id } = params;
+    id = (await params).id;
     const body = await request.json();
 
     // Validate input
@@ -79,7 +81,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
 
     return NextResponse.json(event);
   } catch (error) {
-    logger.error("Error updating event", { eventId: params.id, error });
+    logger.error("Error updating event", { eventId: id, error });
 
     // Handle Prisma not found error
     if (error && typeof error === 'object' && 'code' in error && error.code === 'P2025') {
@@ -101,8 +103,9 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
 
 // DELETE /api/events/[id] - Delete event
 export async function DELETE(request: NextRequest, { params }: RouteParams) {
+  let id: string = 'unknown';
   try {
-    const { id } = params;
+    id = (await params).id;
 
     await prisma.event.delete({
       where: { id }
@@ -112,7 +115,7 @@ export async function DELETE(request: NextRequest, { params }: RouteParams) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    logger.error("Error deleting event", { eventId: params.id, error });
+    logger.error("Error deleting event", { eventId: id, error });
 
     // Handle Prisma not found error
     if (error && typeof error === 'object' && 'code' in error && error.code === 'P2025') {

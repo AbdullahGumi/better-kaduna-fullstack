@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
     const postId = searchParams.get('postId');
     const eventId = searchParams.get('eventId');
 
-    const where: any = {};
+    const where: Record<string, string | string> = {};
     if (postId) where.postId = postId;
     if (eventId) where.eventId = eventId;
 
@@ -51,7 +51,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { content, userId, userName, postId, eventId, parentId } = validationResult.data;
+    const { content, userId, userName, postId, eventId } = validationResult.data;
+    let { parentId } = validationResult.data;
+
+    // Convert null values to undefined for database operations
+    if (parentId === null) {
+      parentId = undefined;
+    }
 
     // Validate required fields and user existence for non-guest users
     if (!content || !content.trim()) {

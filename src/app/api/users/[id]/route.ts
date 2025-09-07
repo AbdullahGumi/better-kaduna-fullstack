@@ -7,15 +7,15 @@ import { userSchema } from '@/lib/validations';
 import { NotFoundError } from '@/lib/errors';
 
 interface RouteParams {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 // GET /api/users/[id] - Get single user
 export async function GET(request: NextRequest, { params }: RouteParams) {
   try {
-    const { id } = params;
+    const { id } = await params;
 
     const user = await prisma.user.findUnique({
       where: { id },
@@ -36,7 +36,13 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
 
     return NextResponse.json(user);
   } catch (error) {
-    logger.error("Error fetching user", { userId: params.id, error });
+    let userId = 'unknown';
+    try {
+      const resolved = await params;
+      userId = resolved.id;
+    } catch(e) {}
+
+    logger.error("Error fetching user", { userId, error });
 
     if (error instanceof NotFoundError) {
       return NextResponse.json(
@@ -58,7 +64,7 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
 // PUT /api/users/[id] - Update user
 export async function PUT(request: NextRequest, { params }: RouteParams) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const body = await request.json();
 
     // Create a partial schema for updates (password is optional)
@@ -100,7 +106,13 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
 
     return NextResponse.json(user);
   } catch (error) {
-    logger.error("Error updating user", { userId: params.id, error });
+    let userId = 'unknown';
+    try {
+      const resolved = await params;
+      userId = resolved.id;
+    } catch(e) {}
+
+    logger.error("Error updating user", { userId, error });
 
     // Handle Prisma not found error
     if (error && typeof error === 'object' && 'code' in error && error.code === 'P2025') {
@@ -131,7 +143,7 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
 // DELETE /api/users/[id] - Delete user
 export async function DELETE(request: NextRequest, { params }: RouteParams) {
   try {
-    const { id } = params;
+    const { id } = await params;
 
     // First, delete all comments by this user to avoid foreign key constraint
     await prisma.comment.deleteMany({
@@ -147,7 +159,13 @@ export async function DELETE(request: NextRequest, { params }: RouteParams) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    logger.error("Error deleting user", { userId: params.id, error });
+    let userId = 'unknown';
+    try {
+      const resolved = await params;
+      userId = resolved.id;
+    } catch(e) {}
+
+    logger.error("Error deleting user", { userId, error });
 
     // Handle Prisma not found error
     if (error && typeof error === 'object' && 'code' in error && error.code === 'P2025') {
