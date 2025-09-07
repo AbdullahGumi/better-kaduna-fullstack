@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 const AdminUserManagement = () => {
   const router = useRouter();
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [newUser, setNewUser] = useState({
@@ -93,11 +93,6 @@ const AdminUserManagement = () => {
     }
   };
 
-  const handleLogout = () => {
-    logout();
-    router.push("/");
-  };
-
   if (!user || user.role !== "admin") {
     return (
       <div className="container mx-auto px-4 py-8">
@@ -119,12 +114,6 @@ const AdminUserManagement = () => {
     <div className="container mx-auto px-4 py-8 font-sans">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-4xl font-bold text-gray-800">Manage Users</h1>
-        <button
-          onClick={handleLogout}
-          className="btn-green px-4 py-2 rounded-md hover:shadow-sm transition transform hover:scale-105"
-        >
-          Logout
-        </button>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">

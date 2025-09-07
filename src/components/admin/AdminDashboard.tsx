@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useAuth } from "../../lib/auth";
 import apiService from "../../services/apiService";
 import {
@@ -13,20 +12,16 @@ import {
   Plus,
   Edit,
   Trash2,
-  Eye,
   BarChart3,
-  Clock,
   CheckCircle,
   AlertCircle,
   Activity,
   Settings,
   Search,
-  Filter,
 } from "lucide-react";
 
 const AdminDashboard = () => {
-  const { user, logout } = useAuth();
-  const router = useRouter();
+  const { user } = useAuth();
   const [posts, setPosts] = useState([]);
   const [events, setEvents] = useState([]);
   const [mdas, setMdas] = useState([]);
@@ -77,11 +72,6 @@ const AdminDashboard = () => {
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const handleLogout = () => {
-    logout();
-    router.push("/");
   };
 
   // Filter content based on search
@@ -160,14 +150,6 @@ const AdminDashboard = () => {
                   Welcome back, {user.name}
                 </p>
               </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <button
-                onClick={handleLogout}
-                className="text-gray-600 hover:text-gray-800 px-3 py-2 rounded-md hover:bg-gray-100"
-              >
-                Logout
-              </button>
             </div>
           </div>
         </div>

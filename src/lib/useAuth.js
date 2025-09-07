@@ -10,13 +10,9 @@ export function useAuth() {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const token = localStorage.getItem("token");
-        if (token) {
-          // You might want to validate the token with your API
-          const userData = localStorage.getItem("user");
-          if (userData) {
-            setUser(JSON.parse(userData));
-          }
+        const userData = localStorage.getItem("betterKaduna_user");
+        if (userData) {
+          setUser(JSON.parse(userData));
         }
       } catch (error) {
         console.error("Auth check failed:", error);
@@ -28,16 +24,14 @@ export function useAuth() {
     checkAuth();
   }, []);
 
-  const login = (userData, token) => {
+  const login = (userData) => {
     setUser(userData);
-    localStorage.setItem("user", JSON.stringify(userData));
-    localStorage.setItem("token", token);
+    localStorage.setItem("betterKaduna_user", JSON.stringify(userData));
   };
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
+    localStorage.removeItem("betterKaduna_user");
   };
 
   return {

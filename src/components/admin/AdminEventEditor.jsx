@@ -31,7 +31,7 @@ const AdminEventEditor = () => {
       required: true,
     },
     {
-      name: "content",
+      name: "description",
       label: "HTML Content",
       type: "editor",
       placeholder: "",

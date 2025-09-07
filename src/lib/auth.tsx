@@ -35,13 +35,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   useEffect(() => {
     // Check for stored user data on mount
-    const storedUser = localStorage.getItem("user");
+    const storedUser = localStorage.getItem("betterKaduna_user");
     if (storedUser) {
       try {
         setUser(JSON.parse(storedUser));
       } catch (error) {
         console.error("Error parsing stored user data:", error);
-        localStorage.removeItem("user");
+        localStorage.removeItem("betterKaduna_user");
       }
     }
     setIsLoading(false);
@@ -49,12 +49,12 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const login = (userData: User) => {
     setUser(userData);
-    localStorage.setItem("user", JSON.stringify(userData));
+    localStorage.setItem("betterKaduna_user", JSON.stringify(userData));
   };
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem("user");
+    localStorage.removeItem("betterKaduna_user");
   };
 
   const value: AuthContextType = {

@@ -29,7 +29,7 @@ const AdminPostEditor = () => {
       type: "file",
       placeholder: "Upload Thumbnail",
       accept: "image/*",
-      required: false,
+      required: true,
     },
     {
       name: "content",
