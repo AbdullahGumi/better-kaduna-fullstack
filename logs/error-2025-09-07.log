@@ -1,0 +1,1 @@
+{"error":{"clientVersion":"6.15.0","code":"P2002","meta":{"modelName":"User","target":["email"]},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Error creating user","service":"better-kaduna-next","timestamp":"2025-09-07T22:20:37.775Z"}

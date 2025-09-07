@@ -207,6 +207,11 @@ const AdminEditor = ({
   const thumbnailInputRef = useRef(null);
   const videoInputRef = useRef(null);
 
+  // Dynamically determine the editor field name (content, description, etc.)
+  const editorFieldName = useMemo(() => {
+    return fields?.find((f) => f.type === "editor")?.name || "content";
+  }, [fields]);
+
   const cleanImageHTML = useCallback((html) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(html, "text/html");
@@ -278,7 +283,7 @@ const AdminEditor = ({
       ({ editor }) => {
         const content = cleanImageHTML(editor.getHTML());
         setFormData((prev) => {
-          const updated = { ...prev, content };
+          const updated = { ...prev, [editorFieldName]: content };
           if (id) {
             localStorage.setItem(
               `${draftKeyPrefix}-${id}`,
@@ -288,7 +293,7 @@ const AdminEditor = ({
           return updated;
         });
       },
-      [id, draftKeyPrefix, cleanImageHTML]
+      [id, draftKeyPrefix, cleanImageHTML, editorFieldName]
     ),
     editorProps: {
       attributes: {
@@ -333,14 +338,15 @@ const AdminEditor = ({
             data = await apiService.getMDA(id);
           }
           setFormData(data);
-          editor?.commands.setContent(data.content || "");
+          // Use dynamic field name for editor content
+          editor?.commands.setContent(data[editorFieldName] || "");
         } catch (error) {
           console.log(error);
         }
       };
       fetchData();
     }
-  }, [id, editor, type]);
+  }, [id, editor, type, editorFieldName]);
 
   useEffect(() => {
     if (isFullScreen && !isPreview) {
@@ -367,12 +373,11 @@ const AdminEditor = ({
       if (draft) {
         const data = JSON.parse(draft);
         setFormData(data);
-        const contentField =
-          fields.find((f) => f.type === "editor")?.name || "content";
-        editor?.commands.setContent(data[contentField] || "");
+        // Use dynamic field name for editor content
+        editor?.commands.setContent(data[editorFieldName] || "");
       }
     }
-  }, [id, editor, draftKeyPrefix]);
+  }, [id, editor, draftKeyPrefix, editorFieldName]);
 
   const handleImageUpload = useCallback(
     async (file) => {
@@ -587,9 +592,16 @@ const AdminEditor = ({
     }
     if (!user || user.role !== "admin") return;
     setIsSaving(true);
+
+    // Get the current editor content just before save
+    const currentEditorContent = editor
+      ? cleanImageHTML(editor.getHTML())
+      : formData[editorFieldName] || "";
+
     const data = {
       id: id || Date.now(),
       ...formData,
+      [editorFieldName]: currentEditorContent, // Ensure we use the latest editor content
       ...(type === "post" && { date: new Date().toISOString() }),
       ...(type === "mda" && { date: new Date().toISOString() }),
     };
@@ -621,7 +633,18 @@ const AdminEditor = ({
       console.log(error);
       setIsSaving(false);
     }
-  }, [id, formData, fields, user, type, draftKeyPrefix, router]);
+  }, [
+    id,
+    formData,
+    fields,
+    user,
+    type,
+    draftKeyPrefix,
+    router,
+    editor,
+    cleanImageHTML,
+    editorFieldName,
+  ]);
 
   const handleInputChange = useCallback((name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -1067,7 +1090,9 @@ const AdminEditor = ({
                   </p>
                 </>
               )}
-              <div dangerouslySetInnerHTML={{ __html: formData.content }} />
+              <div
+                dangerouslySetInnerHTML={{ __html: formData[editorFieldName] }}
+              />
             </div>
           )}
         </div>
