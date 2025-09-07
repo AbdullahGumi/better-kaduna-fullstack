@@ -39,3 +39,35 @@
 {"count":1,"level":"info","limit":10,"message":"MDAs fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-07T19:54:34.254Z"}
 {"count":1,"level":"info","limit":10,"message":"MDAs fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-07T19:54:34.698Z"}
 {"count":1,"level":"info","limit":10,"message":"MDAs fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-07T19:54:35.130Z"}
+{"count":1,"level":"info","limit":10,"message":"MDAs fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-07T20:04:10.423Z"}
+{"level":"info","mdaId":"7bb884b1-245b-4de5-86b3-e3b360d8ca99","message":"MDA fetched successfully","service":"better-kaduna-next","timestamp":"2025-09-07T20:04:14.589Z"}
+{"level":"info","mdaId":"7bb884b1-245b-4de5-86b3-e3b360d8ca99","message":"MDA fetched successfully","service":"better-kaduna-next","timestamp":"2025-09-07T20:04:15.199Z"}
+{"count":2,"level":"info","limit":10,"message":"Posts fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-07T20:04:18.974Z"}
+{"count":2,"level":"info","limit":10,"message":"Posts fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-07T20:04:19.428Z"}
+{"count":0,"level":"info","limit":10,"message":"Events fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-07T20:04:19.782Z"}
+{"count":2,"level":"info","limit":10,"message":"Posts fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-07T20:04:19.857Z"}
+{"count":0,"level":"info","limit":10,"message":"Events fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-07T20:04:20.422Z"}
+{"count":2,"level":"info","limit":10,"message":"Posts fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-07T20:04:20.434Z"}
+{"count":0,"level":"info","limit":10,"message":"Events fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-07T20:04:20.846Z"}
+{"count":0,"level":"info","limit":10,"message":"Events fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-07T20:04:21.244Z"}
+{"level":"info","message":"Post fetched successfully","postId":"b483beb0-45eb-4d36-9fe5-c0f95a6b8825","service":"better-kaduna-next","timestamp":"2025-09-07T20:04:23.418Z"}
+{"level":"info","message":"Post fetched successfully","postId":"b483beb0-45eb-4d36-9fe5-c0f95a6b8825","service":"better-kaduna-next","timestamp":"2025-09-07T20:04:23.914Z"}
+{"count":0,"eventId":null,"level":"info","message":"Comments fetched successfully","postId":"b483beb0-45eb-4d36-9fe5-c0f95a6b8825","service":"better-kaduna-next","timestamp":"2025-09-07T20:04:24.115Z"}
+{"count":0,"eventId":null,"level":"info","message":"Comments fetched successfully","postId":"b483beb0-45eb-4d36-9fe5-c0f95a6b8825","service":"better-kaduna-next","timestamp":"2025-09-07T20:04:24.644Z"}
+{"errors":[{"code":"invalid_type","expected":"string","message":"Invalid input: expected string, received null","path":["parentId"]}],"level":"warn","message":"Comment validation failed","service":"better-kaduna-next","timestamp":"2025-09-07T20:04:33.527Z"}
+{"count":0,"level":"info","limit":10,"message":"Events fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-07T20:04:43.673Z"}
+{"count":2,"level":"info","limit":10,"message":"Posts fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-07T20:04:43.685Z"}
+{"count":0,"level":"info","limit":10,"message":"Events fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-07T20:04:44.415Z"}
+{"count":2,"level":"info","limit":10,"message":"Posts fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-07T20:04:44.417Z"}
+{"count":2,"level":"info","limit":10,"message":"Posts fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-07T20:04:45.087Z"}
+{"count":0,"level":"info","limit":10,"message":"Events fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-07T20:04:45.089Z"}
+{"email":"aalamin730@gmail.com","level":"info","message":"User logged in successfully","service":"better-kaduna-next","timestamp":"2025-09-07T20:07:34.114Z","userId":"b6c2bbd9-6263-4fe0-b688-7dfeffd302a3"}
+{"count":2,"level":"info","limit":10,"message":"Posts fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-07T20:07:39.911Z"}
+{"count":0,"level":"info","limit":10,"message":"Events fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-07T20:07:40.052Z"}
+{"level":"info","message":"Post fetched successfully","postId":"b483beb0-45eb-4d36-9fe5-c0f95a6b8825","service":"better-kaduna-next","timestamp":"2025-09-07T20:08:37.610Z"}
+{"count":0,"eventId":null,"level":"info","message":"Comments fetched successfully","postId":"b483beb0-45eb-4d36-9fe5-c0f95a6b8825","service":"better-kaduna-next","timestamp":"2025-09-07T20:08:38.280Z"}
+{"level":"info","message":"Post fetched successfully","postId":"b483beb0-45eb-4d36-9fe5-c0f95a6b8825","service":"better-kaduna-next","timestamp":"2025-09-07T20:08:38.468Z"}
+{"count":0,"eventId":null,"level":"info","message":"Comments fetched successfully","postId":"b483beb0-45eb-4d36-9fe5-c0f95a6b8825","service":"better-kaduna-next","timestamp":"2025-09-07T20:08:39.028Z"}
+{"count":1,"level":"info","limit":10,"message":"MDAs fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-07T20:08:46.280Z"}
+{"count":1,"level":"info","limit":10,"message":"MDAs fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-07T20:08:47.560Z"}
+{"count":1,"level":"info","limit":10,"message":"MDAs fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-07T20:08:49.056Z"}

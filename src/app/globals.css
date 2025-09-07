@@ -1,26 +1,315 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --kaduna-green: #1A5D1A;
+  --kaduna-green-dark: #134413;
+  --kaduna-white: #FFFFFF;
+  --kaduna-gray: #4B5563;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Merriweather', 'Georgia', serif;
+  color: var(--kaduna-gray);
+  background-color: var(--kaduna-white);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lora', serif;
+  color: var(--kaduna-gray);
+}
+
+a {
+  transition: color 0.2s ease-in-out;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.btn-green {
+  background-color: var(--kaduna-green);
+  color: var(--kaduna-white);
+}
+
+.btn-green:hover {
+  background-color: var(--kaduna-green-dark);
+}
+
+.text-kaduna-green {
+  color: var(--kaduna-green);
+}
+
+.text-kaduna-green:hover {
+  color: var(--kaduna-green-dark);
+}
+
+.ProseMirror ul, .prose ul {
+  list-style-type: disc;
+  margin: 1em 0;
+  padding-left: 2em;
+}
+
+.ProseMirror ol, .prose ol {
+  list-style-type: decimal;
+  margin: 1em 0;
+  padding-left: 2em;
+}
+
+.ProseMirror li, .prose li {
+  margin-bottom: 0.5em;
+}
+
+/* Ensure images respect inline styles from editor */
+.prose img {
+  max-width: 100%;
+  height: auto;
+}
+
+.comment-thread {
+  margin-left: 2rem; /* Indent replies */
+}
+
+.comment-reply {
+  border-left: 2px solid var(--kaduna-green);
+  padding-left: 1rem;
+}
+
+.comment-actions {
+  margin-top: 0.5rem;
+}
+
+.comment-actions button {
+  margin-right: 0.5rem;
+}
+
+/* Custom animations for Facts About Kaduna page */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-fade-in-delay {
+  animation: fadeIn 1s ease-out 0.5s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+/* Hide scrollbar for horizontal scroll sections */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
+/* Enhanced Typography for Rich Content */
+.prose h1, .prose h2, .prose h3 {
+  color: #1f2937;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.prose h1 {
+  font-size: 2.5rem;
+  border-bottom: 3px solid #22c55e;
+  padding-bottom: 0.5rem;
+}
+
+.prose h2 {
+  font-size: 2rem;
+  border-bottom: 2px solid #22c55e;
+  padding-bottom: 0.25rem;
+}
+
+.prose h3 {
+  font-size: 1.5rem;
+  color: #059669;
+}
+
+.prose p {
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.prose img {
+  width: 60% !important;
+  height: auto;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+/* Responsive widths for images */
+@media (max-width: 768px) {
+  .prose img {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .prose img {
+    width: 80% !important;
+  }
+}
+
+.prose {
+  text-align: center;
+}
+
+.prose p, .prose h1, .prose h2, .prose h3, .prose ul, .prose ol, .prose blockquote {
+  text-align: left;
+}
+
+.prose .image-container {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.prose .image-container img {
+  max-width: 60%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.prose .image-container img:hover {
+  transform: scale(1.02);
+}
+
+.prose img:hover {
+  transform: scale(1.02);
+}
+
+.prose blockquote {
+  border-left: 4px solid #22c55e;
+  padding-left: 1rem;
+  margin: 2rem 0;
+  font-style: italic;
+  background: #f0fdf4;
+  padding: 1rem 1.5rem;
+  border-radius: 0 8px 8px 0;
+}
+
+.prose ul, .prose ol {
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}
+
+/* Video Styles */
+.prose video {
+  width: 60% !important;
+  height: auto;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive widths for videos */
+@media (max-width: 768px) {
+  .prose video {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .prose video {
+    width: 80% !important;
+  }
+}
+
+/* YouTube Embed Styles */
+.prose iframe {
+  width: 60% !important;
+  height: 400px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive widths for iframes */
+@media (max-width: 768px) {
+  .prose iframe {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .prose iframe {
+    width: 80% !important;
+  }
+}
+
+/* Code Block Styles */
+.prose pre {
+  background: #1f2937;
+  color: #e5e7eb;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.prose code {
+  background: #f3f4f6;
+  padding: 0.125rem 0.25rem;
+  border-radius: 4px;
+  font-family: 'Monaco', 'Menlo', monospace;
+}
+
+/* Link Styles */
+.prose a {
+  color: #059669;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.prose a:hover {
+  color: #047857;
+  text-decoration: underline;
 }
