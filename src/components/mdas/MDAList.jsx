@@ -1,5 +1,7 @@
+"use client";
+
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import apiService from "../../services/apiService";
 
 const MDAList = () => {
@@ -121,7 +123,7 @@ const MDAList = () => {
                 </div>
                 <h3 className="text-lg font-semibold text-kaduna-gray mb-2 line-clamp-2">
                   <Link
-                    to={`/mda/${mda.id}`}
+                    href={`/mdas/${mda.id}`}
                     className="text-kaduna-green hover:text-kaduna-green-dark transition-colors"
                   >
                     {mda.name}
@@ -131,7 +133,7 @@ const MDAList = () => {
                   {getPreviewText(mda.content, 100)}
                 </p>
                 <Link
-                  to={`/mda/${mda.id}`}
+                  href={`/mdas/${mda.id}`}
                   className="text-kaduna-green hover:text-kaduna-green-dark font-semibold text-sm transition-colors cursor-pointer"
                 >
                   Read More →
@@ -140,16 +142,6 @@ const MDAList = () => {
             </div>
           ))}
         </div>
-        {mdas.length > 3 && (
-          <div className="text-center mt-4 px-4">
-            <Link
-              to="#"
-              className="text-kaduna-green hover:text-kaduna-green-dark font-semibold text-sm cursor-pointer"
-            >
-              View All MDAs →
-            </Link>
-          </div>
-        )}
       </div>
 
       {/* Desktop: Featured MDA (First MDA) */}
@@ -181,7 +173,7 @@ const MDAList = () => {
               </div>
               <h2 className="text-3xl font-bold text-kaduna-gray mb-4">
                 <Link
-                  to={`/mda/${mdas[0].id}`}
+                  href={`/mdas/${mdas[0].id}`}
                   className="text-kaduna-green hover:text-kaduna-green-dark transition-colors"
                 >
                   {mdas[0].name}
@@ -191,7 +183,7 @@ const MDAList = () => {
                 {getPreviewText(mdas[0].content, 200)}
               </p>
               <Link
-                to={`/mda/${mdas[0].id}`}
+                href={`/mdas/${mdas[0].id}`}
                 className="inline-flex items-center bg-kaduna-green text-white px-6 py-3 rounded-lg hover:bg-kaduna-green-dark transition-colors font-semibold cursor-pointer"
               >
                 Read More
@@ -242,7 +234,7 @@ const MDAList = () => {
                   </div>
                   <h3 className="text-xl font-semibold text-kaduna-gray mb-3">
                     <Link
-                      to={`/mda/${mda.id}`}
+                      href={`/mdas/${mda.id}`}
                       className="text-kaduna-green hover:text-kaduna-green-dark transition-colors"
                     >
                       {mda.name}
@@ -252,7 +244,7 @@ const MDAList = () => {
                     {getPreviewText(mda.content, 120)}
                   </p>
                   <Link
-                    to={`/mda/${mda.id}`}
+                    href={`/mdas/${mda.id}`}
                     className="text-kaduna-green hover:text-kaduna-green-dark font-semibold text-sm transition-colors cursor-pointer"
                   >
                     Read More →
