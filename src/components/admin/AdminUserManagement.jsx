@@ -1,12 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../App";
-import apiService from "../../services/apiService";
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/lib/useAuth";
+import apiService from "@/services/apiService";
 import { toast } from "react-toastify";
 
 const AdminUserManagement = () => {
-  const { user, logout } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const router = useRouter();
+  const { user, logout } = useAuth();
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [newUser, setNewUser] = useState({
@@ -93,24 +95,22 @@ const AdminUserManagement = () => {
 
   const handleLogout = () => {
     logout();
-    navigate("/");
+    router.push("/");
   };
 
   if (!user || user.role !== "admin") {
     return (
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-kaduna-gray mb-6">
-          Access Denied
-        </h1>
-        <p className="text-kaduna-gray">
+        <h1 className="text-4xl font-bold text-gray-800 mb-6">Access Denied</h1>
+        <p className="text-gray-600">
           Please log in as an admin to access this page.
         </p>
-        <Link
-          to="/"
-          className="text-kaduna-green hover:text-kaduna-green-dark mt-4 inline-block"
+        <button
+          onClick={() => router.push("/")}
+          className="text-green-600 hover:text-green-700 mt-4 inline-block"
         >
           Return to Home
-        </Link>
+        </button>
       </div>
     );
   }
@@ -118,7 +118,7 @@ const AdminUserManagement = () => {
   return (
     <div className="container mx-auto px-4 py-8 font-sans">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-4xl font-bold text-kaduna-gray">Manage Users</h1>
+        <h1 className="text-4xl font-bold text-gray-800">Manage Users</h1>
         <button
           onClick={handleLogout}
           className="btn-green px-4 py-2 rounded-md hover:shadow-sm transition transform hover:scale-105"
@@ -128,7 +128,7 @@ const AdminUserManagement = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-          <h2 className="text-2xl font-semibold text-kaduna-gray mb-4">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
             {editingUser ? "Edit User" : "Create New User"}
           </h2>
           <form
@@ -136,7 +136,7 @@ const AdminUserManagement = () => {
             className="space-y-4"
           >
             <div>
-              <label className="block text-sm font-medium text-kaduna-gray">
+              <label className="block text-sm font-medium text-gray-700">
                 Name
               </label>
               <input
@@ -147,13 +147,13 @@ const AdminUserManagement = () => {
                     ? setEditingUser({ ...editingUser, name: e.target.value })
                     : setNewUser({ ...newUser, name: e.target.value })
                 }
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-kaduna-green"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                 placeholder="User Name"
                 aria-required="true"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-kaduna-gray">
+              <label className="block text-sm font-medium text-gray-700">
                 Email
               </label>
               <input
@@ -164,13 +164,13 @@ const AdminUserManagement = () => {
                     ? setEditingUser({ ...editingUser, email: e.target.value })
                     : setNewUser({ ...newUser, email: e.target.value })
                 }
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-kaduna-green"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                 placeholder="User Email"
                 aria-required="true"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-kaduna-gray">
+              <label className="block text-sm font-medium text-gray-700">
                 Password
               </label>
               <input
@@ -179,7 +179,7 @@ const AdminUserManagement = () => {
                 onChange={(e) =>
                   setNewUser({ ...newUser, password: e.target.value })
                 }
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-kaduna-green"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                 placeholder={
                   editingUser
                     ? "Password cannot be changed by admin"
@@ -190,7 +190,7 @@ const AdminUserManagement = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-kaduna-gray">
+              <label className="block text-sm font-medium text-gray-700">
                 Role
               </label>
               <select
@@ -200,7 +200,7 @@ const AdminUserManagement = () => {
                     ? setEditingUser({ ...editingUser, role: e.target.value })
                     : setNewUser({ ...newUser, role: e.target.value })
                 }
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-kaduna-green"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
               >
                 <option value="registered">Registered</option>
                 <option value="admin">Admin</option>
@@ -216,7 +216,7 @@ const AdminUserManagement = () => {
               <button
                 type="button"
                 onClick={() => setEditingUser(null)}
-                className="text-kaduna-gray hover:text-kaduna-green px-4 py-2 rounded-md"
+                className="text-gray-600 hover:text-gray-700 px-4 py-2 rounded-md"
               >
                 Cancel Edit
               </button>
@@ -224,11 +224,11 @@ const AdminUserManagement = () => {
           </form>
         </div>
         <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-          <h2 className="text-2xl font-semibold text-kaduna-gray mb-4">
+          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
             User List
           </h2>
           {loading ? (
-            <p className="text-kaduna-gray">Loading users...</p>
+            <p className="text-gray-600">Loading users...</p>
           ) : (
             <div className="space-y-2">
               {users.map((u) => (
@@ -237,15 +237,15 @@ const AdminUserManagement = () => {
                   className="flex justify-between items-center border-b py-2"
                 >
                   <div>
-                    <p className="text-kaduna-gray font-medium">{u.name}</p>
-                    <p className="text-sm text-kaduna-gray">
+                    <p className="text-gray-800 font-medium">{u.name}</p>
+                    <p className="text-sm text-gray-600">
                       {u.email} ({u.role})
                     </p>
                   </div>
                   <div className="space-x-2">
                     <button
                       onClick={() => setEditingUser(u)}
-                      className="text-kaduna-green hover:text-kaduna-green-dark"
+                      className="text-green-600 hover:text-green-700"
                     >
                       Edit
                     </button>
@@ -262,12 +262,12 @@ const AdminUserManagement = () => {
           )}
         </div>
       </div>
-      <Link
-        to="/admin"
-        className="text-kaduna-green hover:text-kaduna-green-dark mt-6 inline-block"
+      <button
+        onClick={() => router.push("/admin")}
+        className="text-green-600 hover:text-green-700 mt-6 inline-block"
       >
         Back to Dashboard
-      </Link>
+      </button>
     </div>
   );
 };

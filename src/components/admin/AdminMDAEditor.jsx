@@ -1,9 +1,12 @@
+"use client";
+
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams } from "next/navigation";
 import AdminEditor from "./AdminEditor";
 
 const AdminMDAEditor = () => {
-  const { id } = useParams();
+  const params = useParams();
+  const id = params.id;
 
   const fields = [
     {

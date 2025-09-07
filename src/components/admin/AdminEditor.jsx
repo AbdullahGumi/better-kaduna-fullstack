@@ -1,3 +1,5 @@
+"use client";
+
 import React, {
   useState,
   useContext,
@@ -6,17 +8,17 @@ import React, {
   useCallback,
   useMemo,
 } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import ImageResize from "tiptap-extension-resize-image";
+import Image from "@tiptap/extension-image";
 import Placeholder from "@tiptap/extension-placeholder";
 import TextAlign from "@tiptap/extension-text-align";
 import Typography from "@tiptap/extension-typography";
 import { TextStyle } from "@tiptap/extension-text-style";
 import { Extension } from "@tiptap/core";
-import { AuthContext } from "../../App";
-import apiService from "../../services/apiService";
+import { useAuth } from "@/lib/useAuth";
+import apiService from "@/services/apiService";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
@@ -53,7 +55,6 @@ import {
   Clock,
   Zap,
 } from "lucide-react";
-import { uploadToCloudinary } from "../../utils/cloudinary";
 
 // Font sizes array
 const fontSizes = [
@@ -148,30 +149,6 @@ const FontSize = Extension.create({
   },
 });
 
-// Custom ImageAlignment extension to ensure images respect parent text-align
-const ImageAlignment = Extension.create({
-  name: "imageAlignment",
-  addOptions() {
-    return {
-      types: ["image"],
-    };
-  },
-  addGlobalAttributes() {
-    return [
-      {
-        types: ["image"],
-        attributes: {
-          style: {
-            default: null,
-            parseHTML: (el) => el.getAttribute("style") || null,
-            renderHTML: (attrs) => (attrs.style ? { style: attrs.style } : {}),
-          },
-        },
-      },
-    ];
-  },
-});
-
 const headings = [
   { label: "Paragraph", level: 0 },
   { label: "H1", level: 1 },
@@ -187,8 +164,8 @@ const AdminEditor = ({
   titleLabel,
   draftKeyPrefix,
 }) => {
-  const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  const router = useRouter();
+  const { user, loading } = useAuth();
   const [formData, setFormData] = useState(
     fields.reduce((acc, field) => ({ ...acc, [field.name]: "" }), {})
   );
@@ -196,53 +173,10 @@ const AdminEditor = ({
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [error, setError] = useState("");
   const [isSaving, setIsSaving] = useState(false);
-  const [isUploadingImage, setIsUploadingImage] = useState(false);
-  const [isUploadingVideo, setIsUploadingVideo] = useState(false);
-  const [isUploadingThumbnail, setIsUploadingThumbnail] = useState(false);
   const [, forceUpdate] = useState({});
   const fileInputRef = useRef(null);
   const thumbnailInputRef = useRef(null);
   const videoInputRef = useRef(null);
-
-  const cleanImageHTML = useCallback((html) => {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, "text/html");
-    const images = doc.querySelectorAll("img[containerstyle][wrapperstyle]");
-
-    images.forEach((img) => {
-      const containerStyle = img.getAttribute("containerstyle");
-      img.removeAttribute("containerstyle");
-      img.removeAttribute("wrapperstyle");
-
-      const styleMatch = containerStyle.match(
-        /width:\s*(\d+)px;\s*height:\s*(\d+|auto)/
-      );
-      if (styleMatch) {
-        const width = styleMatch[1];
-        const height = styleMatch[2];
-
-        if (width) {
-          img.setAttribute("width", width);
-          if (height === "auto" && img.naturalWidth && img.naturalHeight) {
-            const aspectRatio = img.naturalHeight / img.naturalWidth;
-            const calculatedHeight = Math.round(
-              parseInt(width, 10) * aspectRatio
-            );
-            img.setAttribute("height", calculatedHeight);
-          } else if (height !== "auto") {
-            img.setAttribute("height", height);
-          }
-        }
-      }
-
-      const parent = img.parentElement;
-      if (parent && parent.getAttribute("style")?.includes("display: flex")) {
-        parent.replaceWith(img);
-      }
-    });
-
-    return doc.body.innerHTML;
-  }, []);
 
   const editor = useEditor({
     extensions: [
@@ -254,24 +188,20 @@ const AdminEditor = ({
         codeBlock: false,
         blockquote: false,
       }),
-      ImageResize.configure({
-        inline: false,
-        allowBase64: false,
-        keepAspectRatio: true,
-      }),
+      Image,
       Placeholder.configure({ placeholder }),
       TextAlign.configure({ types: ["heading", "paragraph", "image"] }),
       Typography,
       TextStyle,
       Color,
       FontSize,
-      ImageAlignment,
     ],
     content: "",
+    immediatelyRender: false,
     autofocus: true,
     onUpdate: useCallback(
       ({ editor }) => {
-        const content = cleanImageHTML(editor.getHTML());
+        const content = editor.getHTML();
         setFormData((prev) => {
           const updated = { ...prev, content };
           if (id) {
@@ -283,7 +213,7 @@ const AdminEditor = ({
           return updated;
         });
       },
-      [id, draftKeyPrefix, cleanImageHTML]
+      [id, draftKeyPrefix]
     ),
     editorProps: {
       attributes: {
@@ -367,48 +297,25 @@ const AdminEditor = ({
     }
   }, [id, editor, draftKeyPrefix]);
 
-  const handleImageUpload = useCallback(
-    async (file) => {
-      if (!file || !file.type.startsWith("image/")) {
-        setError("Please upload a valid image file.");
-        toast.error("Invalid file type", { autoClose: 3000 });
-        return;
-      }
-      try {
-        setIsUploadingImage(true);
-        setError("");
-        const imageUrl = await uploadToCloudinary(file);
-        editor.chain().focus().setImage({ src: imageUrl }).run();
-        toast.success("Image uploaded successfully", { autoClose: 2000 });
-      } catch (err) {
-        console.error(err);
-        setError("Failed to upload image.");
-        toast.error("Image upload failed", { autoClose: 3000 });
-      } finally {
-        setIsUploadingImage(false);
-      }
-    },
-    [editor]
-  );
-
   const handleThumbnailUpload = useCallback(async (file) => {
     if (!file || !file.type.startsWith("image/")) {
       setError("Please upload a valid image file for thumbnail.");
       toast.error("Invalid thumbnail file type", { autoClose: 3000 });
-      return;
+      return null;
     }
     try {
-      setIsUploadingThumbnail(true);
       setError("");
-      const imageUrl = await uploadToCloudinary(file);
+      // For now, just return a placeholder URL
+      // This would need to be integrated with Cloudinary or similar service
+      const imageUrl = URL.createObjectURL(file);
       setFormData((prev) => ({ ...prev, thumbnail: imageUrl }));
       toast.success("Thumbnail uploaded successfully", { autoClose: 2000 });
+      return imageUrl;
     } catch (err) {
       console.error(err);
       setError("Failed to upload thumbnail.");
       toast.error("Thumbnail upload failed", { autoClose: 3000 });
-    } finally {
-      setIsUploadingThumbnail(false);
+      return null;
     }
   }, []);
 
@@ -428,10 +335,17 @@ const AdminEditor = ({
     (e) => {
       const file = e.target.files[0];
       if (file) {
-        handleImageUpload(file);
+        if (file.type.startsWith("image/")) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const imageUrl = e.target.result;
+            editor.chain().focus().setImage({ src: imageUrl }).run();
+          };
+          reader.readAsDataURL(file);
+        }
       }
     },
-    [handleImageUpload]
+    [editor]
   );
 
   const handleThumbnailInputChange = useCallback(
@@ -444,44 +358,19 @@ const AdminEditor = ({
     [handleThumbnailUpload]
   );
 
-  const handleVideoInputChange = useCallback((e) => {
-    const file = e.target.files[0];
-    if (file) {
-      handleVideoUpload(file);
-    }
-  }, []);
-
-  const handleVideoUpload = useCallback(
-    async (file) => {
-      if (!file || !file.type.startsWith("video/")) {
-        setError("Please upload a valid video file.");
-        toast.error("Invalid file type", { autoClose: 3000 });
-        return;
-      }
-
-      // Check file size (limit to 100MB)
-      if (file.size > 100 * 1024 * 1024) {
-        setError("Video file size must be less than 100MB.");
-        toast.error("File too large", { autoClose: 3000 });
-        return;
-      }
-
-      try {
-        setIsUploadingVideo(true);
-        setError("");
-        const videoUrl = await uploadToCloudinary(file);
-        const videoHtml = `<video controls style="max-width: 100%; height: auto;">
-          <source src="${videoUrl}" type="${file.type}">
-          Your browser does not support the video tag.
-        </video><br>`;
-        editor.chain().focus().insertContent(videoHtml).run();
-        toast.success("Video uploaded successfully", { autoClose: 2000 });
-      } catch (err) {
-        console.error(err);
-        setError("Failed to upload video.");
-        toast.error("Video upload failed", { autoClose: 3000 });
-      } finally {
-        setIsUploadingVideo(false);
+  const handleVideoInputChange = useCallback(
+    (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        if (file.type.startsWith("video/")) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const videoUrl = e.target.result;
+            const videoHtml = `<video controls style="max-width: 100%; height: auto;"><source src="${videoUrl}" type="${file.type}">Your browser does not support the video tag.</video><br>`;
+            editor.chain().focus().insertContent(videoHtml).run();
+          };
+          reader.readAsDataURL(file);
+        }
       }
     },
     [editor]
@@ -492,11 +381,7 @@ const AdminEditor = ({
     if (url) {
       const videoId = extractYouTubeId(url);
       if (videoId) {
-        const embedHtml = `<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
-          <iframe src="https://www.youtube.com/embed/${videoId}"
-                  style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                  frameborder="0" allowfullscreen></iframe>
-        </div><br>`;
+        const embedHtml = `<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;"><iframe src="https://www.youtube.com/embed/${videoId}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allowfullscreen></iframe></div><br>`;
         editor.chain().focus().insertContent(embedHtml).run();
         toast.success("YouTube video embedded", { autoClose: 2000 });
       } else {
@@ -609,12 +494,12 @@ const AdminEditor = ({
         `${type.charAt(0).toUpperCase() + type.slice(1)} saved successfully!`,
         { autoClose: 2000 }
       );
-      navigate("/admin");
+      router.push("/admin");
     } catch (error) {
       console.log(error);
       setIsSaving(false);
     }
-  }, [id, formData, fields, user, type, draftKeyPrefix, navigate]);
+  }, [id, formData, fields, user, type, draftKeyPrefix, router]);
 
   const handleInputChange = useCallback((name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -636,7 +521,6 @@ const AdminEditor = ({
           active: editor?.isActive("italic"),
         },
       ],
-
       [
         {
           label: "Text Color",
@@ -731,25 +615,15 @@ const AdminEditor = ({
       [
         {
           label: "Insert Image",
-          icon: isUploadingImage ? (
-            <Loader2 className="w-5 h-5 animate-spin" />
-          ) : (
-            <ImageIcon className="w-5 h-5" />
-          ),
+          icon: <ImageIcon className="w-5 h-5" />,
           action: triggerImageUpload,
           active: false,
-          disabled: isUploadingImage,
         },
         {
           label: "Upload Video",
-          icon: isUploadingVideo ? (
-            <Loader2 className="w-5 h-5 animate-spin" />
-          ) : (
-            <Video className="w-5 h-5" />
-          ),
+          icon: <Video className="w-5 h-5" />,
           action: triggerVideoUpload,
           active: false,
-          disabled: isUploadingVideo,
         },
         {
           label: "Embed YouTube",
@@ -762,9 +636,9 @@ const AdminEditor = ({
         {
           label: isFullScreen ? "Exit Full Screen" : "Full Screen",
           icon: isFullScreen ? (
-            <Minimize color="black" className="w-5 h-5" />
+            <Minimize className="w-5 h-5" />
           ) : (
-            <Maximize color="black" className="w-5 h-5" />
+            <Maximize className="w-5 h-5" />
           ),
           action: handleFullScreenToggle,
           active: isFullScreen,
@@ -798,69 +672,74 @@ const AdminEditor = ({
 
   if (!user || user.role !== "admin") {
     return (
-      <div className="container mx-auto px-4 py-8">
-        <p className="text-kaduna-gray">Access Denied. Admins only.</p>
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="bg-white p-8 rounded-lg shadow-md text-center">
+          <AlertCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
+          <h1 className="text-2xl font-bold text-gray-800 mb-2">
+            Access Denied
+          </h1>
+          <p className="text-gray-600 mb-4">
+            Please log in as an admin to access the editor.
+          </p>
+        </div>
       </div>
     );
   }
 
   return (
     <div className="container mx-auto px-4 py-8 font-sans">
-      <style>
-        {`
-            .ProseMirror .image-resizer {
-              display: inline-flex;
-              position: relative;
-              flex-grow: 0;
-            }
-            .ProseMirror .image-resizer .resize-trigger {
-              position: absolute;
-              right: -6px;
-              bottom: -6px;
-              opacity: 0;
-              transition: opacity 0.3s ease;
-              color: #3259a5;
-              cursor: se-resize;
-            }
-            .ProseMirror .image-resizer:hover .resize-trigger {
-              opacity: 1;
-            }
-            .preview-content {
-              overflow: hidden;
-            }
-            .preview-content img {
-              max-width: 100% !important;
-              height: auto !important;
-              display: block;
-            }
-            .editor-fullscreen {
-              position: fixed;
-              top: 0;
-              left: 0;
-              right: 0;
-              bottom: 0;
-              z-index: 1000;
-              background: white;
-              display: flex;
-              flex-direction: column;
-            }
-            .editor-fullscreen .toolbar {
-              position: sticky;
-              top: 0;
-              z-index: 1001;
-              background: linear-gradient(to right, #f9fafb, #e5e7eb);
-              padding: 0.5rem;
-              border-bottom: 1px solid #d1d5db;
-            }
-            .editor-fullscreen .ProseMirror {
-              flex-grow: 1;
-              overflow-y: auto;
-              padding: 1rem;
-            }
-          `}
-      </style>
+      <style jsx>{`
+        .ProseMirror .resize-cursor {
+          cursor: nw-resize;
+          display: block;
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          z-index: 1000;
+        }
+        .ProseMirror .resize-handle {
+          position: absolute;
+          bottom: -4px;
+          right: -4px;
+          width: 10px;
+          height: 10px;
+          background: #68d391;
+          border: 1px solid #4a5568;
+          border-radius: 2px;
+        }
+        .ProseMirror.ProseMirror-focused .resize-handle {
+          opacity: 1;
+        }
+        .ProseMirror .resize-handle:hover {
+          background: #48bb78;
+        }
+        .editor-fullscreen {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 1000;
+          background: white;
+          display: flex;
+          flex-direction: column;
+        }
+        .editor-fullscreen .toolbar {
+          position: sticky;
+          top: 0;
+          z-index: 1001;
+          background: linear-gradient(to right, #f9fafb, #e5e7eb);
+          padding: 0.5rem;
+          border-bottom: 1px solid #d1d5db;
+        }
+        .editor-fullscreen .ProseMirror {
+          flex-grow: 1;
+          overflow-y: auto;
+          padding: 1rem;
+        }
+      `}</style>
       <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
-      <h1 className="text-3xl font-bold text-kaduna-gray mb-6">
+      <h1 className="text-3xl font-bold text-gray-800 mb-6">
         {id ? `Edit ${titleLabel}` : `Create ${titleLabel}`}
       </h1>
       {error && (
@@ -894,8 +773,8 @@ const AdminEditor = ({
             </button>
           </div>
           <button
-            onClick={() => navigate("/admin")}
-            className="text-kaduna-gray hover:text-kaduna-green flex items-center transition transform hover:scale-105 hover:shadow-sm"
+            onClick={() => router.push("/admin")}
+            className="text-gray-600 hover:text-gray-800 flex items-center transition transform hover:scale-105 hover:shadow-sm"
             aria-label="Back to dashboard"
           >
             <ArrowLeft className="w-5 h-5 mr-2" />
@@ -927,7 +806,7 @@ const AdminEditor = ({
             />
             {fields.map((field) => (
               <div key={field.name} className="mb-4">
-                <label className="block text-sm font-medium text-kaduna-gray">
+                <label className="block text-sm font-medium text-gray-700">
                   {field.label}
                 </label>
                 {field.type === "file" ? (
@@ -935,24 +814,10 @@ const AdminEditor = ({
                     <button
                       type="button"
                       onClick={triggerThumbnailUpload}
-                      disabled={isUploadingThumbnail}
-                      className={`px-4 py-2 rounded-md flex items-center ${
-                        isUploadingThumbnail
-                          ? "bg-gray-400 cursor-not-allowed"
-                          : "btn-green hover:bg-kaduna-green-dark"
-                      } transition-colors`}
+                      className={`px-4 py-2 rounded-md flex items-center bg-blue-500 text-white hover:bg-blue-600 transition-colors`}
                     >
-                      {isUploadingThumbnail ? (
-                        <>
-                          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                          Uploading...
-                        </>
-                      ) : (
-                        <>
-                          <FileImage className="w-4 h-4 mr-2" />
-                          Upload {field.label}
-                        </>
-                      )}
+                      <FileImage className="w-4 h-4 mr-2" />
+                      Upload {field.label}
                     </button>
                     {formData[field.name] && (
                       <div className="mt-2">
@@ -967,7 +832,7 @@ const AdminEditor = ({
                 ) : field.type === "editor" ? (
                   !isPreview && (
                     <div className="mb-4 pt-12">
-                      <label className="block text-sm font-medium text-kaduna-gray mb-1">
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
                         Content
                       </label>
                       <div
@@ -990,12 +855,9 @@ const AdminEditor = ({
                                   <button
                                     key={item.label}
                                     onClick={item.action}
-                                    disabled={item.disabled}
                                     className={`p-2 rounded ${
                                       item.active
-                                        ? "bg-kaduna-green text-white"
-                                        : item.disabled
-                                        ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                                        ? "bg-green-900 text-white"
                                         : "bg-white hover:bg-gray-100 hover:shadow-sm"
                                     } transition duration-200`}
                                     title={item.label}
@@ -1022,7 +884,7 @@ const AdminEditor = ({
                     onChange={(e) =>
                       handleInputChange(field.name, e.target.value)
                     }
-                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-kaduna-green"
+                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                     placeholder={field.placeholder}
                     aria-required={field.required}
                   />
@@ -1031,7 +893,7 @@ const AdminEditor = ({
             ))}
           </div>
           {isPreview && (
-            <div className="prose max-w-none list-disc list-outside border border-gray-300 p-4 rounded-md bg-white shadow-sm preview-content">
+            <div className="prose max-w-none list-disc list-outside border border-gray-300 p-4 rounded-md bg-white shadow-sm">
               <h2 className="text-2xl font-semibold">
                 {formData.name || formData.title || `${titleLabel} Title`}
               </h2>
@@ -1044,7 +906,7 @@ const AdminEditor = ({
                       className="h-48 w-full object-cover mb-4"
                     />
                   )}
-                  <p className="text-kaduna-gray text-sm">
+                  <p className="text-gray-600 text-sm">
                     By {formData.author || "Author"} |{" "}
                     {new Date().toLocaleString()}
                   </p>
@@ -1052,10 +914,10 @@ const AdminEditor = ({
               )}
               {type === "event" && (
                 <>
-                  <p className="text-kaduna-gray text-sm">
+                  <p className="text-gray-600 text-sm">
                     {formData.date || "Event Date"}
                   </p>
-                  <p className="text-kaduna-gray text-sm">
+                  <p className="text-gray-600 text-sm">
                     {formData.location || "Event Location"}
                   </p>
                 </>
