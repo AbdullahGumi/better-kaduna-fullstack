@@ -1,23 +1,34 @@
+"use client";
+
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import apiService from "../../services/apiService";
 
+interface Post {
+  id: string;
+  title: string;
+  content: string;
+  thumbnail?: string;
+  author?: string;
+  date: string;
+}
+
 const PostList = () => {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<Post[]>([]);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const loaderRef = useRef(null);
 
   // Function to strip HTML tags and get plain text
-  const stripHtml = (html) => {
+  const stripHtml = (html: string): string => {
     const tmp = document.createElement("DIV");
     tmp.innerHTML = html;
     return tmp.textContent || tmp.innerText || "";
   };
 
   // Function to get preview text from HTML content
-  const getPreviewText = (htmlContent, maxLength = 200) => {
+  const getPreviewText = (htmlContent: string, maxLength = 200): string => {
     if (!htmlContent) return "Read the full story...";
 
     const plainText = stripHtml(htmlContent);
@@ -130,7 +141,7 @@ const PostList = () => {
                 </div>
                 <h3 className="text-lg font-semibold text-kaduna-gray mb-2 line-clamp-2">
                   <Link
-                    to={`/posts/${post.id}`}
+                    href={`/posts/${post.id}`}
                     className="text-kaduna-green hover:text-kaduna-green-dark transition-colors"
                   >
                     {post.title}
@@ -140,7 +151,7 @@ const PostList = () => {
                   {getPreviewText(post.content, 100)}
                 </p>
                 <Link
-                  to={`/posts/${post.id}`}
+                  href={`/posts/${post.id}`}
                   className="text-kaduna-green hover:text-kaduna-green-dark font-semibold text-sm transition-colors cursor-pointer"
                 >
                   Read More →
@@ -152,7 +163,7 @@ const PostList = () => {
         {posts.length > 3 && (
           <div className="text-center mt-4 px-4">
             <Link
-              to="#"
+              href="#"
               className="text-kaduna-green hover:text-kaduna-green-dark font-semibold text-sm cursor-pointer"
             >
               View All Stories →
@@ -190,7 +201,7 @@ const PostList = () => {
               </div>
               <h2 className="text-3xl font-bold text-kaduna-gray mb-4">
                 <Link
-                  to={`/posts/${posts[0].id}`}
+                  href={`/posts/${posts[0].id}`}
                   className="text-kaduna-green hover:text-kaduna-green-dark transition-colors"
                 >
                   {posts[0].title}
@@ -200,7 +211,7 @@ const PostList = () => {
                 {getPreviewText(posts[0].content, 200)}
               </p>
               <Link
-                to={`/posts/${posts[0].id}`}
+                href={`/posts/${posts[0].id}`}
                 className="inline-flex items-center bg-kaduna-green text-white px-6 py-3 rounded-lg hover:bg-kaduna-green-dark transition-colors font-semibold cursor-pointer"
               >
                 Read More
@@ -253,7 +264,7 @@ const PostList = () => {
                   </div>
                   <h3 className="text-xl font-semibold text-kaduna-gray mb-3">
                     <Link
-                      to={`/posts/${post.id}`}
+                      href={`/posts/${post.id}`}
                       className="text-kaduna-green hover:text-kaduna-green-dark transition-colors"
                     >
                       {post.title}
@@ -263,7 +274,7 @@ const PostList = () => {
                     {getPreviewText(post.content, 120)}
                   </p>
                   <Link
-                    to={`/posts/${post.id}`}
+                    href={`/posts/${post.id}`}
                     className="text-kaduna-green hover:text-kaduna-green-dark font-semibold text-sm transition-colors cursor-pointer"
                   >
                     Read More →

@@ -1,5 +1,7 @@
+"use client";
+
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import apiService from "../../services/apiService";
 
 const EventList = () => {
@@ -81,7 +83,7 @@ const EventList = () => {
               >
                 <h3 className="text-base font-semibold text-kaduna-gray mb-2 line-clamp-2">
                   <Link
-                    to={`/events/${event.id}`}
+                    href={`/events/${event.id}`}
                     className="text-kaduna-green hover:text-kaduna-green-dark cursor-pointer transition-colors"
                   >
                     {event.title}
@@ -102,7 +104,7 @@ const EventList = () => {
           {events.length > 3 && (
             <div className="text-center mt-4">
               <Link
-                to="#"
+                href="#"
                 className="text-kaduna-green hover:text-kaduna-green-dark font-semibold text-sm cursor-pointer"
               >
                 View All Events →
@@ -122,7 +124,7 @@ const EventList = () => {
             >
               <h3 className="text-lg font-semibold text-kaduna-gray mb-2">
                 <Link
-                  to={`/events/${event.id}`}
+                  href={`/events/${event.id}`}
                   className="text-kaduna-green hover:text-kaduna-green-dark cursor-pointer transition-colors"
                 >
                   {event.title}

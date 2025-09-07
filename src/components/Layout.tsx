@@ -1,7 +1,10 @@
-import React, { useState, useContext } from "react";
-import { Link, Outlet, useLocation } from "react-router-dom";
+"use client";
+
+import React, { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import EventList from "./events/EventList";
-import { AuthContext } from "../../src/App";
+import { useAuth } from "../lib/auth";
 
 const TikTokIcon = () => (
   <svg
@@ -121,10 +124,14 @@ const socialMediaLinks = [
   },
 ];
 
-const Layout = () => {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { user, logout } = useContext(AuthContext);
-  const location = useLocation();
+  const { user, logout } = useAuth();
+  const pathname = usePathname();
 
   const handleLogout = () => {
     logout();
@@ -136,14 +143,14 @@ const Layout = () => {
   };
 
   // Determine if we're on the home page
-  const isHomePage = location.pathname === "/";
+  const isHomePage = pathname === "/";
 
   return (
     <div className="min-h-screen bg-white font-serif flex flex-col">
       {/* Navbar */}
       <header className="bg-white shadow-md sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <Link to="/" aria-label="Better Kaduna Home">
+          <Link href="/" aria-label="Better Kaduna Home">
             <img
               src="https://res.cloudinary.com/dob19lapx/image/upload/v1756322927/logo_pvnwq1.png"
               alt="Better Kaduna Logo"
@@ -153,32 +160,32 @@ const Layout = () => {
           <div className="hidden md:flex items-center space-x-6">
             <nav className="flex space-x-6" role="navigation">
               <Link
-                to="/about"
+                href="/about"
                 className="text-kaduna-gray hover:text-green-800 transition-colors"
               >
                 About Us
               </Link>
               <Link
-                to="/facts"
+                href="/facts"
                 className="text-kaduna-gray hover:text-green-800 transition-colors"
               >
                 Facts About Kaduna
               </Link>
               <Link
-                to="/mdas"
+                href="/mdas"
                 className="text-kaduna-gray hover:text-green-800 transition-colors"
               >
                 Inside Kaduna MDAs
               </Link>
               <Link
-                to="/contact"
+                href="/contact"
                 className="text-kaduna-gray hover:text-green-800 transition-colors"
               >
                 Contact Us
               </Link>
               {user && user.role === "admin" && (
                 <Link
-                  to="/admin"
+                  href="/admin"
                   className="text-kaduna-gray hover:text-green-800 transition-colors"
                 >
                   Admin Dashboard
@@ -196,14 +203,14 @@ const Layout = () => {
             ) : (
               <div className="flex space-x-4">
                 <Link
-                  to="/login"
+                  href="/login"
                   className="text-kaduna-gray hover:text-green-800"
                   aria-label="Login"
                 >
                   Login
                 </Link>
                 <Link
-                  to="/register"
+                  href="/register"
                   className="text-kaduna-gray hover:text-green-800"
                   aria-label="Register"
                 >
@@ -243,35 +250,35 @@ const Layout = () => {
           <div className="md:hidden bg-white shadow-md">
             <nav className="flex flex-col p-4 space-y-2" role="navigation">
               <Link
-                to="/"
+                href="/"
                 className="text-kaduna-gray hover:text-green-800"
                 onClick={handleMobileNavClick}
               >
                 Home
               </Link>
               <Link
-                to="/about"
+                href="/about"
                 className="text-kaduna-gray hover:text-green-800"
                 onClick={handleMobileNavClick}
               >
                 About Us
               </Link>
               <Link
-                to="/facts"
+                href="/facts"
                 className="text-kaduna-gray hover:text-green-800"
                 onClick={handleMobileNavClick}
               >
                 Facts About Kaduna
               </Link>
               <Link
-                to="/mdas"
+                href="/mdas"
                 className="text-kaduna-gray hover:text-green-800"
                 onClick={handleMobileNavClick}
               >
                 Inside Kaduna MDAs
               </Link>
               <Link
-                to="/contact"
+                href="/contact"
                 className="text-kaduna-gray hover:text-green-800"
                 onClick={handleMobileNavClick}
               >
@@ -279,7 +286,7 @@ const Layout = () => {
               </Link>
               {user && user.role === "admin" && (
                 <Link
-                  to="/admin"
+                  href="/admin"
                   className="text-kaduna-gray hover:text-green-800"
                   onClick={handleMobileNavClick}
                 >
@@ -300,7 +307,7 @@ const Layout = () => {
               ) : (
                 <>
                   <Link
-                    to="/login"
+                    href="/login"
                     className="text-kaduna-gray hover:text-green-800 text-left"
                     aria-label="Login"
                     onClick={handleMobileNavClick}
@@ -308,7 +315,7 @@ const Layout = () => {
                     Login
                   </Link>
                   <Link
-                    to="/register"
+                    href="/register"
                     className="text-kaduna-gray hover:text-green-800 text-left"
                     aria-label="Register"
                     onClick={handleMobileNavClick}
@@ -324,7 +331,7 @@ const Layout = () => {
       {/* Main Content */}
       <main className="container mx-auto px-4 py-6 md:py-8 flex flex-col md:flex-row flex-grow">
         <div className={isHomePage ? "w-full md:w-2/3 pr-0 md:pr-8" : "w-full"}>
-          <Outlet />
+          {children}
         </div>
         {isHomePage && (
           <aside className="w-full md:w-1/3 mt-8 md:mt-0">
@@ -344,20 +351,20 @@ const Layout = () => {
           />
           <p>&copy; 2025 Better Kaduna. All rights reserved.</p>
           <nav className="mt-2 space-x-4" role="navigation">
-            <Link to="/about" className="hover:underline text-white">
+            <Link href="/about" className="hover:underline text-white">
               About Us
             </Link>
-            <Link to="/facts" className="hover:underline text-white">
+            <Link href="/facts" className="hover:underline text-white">
               Facts About Kaduna
             </Link>
-            <Link to="/mdas" className="hover:underline text-white">
+            <Link href="/mdas" className="hover:underline text-white">
               Inside Kaduna MDAs
             </Link>
-            <Link to="/contact" className="hover:underline text-white">
+            <Link href="/contact" className="hover:underline text-white">
               Contact Us
             </Link>
             {user && user.role === "admin" && (
-              <Link to="/admin" className="hover:underline text-white">
+              <Link href="/admin" className="hover:underline text-white">
                 Admin Dashboard
               </Link>
             )}
