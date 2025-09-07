@@ -1,6 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../App";
+"use client";
+
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useAuth } from "../../lib/auth";
 import apiService from "../../services/apiService";
 import {
   FileText,
@@ -22,8 +25,8 @@ import {
 } from "lucide-react";
 
 const AdminDashboard = () => {
-  const { user, logout } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const { user, logout } = useAuth();
+  const router = useRouter();
   const [posts, setPosts] = useState([]);
   const [events, setEvents] = useState([]);
   const [mdas, setMdas] = useState([]);
@@ -78,7 +81,7 @@ const AdminDashboard = () => {
 
   const handleLogout = () => {
     logout();
-    navigate("/");
+    router.push("/");
   };
 
   // Filter content based on search
@@ -130,7 +133,10 @@ const AdminDashboard = () => {
           <p className="text-gray-600 mb-4">
             Please log in as an admin to access the dashboard.
           </p>
-          <Link to="/" className="btn-green px-6 py-2 rounded-md inline-block">
+          <Link
+            href="/"
+            className="btn-green px-6 py-2 rounded-md inline-block"
+          >
             Return to Home
           </Link>
         </div>
@@ -265,7 +271,7 @@ const AdminDashboard = () => {
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <Link
-                  to="/admin/post"
+                  href="/admin/post"
                   className="flex items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
                 >
                   <Plus className="w-6 h-6 text-blue-600 mr-3" />
@@ -278,7 +284,7 @@ const AdminDashboard = () => {
                 </Link>
 
                 <Link
-                  to="/admin/event"
+                  href="/admin/event"
                   className="flex items-center p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors"
                 >
                   <Plus className="w-6 h-6 text-purple-600 mr-3" />
@@ -291,7 +297,7 @@ const AdminDashboard = () => {
                 </Link>
 
                 <Link
-                  to="/admin/users"
+                  href="/admin/users"
                   className="flex items-center p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors"
                 >
                   <Settings className="w-6 h-6 text-green-600 mr-3" />
@@ -358,7 +364,7 @@ const AdminDashboard = () => {
             <div className="flex justify-between items-center">
               <h2 className="text-2xl font-bold text-gray-800">Manage Posts</h2>
               <Link
-                to="/admin/post"
+                href="/admin/post"
                 className="btn-green px-4 py-2 rounded-md flex items-center"
               >
                 <Plus className="w-4 h-4 mr-2" />
@@ -405,7 +411,7 @@ const AdminDashboard = () => {
                         </div>
                         <div className="flex items-center space-x-2">
                           <Link
-                            to={`/admin/post/${post.id}`}
+                            href={`/admin/post/${post.id}`}
                             className="text-blue-600 hover:text-blue-800 p-2 rounded-md hover:bg-blue-50"
                           >
                             <Edit className="w-4 h-4" />
@@ -439,7 +445,7 @@ const AdminDashboard = () => {
                 Manage Events
               </h2>
               <Link
-                to="/admin/event"
+                href="/admin/event"
                 className="btn-green px-4 py-2 rounded-md flex items-center"
               >
                 <Plus className="w-4 h-4 mr-2" />
@@ -486,7 +492,7 @@ const AdminDashboard = () => {
                         </div>
                         <div className="flex items-center space-x-2">
                           <Link
-                            to={`/admin/event/${event.id}`}
+                            href={`/admin/event/${event.id}`}
                             className="text-blue-600 hover:text-blue-800 p-2 rounded-md hover:bg-blue-50"
                           >
                             <Edit className="w-4 h-4" />
@@ -518,7 +524,7 @@ const AdminDashboard = () => {
             <div className="flex justify-between items-center">
               <h2 className="text-2xl font-bold text-gray-800">Manage MDAs</h2>
               <Link
-                to="/admin/mda"
+                href="/admin/mda"
                 className="btn-green px-4 py-2 rounded-md flex items-center"
               >
                 <Plus className="w-4 h-4 mr-2" />
@@ -565,7 +571,7 @@ const AdminDashboard = () => {
                         </div>
                         <div className="flex items-center space-x-2">
                           <Link
-                            to={`/admin/mda/${mda.id}`}
+                            href={`/admin/mda/${mda.id}`}
                             className="text-blue-600 hover:text-blue-800 p-2 rounded-md hover:bg-blue-50"
                           >
                             <Edit className="w-4 h-4" />
@@ -597,7 +603,7 @@ const AdminDashboard = () => {
             <div className="flex justify-between items-center">
               <h2 className="text-2xl font-bold text-gray-800">Manage Users</h2>
               <Link
-                to="/admin/users"
+                href="/admin/users"
                 className="btn-green px-4 py-2 rounded-md flex items-center"
               >
                 <Settings className="w-4 h-4 mr-2" />
