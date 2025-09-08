@@ -37,6 +37,20 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Better Kaduna",
+    description:
+      "Stay informed with the latest stories and updates from Kaduna State",
+    images: [
+      {
+        url: "https://res.cloudinary.com/dob19lapx/image/upload/v1756322927/logo_pvnwq1.png",
+        width: 800,
+        height: 600,
+        alt: "Better Kaduna Logo",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

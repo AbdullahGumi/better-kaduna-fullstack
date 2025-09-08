@@ -34,18 +34,23 @@ export async function generateMetadata({
 
   return {
     title: event.title,
-    description: `Join the ${event.title} event in ${
-      event.location
-    }. Scheduled for ${new Date(event.date).toLocaleString()}. ${
-      event.description
-    }`,
+    description: event.description,
     openGraph: {
       title: event.title,
-      description: `Join the ${event.title} event in ${
-        event.location
-      }. Scheduled for ${new Date(event.date).toLocaleString()}. ${
-        event.description
-      }`,
+      description: event.description,
+      images: [
+        {
+          url: imageUrl,
+          width: 800,
+          height: 600,
+          alt: event.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: event.title,
+      description: event.description,
       images: [
         {
           url: imageUrl,

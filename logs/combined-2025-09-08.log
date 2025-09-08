@@ -34,3 +34,17 @@
 {"count":2,"level":"info","limit":10,"message":"Posts fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T10:04:47.925Z"}
 {"count":0,"level":"info","limit":10,"message":"Events fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T10:04:48.144Z"}
 {"count":0,"level":"info","limit":10,"message":"Events fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T10:04:48.549Z"}
+{"count":2,"level":"info","limit":10,"message":"Posts fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T10:15:53.758Z"}
+{"count":2,"level":"info","limit":10,"message":"Posts fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T10:15:54.297Z"}
+{"count":0,"level":"info","limit":10,"message":"Events fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T10:15:54.648Z"}
+{"count":1,"level":"info","limit":10,"message":"MDAs fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T10:15:54.660Z"}
+{"count":2,"level":"info","message":"Users fetched successfully","service":"better-kaduna-next","timestamp":"2025-09-08T10:15:54.840Z"}
+{"count":1,"level":"info","limit":10,"message":"MDAs fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T10:15:55.115Z"}
+{"count":0,"level":"info","limit":10,"message":"Events fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T10:15:55.260Z"}
+{"count":2,"level":"info","message":"Users fetched successfully","service":"better-kaduna-next","timestamp":"2025-09-08T10:15:55.450Z"}
+{"count":1,"level":"info","limit":10,"message":"MDAs fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T10:25:56.885Z"}
+{"count":1,"level":"info","limit":10,"message":"MDAs fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T10:25:57.406Z"}
+{"count":1,"level":"info","limit":10,"message":"MDAs fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T10:25:57.817Z"}
+{"count":1,"level":"info","limit":10,"message":"MDAs fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T10:25:58.224Z"}
+{"count":1,"level":"info","limit":10,"message":"MDAs fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T10:25:59.464Z"}
+{"count":1,"level":"info","limit":10,"message":"MDAs fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T10:26:04.205Z"}

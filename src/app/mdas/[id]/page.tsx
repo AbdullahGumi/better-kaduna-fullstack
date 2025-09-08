@@ -35,14 +35,23 @@ export async function generateMetadata({
 
   return {
     title: mda.name,
-    description: `Learn about ${mda.name} in Kaduna State. By ${
-      mda.author
-    }. Updated on ${new Date(mda.date).toLocaleDateString()}`,
+    description: mda.content,
     openGraph: {
       title: mda.name,
-      description: `Learn about ${mda.name} in Kaduna State. By ${
-        mda.author
-      }. Updated on ${new Date(mda.date).toLocaleDateString()}`,
+      description: mda.content,
+      images: [
+        {
+          url: imageUrl,
+          width: 800,
+          height: 600,
+          alt: mda.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: mda.name,
+      description: mda.content,
       images: [
         {
           url: imageUrl,

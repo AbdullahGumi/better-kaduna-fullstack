@@ -35,14 +35,23 @@ export async function generateMetadata({
 
   return {
     title: post.title,
-    description: `Read "${post.title}" by ${
-      post.author
-    }. Published on ${new Date(post.date).toLocaleDateString()}`,
+    description: post.content,
     openGraph: {
       title: post.title,
-      description: `Read "${post.title}" by ${
-        post.author
-      }. Published on ${new Date(post.date).toLocaleDateString()}`,
+      description: post.content,
+      images: [
+        {
+          url: imageUrl,
+          width: 800,
+          height: 600,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.content,
       images: [
         {
           url: imageUrl,
