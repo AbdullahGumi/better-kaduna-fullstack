@@ -20,14 +20,14 @@ const lora = Lora({
 export const metadata: Metadata = {
   title: "Better Kaduna",
   description:
-    "Stay informed with the latest stories and updates from Kaduna State",
+    "Stay informed with the latest stories and updates from Kaduna State and across the Nation",
   icons: {
     icon: "https://res.cloudinary.com/dob19lapx/image/upload/v1756322927/logo_pvnwq1.png",
   },
   openGraph: {
     title: "Better Kaduna",
     description:
-      "Stay informed with the latest stories and updates from Kaduna State",
+      "Stay informed with the latest stories and updates from Kaduna State and across the Nation",
     images: [
       {
         url: "https://res.cloudinary.com/dob19lapx/image/upload/v1756322927/logo_pvnwq1.png",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Better Kaduna",
     description:
-      "Stay informed with the latest stories and updates from Kaduna State",
+      "Stay informed with the latest stories and updates from Kaduna State and across the Nation",
     images: [
       {
         url: "https://res.cloudinary.com/dob19lapx/image/upload/v1756322927/logo_pvnwq1.png",
