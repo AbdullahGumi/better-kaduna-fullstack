@@ -20,6 +20,26 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Docker Deployment
+
+Build and run the application using Docker:
+
+```bash
+# Build the Docker image
+docker build -t better-kaduna-fullstack .
+
+# Run the container
+docker run -p 3000:3000 better-kaduna-fullstack
+```
+
+The application will be available at [http://localhost:3000](http://localhost:3000).
+
+**Production Deployment:**
+
+- Make sure your environment variables are properly configured
+- Consider using Docker Compose for database services if needed
+- For production, use appropriate environment variables and secrets management
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
