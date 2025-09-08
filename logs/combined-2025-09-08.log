@@ -48,3 +48,5 @@
 {"count":1,"level":"info","limit":10,"message":"MDAs fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T10:25:58.224Z"}
 {"count":1,"level":"info","limit":10,"message":"MDAs fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T10:25:59.464Z"}
 {"count":1,"level":"info","limit":10,"message":"MDAs fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T10:26:04.205Z"}
+{"count":0,"level":"info","limit":10,"message":"Events fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T15:23:00.021Z"}
+{"count":3,"level":"info","limit":10,"message":"Posts fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T15:23:00.877Z"}

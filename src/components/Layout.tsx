@@ -161,6 +161,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <div className="hidden md:flex items-center space-x-6">
             <nav className="flex space-x-6" role="navigation">
               <Link
+                href="/"
+                className="text-kaduna-gray hover:text-green-800 transition-colors"
+              >
+                Home
+              </Link>
+              <Link
                 href="/about"
                 className="text-kaduna-gray hover:text-green-800 transition-colors"
               >
@@ -252,7 +258,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <nav className="flex flex-col p-4 space-y-2" role="navigation">
               <Link
                 href="/"
-                className="text-kaduna-gray hover:text-green-800"
+                className="text-kaduna-gray hover:text-green-800 transition-colors"
                 onClick={handleMobileNavClick}
               >
                 Home
@@ -352,6 +358,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           />
           <p>&copy; 2025 Better Kaduna. All rights reserved.</p>
           <nav className="mt-2 space-x-4" role="navigation">
+            <Link href="/" className="hover:underline text-white">
+              Home
+            </Link>
             <Link href="/about" className="hover:underline text-white">
               About Us
             </Link>
