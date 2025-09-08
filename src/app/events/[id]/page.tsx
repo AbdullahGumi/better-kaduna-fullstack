@@ -2,6 +2,7 @@ import { prisma } from "../../../lib/prisma";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import EventDetailClient from "./EventDetailClient";
+import { cleanOpenGraphDescription } from "../../../utils/opengraph";
 
 export async function generateMetadata({
   params,
@@ -21,12 +22,14 @@ export async function generateMetadata({
   const imageUrl =
     "https://res.cloudinary.com/dob19lapx/image/upload/v1756322927/logo_pvnwq1.png";
 
+  const cleanedDescription = cleanOpenGraphDescription(event.description);
+
   return {
     title: event.title,
-    description: event.description,
+    description: cleanedDescription,
     openGraph: {
       title: event.title,
-      description: event.description,
+      description: cleanedDescription,
       images: [
         {
           url: imageUrl,
@@ -39,7 +42,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: event.title,
-      description: event.description,
+      description: cleanedDescription,
       images: [
         {
           url: imageUrl,

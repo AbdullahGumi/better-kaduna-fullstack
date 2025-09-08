@@ -2,6 +2,7 @@ import { prisma } from "../../../lib/prisma";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import MDADetailClient from "./MDADetailClient";
+import { cleanOpenGraphDescription } from "../../../utils/opengraph";
 
 export async function generateMetadata({
   params,
@@ -22,12 +23,14 @@ export async function generateMetadata({
     mda.thumbnail ||
     "https://res.cloudinary.com/dob19lapx/image/upload/v1756322927/logo_pvnwq1.png";
 
+  const cleanedDescription = cleanOpenGraphDescription(mda.content);
+
   return {
     title: mda.name,
-    description: mda.content,
+    description: cleanedDescription,
     openGraph: {
       title: mda.name,
-      description: mda.content,
+      description: cleanedDescription,
       images: [
         {
           url: imageUrl,
@@ -40,7 +43,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: mda.name,
-      description: mda.content,
+      description: cleanedDescription,
       images: [
         {
           url: imageUrl,
