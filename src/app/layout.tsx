@@ -21,6 +21,9 @@ export const metadata: Metadata = {
   title: "Better Kaduna",
   description:
     "Stay informed with the latest stories and updates from Kaduna State",
+  icons: {
+    icon: "https://res.cloudinary.com/dob19lapx/image/upload/v1756322927/logo_pvnwq1.png",
+  },
   openGraph: {
     title: "Better Kaduna",
     description:

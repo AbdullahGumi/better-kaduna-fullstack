@@ -27,3 +27,10 @@
 {"eventId":"4d3c907f-3c4c-43cc-93df-a7d90df5c48c","level":"info","message":"Event deleted successfully","service":"better-kaduna-next","timestamp":"2025-09-08T06:03:51.701Z"}
 {"count":2,"level":"info","message":"Users fetched successfully","service":"better-kaduna-next","timestamp":"2025-09-08T06:04:01.216Z"}
 {"level":"info","message":"User updated successfully","service":"better-kaduna-next","timestamp":"2025-09-08T06:04:09.272Z","userId":"900b8867-5240-420c-8656-6b9776384e51"}
+{"count":2,"level":"info","message":"Users fetched successfully","service":"better-kaduna-next","timestamp":"2025-09-08T10:03:43.589Z"}
+{"count":2,"level":"info","limit":10,"message":"Posts fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T10:04:46.937Z"}
+{"count":2,"level":"info","limit":10,"message":"Posts fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T10:04:47.359Z"}
+{"count":0,"level":"info","limit":10,"message":"Events fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T10:04:47.576Z"}
+{"count":2,"level":"info","limit":10,"message":"Posts fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T10:04:47.925Z"}
+{"count":0,"level":"info","limit":10,"message":"Events fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T10:04:48.144Z"}
+{"count":0,"level":"info","limit":10,"message":"Events fetched successfully","page":1,"service":"better-kaduna-next","timestamp":"2025-09-08T10:04:48.549Z"}
