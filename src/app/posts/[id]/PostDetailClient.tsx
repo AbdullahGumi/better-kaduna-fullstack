@@ -387,11 +387,21 @@ export default function PostDetailClient({
           </div>
         </div>
         {post.thumbnail && (
-          <img
-            src={post.thumbnail}
-            alt={post.title}
-            className="w-full mx-auto h-96 object-cover rounded-lg mb-6 shadow-2xl"
-          />
+          <div className="relative w-full mx-auto h-64 sm:h-80 md:h-96 lg:h-[500px] rounded-lg mb-6 shadow-2xl overflow-hidden">
+            {/* Blurred background */}
+            <img
+              src={post.thumbnail}
+              alt={post.title}
+              className="absolute inset-0 w-full h-full object-cover blur-lg scale-110"
+            />
+
+            {/* Actual image */}
+            <img
+              src={post.thumbnail}
+              alt={post.title}
+              className="relative w-full h-full object-contain object-center"
+            />
+          </div>
         )}
         <div
           className="prose max-w-none text-kaduna-gray mb-8"
