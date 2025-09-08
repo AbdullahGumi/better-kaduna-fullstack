@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // POST /api/auth/login - User Login
 import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';

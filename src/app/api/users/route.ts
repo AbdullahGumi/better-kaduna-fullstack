@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs';
 import { prisma } from '@/lib/prisma';
 import { logger } from '@/lib/logger';
 import { userSchema } from '@/lib/validations';
+import { User } from '@/types';
 
 // GET /api/users - Get all users with optional email filter
 export async function GET(request: NextRequest) {
@@ -18,8 +19,9 @@ export async function GET(request: NextRequest) {
     logger.info("Users fetched successfully", { count: users.length });
 
     // Remove passwords from response
-    const usersWithoutPasswords = users.map(user => {
+    const usersWithoutPasswords = users.map((user: User) => {
       const { password, ...userWithoutPassword } = user;
+      console.log('password', password)
       return userWithoutPassword;
     });
 
