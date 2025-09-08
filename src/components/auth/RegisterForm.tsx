@@ -41,6 +41,7 @@ const RegisterForm = () => {
       router.push("/");
       setLoading(false);
     } catch (error) {
+      console.log(error);
       setError("Registration failed. Email may already exist.");
       toast.error("Registration failed", { autoClose: 3000 });
       setLoading(false);

@@ -1,20 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/lib/useAuth";
 import apiService from "@/services/apiService";
 import Layout from "@/components/Layout";
-import {
-  Calendar,
-  Plus,
-  Edit,
-  Trash2,
-  Search,
-  AlertCircle,
-  Eye,
-} from "lucide-react";
+import { Plus, Edit, Trash2, Search, AlertCircle, Eye } from "lucide-react";
 
 interface Event {
   id: string | number;
@@ -32,7 +23,6 @@ interface User {
 }
 
 export default function AdminEventsPage() {
-  const router = useRouter();
   const { user } = useAuth() as { user: User | null };
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);

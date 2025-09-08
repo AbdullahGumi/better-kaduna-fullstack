@@ -5,15 +5,7 @@ import Link from "next/link";
 import { useAuth } from "@/lib/useAuth";
 import apiService from "@/services/apiService";
 import Layout from "@/components/Layout";
-import {
-  BarChart3,
-  Plus,
-  Edit,
-  Trash2,
-  Search,
-  AlertCircle,
-  Eye,
-} from "lucide-react";
+import { Plus, Edit, Trash2, Search, AlertCircle, Eye } from "lucide-react";
 
 interface MDA {
   id: string | number;

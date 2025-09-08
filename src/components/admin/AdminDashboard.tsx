@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useAuth } from "../../lib/auth";
 import apiService from "../../services/apiService";
+import { Post, Event, MDA, User } from "../../types";
 import {
   FileText,
   Calendar,
@@ -22,10 +23,10 @@ import {
 
 const AdminDashboard = () => {
   const { user } = useAuth();
-  const [posts, setPosts] = useState([]);
-  const [events, setEvents] = useState([]);
-  const [mdas, setMdas] = useState([]);
-  const [users, setUsers] = useState([]);
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [events, setEvents] = useState<Event[]>([]);
+  const [mdas, setMdas] = useState<MDA[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [activeTab, setActiveTab] = useState("overview");
@@ -55,7 +56,7 @@ const AdminDashboard = () => {
     }
   }, [user]);
 
-  const handleDelete = async (type, id) => {
+  const handleDelete = async (type: string, id: string) => {
     if (!window.confirm(`Are you sure you want to delete this ${type}?`))
       return;
     try {
@@ -302,17 +303,16 @@ const AdminDashboard = () => {
                 {[...posts.slice(0, 3), ...events.slice(0, 3)]
                   .sort(
                     (a, b) =>
-                      new Date(b.date || b.createdAt) -
-                      new Date(a.date || a.createdAt)
+                      new Date(b.date).getTime() - new Date(a.date).getTime()
                   )
                   .slice(0, 5)
                   .map((item) => (
                     <div
-                      key={`${item.id}-${item.title || item.name}`}
+                      key={`${item.id}-${item.title}`}
                       className="flex items-center space-x-3"
                     >
                       <div className="flex-shrink-0">
-                        {item.author ? (
+                        {"author" in item ? (
                           <FileText className="w-5 h-5 text-blue-500" />
                         ) : (
                           <Calendar className="w-5 h-5 text-purple-500" />
@@ -323,15 +323,13 @@ const AdminDashboard = () => {
                           {item.title}
                         </p>
                         <p className="text-sm text-gray-500">
-                          {item.author
+                          {"author" in item
                             ? `Post by ${item.author}`
                             : `Event at ${item.location}`}
                         </p>
                       </div>
                       <div className="flex-shrink-0 text-sm text-gray-500">
-                        {new Date(
-                          item.date || item.createdAt
-                        ).toLocaleDateString()}
+                        {new Date(item.date).toLocaleDateString()}
                       </div>
                     </div>
                   ))}
@@ -639,7 +637,11 @@ const AdminDashboard = () => {
               </h3>
               <div className="space-y-4">
                 {users
-                  .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                  .sort(
+                    (a, b) =>
+                      new Date(b.createdAt).getTime() -
+                      new Date(a.createdAt).getTime()
+                  )
                   .slice(0, 5)
                   .map((user) => (
                     <div

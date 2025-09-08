@@ -33,6 +33,7 @@ const LoginForm = () => {
       router.push(user.role === "admin" ? "/admin" : "/");
       setLoading(false);
     } catch (error) {
+      console.log(error);
       setError("Invalid email or password");
       toast.error("Login failed", { autoClose: 3000 });
       setLoading(false);
@@ -83,7 +84,7 @@ const LoginForm = () => {
           {loading ? "Loading..." : "Login"}
         </button>
         <p className="text-kaduna-gray text-center">
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <a
             href="/register"
             className="text-kaduna-green hover:text-kaduna-green-dark"

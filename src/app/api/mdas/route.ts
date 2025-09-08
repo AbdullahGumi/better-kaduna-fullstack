@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
     const limit = parseInt(searchParams.get('_limit') || '10');
     const skip = (page - 1) * limit;
 
-    const mdas = await prisma.MDA.findMany({
+    const mdas = await prisma.mDA.findMany({
       skip,
       take: limit,
       orderBy: { date: 'desc' },
@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
 
     const { name, content, author, thumbnail } = validationResult.data;
 
-    const mda = await prisma.MDA.create({
+    const mda = await prisma.mDA.create({
       data: {
         name,
         content,

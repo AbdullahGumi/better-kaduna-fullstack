@@ -12,8 +12,8 @@ export default function InsideKadunaMDAs() {
               Inside Kaduna MDAs
             </h1>
             <p className="mt-4 text-lg max-w-2xl mx-auto text-gray-400">
-              Explore the roles and initiatives of Kaduna State's Ministries,
-              Departments, and Agencies.
+              Explore the roles and initiatives of Kaduna State&apos;s
+              Ministries, Departments, and Agencies.
             </p>
           </div>
         </div>

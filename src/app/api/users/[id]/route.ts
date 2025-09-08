@@ -40,7 +40,10 @@ export async function GET(request: NextRequest, { params }: RouteParams) {
     try {
       const resolved = await params;
       userId = resolved.id;
-    } catch(e) {}
+    } catch(e) {
+
+console.log(e)  
+  }
 
     logger.error("Error fetching user", { userId, error });
 
@@ -110,7 +113,10 @@ export async function PUT(request: NextRequest, { params }: RouteParams) {
     try {
       const resolved = await params;
       userId = resolved.id;
-    } catch(e) {}
+    } catch(e) {
+console.log(e)  
+
+    }
 
     logger.error("Error updating user", { userId, error });
 
@@ -163,7 +169,10 @@ export async function DELETE(request: NextRequest, { params }: RouteParams) {
     try {
       const resolved = await params;
       userId = resolved.id;
-    } catch(e) {}
+    } catch(e) {
+console.log(e)  
+
+    }
 
     logger.error("Error deleting user", { userId, error });
 

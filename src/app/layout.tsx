@@ -21,6 +21,19 @@ export const metadata: Metadata = {
   title: "Better Kaduna",
   description:
     "Stay informed with the latest stories and updates from Kaduna State",
+  openGraph: {
+    title: "Better Kaduna",
+    description:
+      "Stay informed with the latest stories and updates from Kaduna State",
+    images: [
+      {
+        url: "/globe.svg",
+        width: 800,
+        height: 600,
+        alt: "Better Kaduna Logo",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

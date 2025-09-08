@@ -2,7 +2,6 @@
 
 import React, {
   useState,
-  useContext,
   useEffect,
   useRef,
   useCallback,
@@ -40,21 +39,8 @@ import {
   Minimize,
   Video,
   Youtube,
-  FileVideo,
-  Link,
-  Code,
-  Quote,
-  Type,
-  Palette,
-  Heading1,
-  Heading2,
-  Heading3,
   FileImage,
   Loader2,
-  CheckCircle,
-  AlertCircle,
-  Clock,
-  Zap,
 } from "lucide-react";
 import { uploadToCloudinary } from "@/utils/cloudinary";
 

@@ -1,20 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/lib/useAuth";
 import apiService from "@/services/apiService";
 import Layout from "@/components/Layout";
-import {
-  FileText,
-  Plus,
-  Edit,
-  Trash2,
-  Search,
-  AlertCircle,
-  Eye,
-} from "lucide-react";
+import { Plus, Edit, Trash2, Search, AlertCircle, Eye } from "lucide-react";
 
 interface Post {
   id: string | number;
@@ -33,7 +24,6 @@ interface User {
 }
 
 export default function AdminPostsPage() {
-  const router = useRouter();
   const { user } = useAuth() as { user: User | null };
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);

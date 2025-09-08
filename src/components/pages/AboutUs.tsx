@@ -1,16 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  Users,
-  Target,
-  Globe,
-  Heart,
-  BookOpen,
-  Shield,
-  TrendingUp,
-  Award,
-} from "lucide-react";
+import { Users, Target, Globe } from "lucide-react";
 
 const AboutUs = () => {
   const stats = [
@@ -136,7 +127,7 @@ const AboutUs = () => {
             Our Story & Purpose
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Better Kaduna is more than just a platform – it's a movement
+            Better Kaduna is more than just a platform – it&apos;s a movement
             dedicated to transforming our state through truth, transparency, and
             community engagement.
           </p>
@@ -249,10 +240,10 @@ const AboutUs = () => {
           <div className="grid gap-8 md:grid-cols-2">
             <div>
               <p className="text-gray-700 text-lg leading-relaxed mb-4">
-                Known as the "Centre of Learning," Kaduna State was established
-                in 1967 as the capital of the former North Central State. It has
-                a rich history as the administrative hub of the Old Northern
-                Region.
+                Known as the &quot;Centre of Learning&quot; Kaduna State was
+                established in 1967 as the capital of the former North Central
+                State. It has a rich history as the administrative hub of the
+                Old Northern Region.
               </p>
               <p className="text-gray-700 text-lg leading-relaxed">
                 Kaduna is a vibrant confluence of diverse ethnic and religious

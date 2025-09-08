@@ -59,7 +59,7 @@ const PostList = () => {
             // Filter out posts that already exist to prevent duplicates
             const existingIds = new Set(prevPosts.map((post) => post.id));
             const uniqueNewPosts = newPosts.filter(
-              (post) => !existingIds.has(post.id)
+              (post: { id: string }) => !existingIds.has(post.id)
             );
             return [...prevPosts, ...uniqueNewPosts];
           });
@@ -323,7 +323,7 @@ const PostList = () => {
             </svg>
           </div>
           <p className="text-gray-500 text-lg">
-            You've reached the end of our stories
+            You&apos;ve reached the end of our stories
           </p>
           <p className="text-gray-400 text-sm mt-2">
             Check back later for more updates!

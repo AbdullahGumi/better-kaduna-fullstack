@@ -5,7 +5,6 @@ import { prisma } from '@/lib/prisma';
 import { logger } from '@/lib/logger';
 import { loginSchema } from '@/lib/validations';
 import { AuthenticationError } from '@/lib/errors';
-import { z } from 'zod';
 
 export async function POST(request: NextRequest) {
   try {
