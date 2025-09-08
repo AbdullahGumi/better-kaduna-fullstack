@@ -29,7 +29,8 @@ export async function generateMetadata({
     };
   }
 
-  const imageUrl = `${await getBaseUrl()}/globe.svg`;
+  const imageUrl =
+    "https://res.cloudinary.com/dob19lapx/image/upload/v1756322927/logo_pvnwq1.png";
 
   return {
     title: event.title,

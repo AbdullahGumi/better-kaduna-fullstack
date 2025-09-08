@@ -30,7 +30,7 @@ export const metadata: Metadata = {
       "Stay informed with the latest stories and updates from Kaduna State",
     images: [
       {
-        url: "/globe.svg",
+        url: "https://res.cloudinary.com/dob19lapx/image/upload/v1756322927/logo_pvnwq1.png",
         width: 800,
         height: 600,
         alt: "Better Kaduna Logo",
