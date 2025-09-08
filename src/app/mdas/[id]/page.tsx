@@ -7,10 +7,11 @@ import { cleanOpenGraphDescription } from "../../../utils/opengraph";
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }): Promise<Metadata> {
+  const { id } = await params;
   const mda = await prisma.mDA.findUnique({
-    where: { id: params.id },
+    where: { id: id },
   });
 
   if (!mda) {
@@ -59,10 +60,11 @@ export async function generateMetadata({
 export default async function MDADetail({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = await params;
   const mda = await prisma.mDA.findUnique({
-    where: { id: params.id },
+    where: { id: id },
   });
 
   if (!mda) {

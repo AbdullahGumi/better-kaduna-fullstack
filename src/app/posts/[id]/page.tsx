@@ -7,10 +7,11 @@ import { cleanOpenGraphDescription } from "../../../utils/opengraph";
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }): Promise<Metadata> {
+  const { id } = await params;
   const post = await prisma.post.findUnique({
-    where: { id: params.id },
+    where: { id: id },
   });
 
   if (!post) {
@@ -59,10 +60,11 @@ export async function generateMetadata({
 export default async function PostDetail({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = await params;
   const post = await prisma.post.findUnique({
-    where: { id: params.id },
+    where: { id: id },
   });
 
   if (!post) {
@@ -70,7 +72,7 @@ export default async function PostDetail({
   }
 
   const comments = await prisma.comment.findMany({
-    where: { postId: params.id },
+    where: { postId: id },
     orderBy: { createdAt: "asc" },
   });
 
