@@ -4,15 +4,15 @@ import { prisma } from '@/lib/prisma';
 import { logger } from '@/lib/logger';
 
 interface RouteParams {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 // DELETE /api/comments/[id] - Delete comment
 export async function DELETE(request: NextRequest, { params }: RouteParams) {
   try {
-    const { id } = params;
+    const { id } = await params;
 
     await prisma.comment.delete({
       where: { id }
@@ -22,7 +22,8 @@ export async function DELETE(request: NextRequest, { params }: RouteParams) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    logger.error("Error deleting comment", { commentId: params.id, error });
+    const { id: commentId } = await params;
+    logger.error("Error deleting comment", { commentId, error });
 
     // Handle Prisma not found error
     if (error && typeof error === 'object' && 'code' in error && error.code === 'P2025') {
