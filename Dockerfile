@@ -6,11 +6,15 @@ WORKDIR /app
 # Copy package files
 COPY package.json yarn.lock ./
 
+
 # Copy Prisma schema files
 COPY prisma/ prisma/
 
 # Install dependencies
 RUN yarn install --frozen-lockfile --production=false
+
+# Set NODE_ENV for production build to ensure consistent behavior
+ENV NODE_ENV=production
 
 # Copy source code
 COPY . .
