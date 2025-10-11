@@ -1,0 +1,420 @@
+{
+  "timestamp": "2025-10-11T19-36-33",
+  "backupDir": "backups/2025-10-11T19-36-33",
+  "models": {
+    "users": [
+      {
+        "id": "b6c2bbd9-6263-4fe0-b688-7dfeffd302a3",
+        "name": "Al amin Ahmad",
+        "email": "aalamin730@gmail.com",
+        "password": "$2b$10$r8nWyanrK9KlHj88N8lCceJ6Y5wLYH4rXM/RWsOWTVGbkhRg4Voaq",
+        "role": "admin",
+        "createdAt": "2025-09-06T22:46:15.040Z",
+        "comments": [
+          {
+            "id": "0b59ba48-93cd-45a5-b735-fee95cf8aab1",
+            "content": "test",
+            "userId": "b6c2bbd9-6263-4fe0-b688-7dfeffd302a3",
+            "userName": "Al amin Ahmad",
+            "postId": null,
+            "eventId": null,
+            "parentId": null,
+            "createdAt": "2025-09-08T14:46:31.925Z"
+          }
+        ]
+      },
+      {
+        "id": "900b8867-5240-420c-8656-6b9776384e51",
+        "name": "Abdullah Gumi",
+        "email": "abdulgumi77@gmail.com",
+        "password": "$2b$10$6ETMMU3aIzneFFLddNo39.Zr2GypeBP20RqA0zJ0Gu8gJY6co0Rru",
+        "role": "admin",
+        "createdAt": "2025-09-06T22:47:32.956Z",
+        "comments": [
+          {
+            "id": "a6c92327-52ae-4fe1-87c2-e5511d769809",
+            "content": "testing",
+            "userId": "900b8867-5240-420c-8656-6b9776384e51",
+            "userName": "Abdullah Gumi",
+            "postId": null,
+            "eventId": null,
+            "parentId": null,
+            "createdAt": "2025-09-07T14:06:42.372Z"
+          },
+          {
+            "id": "cf5e4087-4bad-4c02-9bd0-96feca4daaed",
+            "content": "testing",
+            "userId": "900b8867-5240-420c-8656-6b9776384e51",
+            "userName": "Abdullah Gumi",
+            "postId": null,
+            "eventId": null,
+            "parentId": "a6c92327-52ae-4fe1-87c2-e5511d769809",
+            "createdAt": "2025-09-07T14:06:51.082Z"
+          },
+          {
+            "id": "f949c1cb-1fbe-484b-8822-45daad12b63e",
+            "content": "test",
+            "userId": "900b8867-5240-420c-8656-6b9776384e51",
+            "userName": "Abdullah Gumi",
+            "postId": null,
+            "eventId": null,
+            "parentId": null,
+            "createdAt": "2025-09-07T22:42:04.231Z"
+          },
+          {
+            "id": "e3124ceb-7029-4028-a0b9-e292b4dd1d3b",
+            "content": "1",
+            "userId": "900b8867-5240-420c-8656-6b9776384e51",
+            "userName": "Abdullah Gumi",
+            "postId": null,
+            "eventId": null,
+            "parentId": "f949c1cb-1fbe-484b-8822-45daad12b63e",
+            "createdAt": "2025-09-07T22:42:09.244Z"
+          }
+        ]
+      }
+    ],
+    "posts": [
+      {
+        "id": "76e5d431-84f6-4f78-998e-11ed7a02834d",
+        "title": "K-PFMU Aligns with Gov Sani’s Directives on Retraining of Staff and Capacity Building.",
+        "content": "<p>4th September 2025.<br></p><p><span style=\"font-size: 17px;\"><strong>Kaduna State Project Financial Management Unit (PFMU) aligns with Gov Uba Sani’s directives on Retraining of Staff and Capacity Building for Effective Governance</strong></span></p><p></p><p></p><p><span style=\"font-size: 17px;\">K-PFMU is domiciled under the Office of the Kaduna State Accountant General - Bashir Suleiman Zuntu. The Kaduna State Government under the leadership of His Excellency Governor Uba Sani CON is committed to strengthening financial management practices and enhancing staff capacity.</span></p><p></p><p><span style=\"font-size: 17px;\">The one-day training workshop focused on key areas, notably; tax administration, compliance and reporting, with the Commissioner of Finance, Hon Ibrahim Tanko Mohammed also in attendance.</span></p><p></p><p><span style=\"font-size: 17px;\">Kaduna State Project Financial Management&nbsp; is the engine room that manages project administration, procurement, accounting, monitoring and reporting (especially for World Bank Funded Projects)</span></p><p></p>",
+        "author": "Admin",
+        "date": "2025-09-07T14:22:36.539Z",
+        "thumbnail": "https://res.cloudinary.com/dob19lapx/image/upload/v1757254696/ljvkiki6ragm0dofhtgl.jpg",
+        "comments": []
+      },
+      {
+        "id": "b483beb0-45eb-4d36-9fe5-c0f95a6b8825",
+        "title": "Birnin Gwari's Road to Recovery",
+        "content": "<p>After six months of discreet negotiations, the Kaduna Peace Model was brokered by Governor Uba Sani's administration and has been in effect for 10 months, sustaining peace in Birnin Gwari Emirate and the surrounding areas. </p><p>A visit to the area by this correspondent revealed that the peace agreement with bandit leaders has brought a mix of joy and rekindled hopes to Birnin Gwari, a town besieged by years of banditry, kidnapping, and cattle rustling.</p><p>The peace agreement allows bandits to access local markets and primary healthcare centres without being challenged, in exchange for stopping levies, taxes, kidnapping, and crop destruction.</p><p>The District Head of Kuyello, Yusuf Abubakar, while speaking at a stakeholders meeting today, notes that his domain has witnessed peaceful coexistence among the Fulani and Hausa communities, although concerns about pocketed criminal activities remain.</p><p>In his remarks, Chairman of the Peace Dialogue Group, Mallam Musa Yusuf, admonished residents to work with relevant agencies to sustain the peaceful coexistence, emphasising the crucial role residents play in maintaining the peace accord.</p><p>Similarly, the Chief of Staff to the Kaduna State Governor, Mallam Sani Kila, expressed excitement over the return of peace to Birnin Gwari, citing increased traffic flow as a testament to better days ahead.</p><p>He surmised that the Kaduna State Government established the Peace Dialogue Group, which has been tirelessly engaging stakeholders to build bridges of trust and sustain the peace.</p><p>The peace agreement has brought a sense of relief and hope to the people of Birnin Gwari, who had been displaced, livelihoods disrupted, and lived in fear of insecurity.</p><p>He disclosed that the State Government is working hand in hand with all relevant stakeholders in ensuring that  the peace accord remains unhindered.</p><p>The Emir of Birnin Gwari, Zubair Jibril MaiGwari II, welcomed the peace agreement, noting that it took six months to finalise and has sustained peace in the emirate for the past 10 months.</p><p>Abubakar Uban Jambrose, a representative of the repentant bandits, urged Governor Sani to get in touch with governors of neighbouring states to adapt the peace model.</p>",
+        "author": "Admin",
+        "date": "2025-09-07T14:32:05.717Z",
+        "thumbnail": "https://res.cloudinary.com/dob19lapx/image/upload/v1757255457/mu7fzjdamoguedjy4dam.jpg",
+        "comments": []
+      },
+      {
+        "id": "51f58ef7-1c6f-45b9-a004-ca0c3134cf37",
+        "title": "Federal Ministry of Art, National Sports Commission,  Partner to Build Mega Sports Cultural City",
+        "content": "<p></p><p>The Federal Ministry of Art, Culture, Tourism and the Creative Economy and the National Sports Commission (NSC) have signed a Memorandum of Understanding (MoU) to collaborate on developing a National Arts, Cultural, Creative, Tourism and Sports Innovation Hub within the Moshood Abiola National Stadium precinct, Abuja.</p><p>The MoU, signed on Thursday in Abuja, aims to harness the creative, cultural, and sports sectors for national development, youth empowerment, and global visibility.</p><p>The Hub will feature a range of facilities, including a National Museum of Arts and Culture, Entertainment Arena and Performance Centre, Youth Creative and Entrepreneurship Centre, Eco-Villas and Eco-Lodges, Family Recreational Park, Cultural Lounges and Marketplaces, Mounted Games Arena, and Sports Heritage Pavilion.</p><p>At the signing ceremony, the Minister of Art, Culture, Tourism and Creative Economy, Hannatu Musawa Esq., expressed gratitude for the partnership and highlighted the impact of NSC Chairman, Mallam Shehu Dikko on sports development. </p><p>“Since Mallam Shehu Dikko came on board, we've had back-to-back wins in sports. Thank you for coming to this office to discuss how we can open a partnership. For young Nigerians, one of the things the President has always focused on is building a better future for Nigeria, and the best way to do that is to diversify in the areas of sports and the creative industry. </p><p>“The creative industry is also having a great moment, and Nigeria is known for its cultural assets. Partnering with the sports industry through this MOU will bring new focus and ideas. This partnership has the power to empower the young generation, teach them about our culture, and provide capacity building. If this can be replicated in every state, it will speak to a new dawn, especially in Abuja, and will have a positive impact on the economy, job creation, and insecurity. The ecosystem we are building with the museum structure, tourism sector, and creative industry will be beneficial for Nigerians. I appreciate the President's vision and mission, and I'm excited to be part of this journey”.</p><p>Earlier, the Chairman of NSC emphasised the Commission's alignment with the administration's Renewed Hope Agenda on sports economy. </p><p>“We need to invest and revamp our sports facilities to have around 4,000 activities around the clock. This project will showcase our history, sports, and culture, and we are committed to its success. We will turn the stadium into a sports city, leveraging existing structures to build value for creatives. </p><p>“I assure you of my team’s diligence to provide all the support needed to succeed in this project,” Mallam Dikko said. </p><p>The partnership between FMACTCE and NSC will facilitate inter-agency dialogue and coordination, promote integrated strategies to link sports with arts, culture, tourism, and the creative economy, and encourage public-private dialogue and multilateral stakeholder engagement.</p><p>The project will operate as a Public-Private Partnership (PPP), with FMACTCE and NSC providing institutional support for government approvals and alignment.</p><p>This collaboration marks a significant step towards promoting Nigeria's creative and cultural industries, empowering youth, and showcasing the country's rich cultural heritage to the world. Both parties are committed to working together to bring this vision to life and create a world-class innovation hub that will drive economic growth, creativity, and innovation.</p><p></p>",
+        "author": "Admin",
+        "date": "2025-09-08T13:39:43.807Z",
+        "thumbnail": "https://res.cloudinary.com/dob19lapx/image/upload/v1757338748/fmvuanyvs9zmx08j6bu1.jpg",
+        "comments": []
+      },
+      {
+        "id": "90f512bd-14d3-4813-8f45-706244da7e1e",
+        "title": "NSC inaugurates Electoral Committee for sports federation elections",
+        "content": "<p><span style=\"font-size: 17px;\">The National Sports Commission has inaugurated the Electoral Committee for the national sports federations elections.</span></p><p>The committee has been saddled with the responsibility of conducting hitch-free and transparent elections into 20 National Sports Federations including aquatics, chess, handball, golf, karate, darts, fives and tennis.</p><p>Others are wrestling, wushu kung fu, scrabble, hockey, badminton, boxing, taekwondo; squash rackets, traditional sports rugby, kickboxing and deaf sports.</p><p>Chairman of the National Sports Commission, Mallam Shehu Dikko, after officially inaugurating the Committee, expressed confidence that he has no doubt that they will do a good job to oversee a successful process.</p><p>“We have succeeded in choosing a very balanced and compact team for this assignment because we want to set a new standard of how federation elections are conducted with topmost integrity and transparency.</p><p>“As a commission we have no partisan interest. I and the DG have no interest rather than to ensure we have people elected who are aligned to our vision of building a sustainable sports economy in line with the mandate given to us by Mr President. This is our only interest. We will not interfere in the process but will only give guidance because we have a vision and we want only people that understand the vision.”</p><p>Chairman of the Electoral committee Dr Simon Ebhojiaye assured the Commission that his team will bring all their wealth of experience and expertise to bear to do a good job in conducting the elections.</p><p>“I have no doubt that the decision of the NSC to put the individuals in this committee together will yield the expected results of conducting hitch free elections.</p><p>“We will follow the commission’s guidelines strictly and we will work very hard to deliver a good job that both the Commission and Nigerians will be proud of.”</p><p>Other members of the Electoral Committee include: &nbsp;the Vice Chairman, Barrister Samson Ebomhe, Lawal Waheed, Tunde Popoola, Barrister Maryam Orotope Paul, Farouk Yelima and the Secretary, Rita Mosindi.</p>",
+        "author": "Admin",
+        "date": "2025-09-09T10:47:06.567Z",
+        "thumbnail": "https://res.cloudinary.com/dob19lapx/image/upload/v1757414792/illdtehkukadi5jemnlt.jpg",
+        "comments": []
+      },
+      {
+        "id": "a32b6fe1-1eb4-42b9-bbc5-9ff455711274",
+        "title": "Abdulazeez Kaka to Sponsor 1,000 Out-of-School Children in Kaduna",
+        "content": "<p>In his continuous drive to uplift communities and restore hope to families, Hon. Abdulazeez Kaka has announced a landmark initiative to sponsor 1,000 out-of-school children in Kaduna State.</p><p>This bold step underscores Hon. Kaka’s unwavering commitment to education as a tool for breaking the cycle of poverty and empowering future generations.</p><p>By taking this initiative, he is not only ensuring access to quality education but also reaffirming his dedication to the Renewed Hope Agenda of President Bola Ahmed Tinubu and the efforts of Governor Uba Sani in fostering peace, unity, and development in Kaduna State.</p><p>Hon. Kaka emphasized that investing in education remains one of the most effective ways to bring an end to insecurity and minimise poverty.</p><p>Over the years, he has <em>directly impacted more than 5,000 lives</em> through empowerment, education, and community initiatives, while <em>indirectly touching over 15,000 lives</em> across Kaduna and beyond.</p><p>This initiative marks another milestone in Hon. Kaka’s vision of building a society where no child is left behind, and where opportunities are accessible to all regardless of background.</p>",
+        "author": "Admin",
+        "date": "2025-09-15T19:22:44.697Z",
+        "thumbnail": "https://res.cloudinary.com/dob19lapx/image/upload/v1757964214/longsigotwjiixepj7c0.jpg",
+        "comments": []
+      },
+      {
+        "id": "1bafd464-6e16-4643-82b9-b61a19f5f5be",
+        "title": "Ja’oji Storms Daura for Gani Festival; Calls for Renewed Support for President Bola Ahmed Tinubu’s Administration ",
+        "content": "<p><span style=\"font-size: 17px;\">The Adon Garin Kasar Hausa, Hon Nasir Bala Aminu Ja’oji participated in the recently concluded Sallar Gani Durbar Festival in Daura, Daura Emirate, Katsina State.</span></p><p><span style=\"font-size: 17px;\"><strong>Gani Festival</strong> or <strong>Sallar Gani</strong> in Hausa Language, is an annual traditional festival celebrated by mainly four emirates in Northern Nigeria which include Borno Emirate, Hadejia Emirate, Daura Emirate and Gumel Emirate. This festival holds in the same way as Durbar Festival of Eid al-Fitr and Eid al-Adha. The festival is held from the 12th of Rabi’al Awwal every year in commemoration of the birth pf Prophet Muhammad SAW.</span></p><p><span style=\"font-size: 17px;\">Hon Ja’oji, who is also the Senior Special Assistant to President Bola Ahmed Tinubu on Citizenship and Leadership commended The Emir of Daura, His Royal Highness Alh Umar Farouq Umar for providing all the necessary support and facilities that enabled hitch-free celebrations as well as cultural and religious propagation.</span></p><p><span style=\"font-size: 17px;\">The Adon Garin Kasar Hausa seized the opportunity and admonished the people to continue being law abiding citizens and also to support the administration of President Bola Ahmed Tinubu as Government is working assiduously to ensure the delivery of dividends of democracy to all Nigerians.</span></p>",
+        "author": "Admin",
+        "date": "2025-09-09T19:52:23.173Z",
+        "thumbnail": "https://res.cloudinary.com/dob19lapx/image/upload/v1757447608/jcjggx6yrtaen7wjmlnx.jpg",
+        "comments": []
+      },
+      {
+        "id": "401f577f-043e-48e8-b5c2-17e10c44e9df",
+        "title": "Governor Uba Sani Approves 100% Salary & Hazards Allowance for Health Workers",
+        "content": "<p>In a bold step that underscores his compassion and commitment to healthcare, His Excellency the Executive Governor of Kaduna State, Senator Uba Sani has approved the full implementation of the 2024 CONMESS and CONHESS, including a 100% hazard allowance for health workers effective from  September 2025.</p><p>This decisive action answers long-standing concerns raised by health unions and ensures doctors, nurses, midwives, pharmacists, lab scientists, and other frontline workers receive the dignity, respect, and competitive pay they deserve.</p><p>By prioritizing the welfare of healthcare professionals, the  Governor  has not only strengthened morale in the sector but also guaranteed continuous, quality healthcare delivery for Kaduna citizens.</p><p>This move directly translates to:</p><ul><li><p>Motivated and committed health workers</p></li><li><p>Improved access to quality care</p></li><li><p>Fewer strikes or service disruptions</p></li><li><p>Attraction and retention of skilled professionals </p></li><li><p>Positive ripple effect on the local economy</p></li></ul><p></p>",
+        "author": "Admin",
+        "date": "2025-09-10T10:07:55.427Z",
+        "thumbnail": "https://res.cloudinary.com/dob19lapx/image/upload/v1757498497/xznyms7sm9ttivhnihmk.jpg",
+        "comments": []
+      },
+      {
+        "id": "69cfb2c8-1ac7-4158-8c54-e1e2e8ff3393",
+        "title": "NSC CHAIRMAN THROWS WEIGHT BEHIND RUGBY LEAGUE IN NIGERIA, SAYS COMMISSION WILL SUPPORT EVERY SPORT TO GROW",
+        "content": "<p><span style=\"font-size: 16px;\">Rugby League has the potential to advance the sport's economy as well as unleash talents that would boost the nation's quest to be a global sports talent market.</span></p><p><span style=\"font-size: 16px;\">This was the view of Mallam Shehu Dikko while hosting the Australian High Commissioner to Nigeria Her Excellency Leilani Bin-Juda (PSM). Her Excellency Bin-Juda was in the company of a delegation of the Rugby League on a mission to invest in rugby League development in Africa with Nigeria as the hub.</span></p><p><span style=\"font-size: 16px;\">To this end, the National Sports Commission will support the Rugby League's development in the country.</span></p><p><span style=\"font-size: 16px;\">His words, \"We are here to provide the enablers and opportunities for every sport to thrive within the context of its comparative advantage. We have clearly identified the Rugby League as one sport with the huge potential to go to the entire grassroots and ecosystem of sports in this country driving mass participation. We will want to collaborate with the promoters of the Rugby League in Nigeria to see how we can take the sport to the next level. We believe we can harvest a lot of talents in rugby that can be developed to win laurels and equally be in a position to play in any league in the world.</span></p><p><span style=\"font-size: 16px;\">\"We are trying to revive schools sports in Nigeria in collaboration with Federal Ministry of Education so we will see how we can inculcate the sport at the grassroots level at a very young age from the schools. This way, the Rugby League will be built in the hearts and minds of our youths.</span></p><p><span style=\"font-size: 16px;\">The NSC Chairman reiterated the Commission's commitment to aggressive talents development across all sports through international sporting tournaments.</span></p><p><span style=\"font-size: 16px;\">\"We are for every sport. This year alone, so far we have supported and enabled over 47 sports to international tournaments and only three came back without winning any-thing. This is a clear validation that something is happening right and a pathway to develop our sports and sporting talents\" , he added.</span></p><p><span style=\"font-size: 16px;\">He advocated for sporting collaborations between Nigeria and Australia.</span></p><p><span style=\"font-size: 16px;\">\"Australia is the number one in the rugby league. We will be glad to work with the Australian High Commission to forge sporting collaborations between both countries. There's a lot we can do together through sports and to this end, we will set up a working ground to ensure we quickly activate this potential on a win win basis for both parties\" he said.</span></p><p><span style=\"font-size: 16px;\">Earlier, the Australian High Commissioner echoed the immense benefits of a sporting collaboration with Nigeria.</span></p><p><span style=\"font-size: 16px;\">\"Australia is a sports-loving country generally but it is the Rugby League that is domi-nating. We will like to collaborate with Nigeria in sports generally and Rugby League in particular. Sports is a tool for social inclusion and re-engineering and we will like to tap into all available opportunities to deepen diplomatic relations with Nigeria\", she pointed</span></p><p><span style=\"font-size: 16px;\">General Manager of Nigeria Rugby League Isah Saulawa highlighted the importance of enhancing Nigeria and Australian relations through the Rugby League.</span></p><p><span style=\"font-size: 16px;\">\"Rugby League is the largest sport in Australia. In our strategic plan we aim to bridge the gap of diplomacy through sports. We as the governing body of Rugby League in Nigeria will like to bring the hands of both governments together in a handshake\", he noted.</span></p>",
+        "author": "Admin",
+        "date": "2025-09-14T17:04:35.962Z",
+        "thumbnail": "https://res.cloudinary.com/dob19lapx/image/upload/v1757869628/ocrztzzt3ihh4w9nlrey.jpg",
+        "comments": []
+      },
+      {
+        "id": "4983ec25-1284-4c71-a317-68a0c59ccfb9",
+        "title": "NSC Chairman, Dikko inaugurates new Cycling Federation Board",
+        "content": "<p><span style=\"font-size: 17px;\">The new board of the Cycling Federation of Nigeria, (CFN) , inaugurated Monday by the Chairman of the National Sports Commission, NSC, Mallam Shehu Dikko, swung into action immediately as they set up 11 commissions to ensure they deliver on their promise to further develop the sport.</span></p><p><span style=\"font-size: 17px;\">Their inaugural meeting led by the President, Engr. Giadomenico Masari, also co-opted four members&nbsp; to support the federation in this direction.</span></p><p><span style=\"font-size: 17px;\">‎They are Brig-General Al-Amin Ado Ibrahim, Dr. Andrew Etsetowaghan, Dr. Sam Ogbondeminu, Rt. Hon. Terkimbi Ikyange and Barr. John Fakado.</span></p><p><span style=\"font-size: 17px;\">‎The Commissions and their heads are Technical Commission with Dr. Emmanuel Igbinosa as chairman, Road Commission, Prince Henry Amike, BMX Commission,&nbsp;Brig.General A. R. Bello, Medical Commission , Dr.Ogbondeminu, Women Commission , Mrs. Angela Okoro and Patrick Omorodion as Head of the Media Commission.</span></p><p><span style=\"font-size: 17px;\">‎The Para Commission has Mr. Babatunde Ajibike as its chairman, Ethics &amp; Disciplinary Commission, Barr.&nbsp; Fakado, Track Commission, Brig.General Ado Ibrahim, Mountain Bike Commission, Dr. Estetoeaghan and Youth Development Commission which is headed by DCI Farouk Umar Abdullahi.</span></p><p><span style=\"font-size: 17px;\">‎While inaugurating the new board, Chairman of the National Sports Commission, Mallam Shehu Dikko commended the CFN for their orderly and peaceful election as he charged them to ensure they develop the sport from the grassroot to get talents who will progress to national level instead of relying on foreign-based athletes to represent the country at international competitions.</span></p>",
+        "author": "Admin",
+        "date": "2025-09-15T20:10:19.234Z",
+        "thumbnail": "https://res.cloudinary.com/dob19lapx/image/upload/v1757966955/idvqdfssd6srztp0ocbk.jpg",
+        "comments": []
+      },
+      {
+        "id": "a406a6d7-e356-4ea3-8aaf-06cc343c0098",
+        "title": "A Tribute To Hon. Abdulaziz Kaka: The Architect Of Kaduna’s Youth Renaissance",
+        "content": "<p>By Comr. Amb. Suleiman Abdullahi, FCAI, State APC Youth Leader, Niger State. </p><p>In the dynamic landscape of Nigerian politics, where the future of our great nation is being forged, few individuals have demonstrated such a profound and unwavering commitment to youth empowerment as Honourable Abdulaziz Kaka. From across the border in Niger State, we have watched with immense admiration and a deep sense of camaraderie as he tirelessly architects a new dawn for the young people of Kaduna State. This tribute is a testament to his impactful work, a salute from one youth leader to a true champion of the people, under the powerful banner of #KowaNamuNe.</p><p>Hon. Kaka understands a fundamental truth that many pay lip service to but few genuinely act upon: that the youth are not merely leaders of tomorrow, but critical partners of today. His empowerment programmes are not political tokenism; they are strategic, impactful, and life-changing interventions designed to unlock the vast potential inherent in the talented youth of Kaduna.</p><p>We have witnessed the transformative effects of his initiatives:</p><p>· Skills Acquisition and Vocational Training: By moving young people from the streets into workshops and training centres, he is not just giving them fish, but teaching them how to fish, thereby building a generation of entrepreneurs and employers of labour.</p><p>· Digital Literacy and ICT Empowerment: In an increasingly digital world, his focus on equipping youth with 21st-century skills ensures that Kaduna's young minds are not left behind but are instead positioned to compete and excel on a global scale.</p><p>· Agricultural Entrepreneurship: By channeling the energy of young people into the agribusiness value chain, he is simultaneously tackling unemployment and enhancing food security, a dual approach that is both brilliant and necessary.</p><p>These programmes resonate deeply with us in Niger State because they mirror the progressive ideals we also strive for. Hon. Kaka’s work is a shining example of the positive, tangible development that the APC stands for. He embodies the spirit of \"Kowa Namu Ne\" – This is Our Own. He has made the struggles of the Kaduna youth his own, their victories his victories, and their future his paramount concern.</p><p>His leadership style is a masterclass in inclusive governance. He listens, he engages, and he acts. He has built a bridge of trust between the government and the governed, proving that with sincerity of purpose, our youth can be the most potent force for national development.</p><p>On behalf of the entire APC Youth Wing in Niger State, I extend our heartfelt commendation to you, Hon. Abdulaziz Kaka. You are a beacon of hope and a true inspiration to youth leaders across the nation. We stand in solidarity with you and the great youth of Kaduna State. We are watching, we are learning, and we are inspired to redouble our efforts in our own domain.</p><p>May your zeal never diminish, and may your impactful service continue to elevate the lives of millions. Kaduna is fortunate to have you. The APC is proud to have you.</p><p>#KowaNamuNe #APC #YouthEmpowerment</p>",
+        "author": "Admin",
+        "date": "2025-09-20T15:50:15.341Z",
+        "thumbnail": "https://res.cloudinary.com/dob19lapx/image/upload/v1758383382/kg5kcxews9imktnozq7l.jpg",
+        "comments": []
+      },
+      {
+        "id": "3feeeb62-0bac-4db6-864a-92b39941e359",
+        "title": "Against the Run of Play: Why Governor Uba Sani Deserves a Second Term.",
+        "content": "<p>In the high stakes arena of Nigerian politics, where incumbents often face fierce opposition and public fatigue sets in after a single term, Governor Uba Sani of Kaduna State stands as a beacon of quiet competence and transformative leadership. Elected in 2023 amid a tightly contested race, Sani's administration has defied expectations by turning a state once plagued by ethno-religious tensions, banditry, and underdevelopment into a model of stability and progress. As Kaduna approaches the next electoral cycle, the case for Sani's second term is not just compelling it's imperative. Against the run of play, his record speaks volumes: a deliberate focus on peace-building, inclusive governance, and tangible development that has restored hope to a diverse populace. This piece explores Gov Uba Sani's achievements, particularly in restoring peace to Kaduna, and traces his broader contributions over the years, underscoring why he merits continued mandate.</p><p><em>Restoring Peace: The Kaduna Peace Model in Action</em></p><p>No aspect of Governor Sani's tenure has been more transformative than his relentless pursuit of peace and security, turning Kaduna from a \"red zone\" of volatility to an \"amber\" beacon of stability. Upon assuming office in May 2023, Sani inherited a state scarred by banditry, farmer-herder clashes, and communal violence, particularly in Southern Kaduna and Birnin Gwari. Yet, through a innovative \"Kaduna Peace Model\" blending kinetic operations with non-kinetic strategies he has engineered a remarkable turnaround.</p><p>Central to this model is community engagement. Sani revitalized the Kaduna Vigilance Service (KADVS), recruiting and training 7,000 personnel, and equipping them with 150 security vehicles and 500 patrol motorcycles to bolster local policing. He established the Peace Dialogue Group, collaborating with federal agencies, traditional rulers, religious leaders, and security forces to share intelligence and mediate conflicts. This inclusive approach has yielded dividends: no major ethno-religious or communal clashes have been recorded in the state for over two years, allowing safe travel even at night to previously perilous areas like Birnin Gwari.</p><p>Gov Uba Sani's non-kinetic initiatives emphasize healing and restitution. In a landmark move, he facilitated the repentance and rehabilitation of bandits, marking a historic shift toward peace. The Qatar Charity Sanabil Project, commissioned under his watch, distributed homes to families of banditry victims in Chikun Local Government Area, symbolizing justice and closure. President Bola Tinubu, through National Security Adviser Nuhu Ribadu, praised Sani for transforming Kaduna \"from an epicenter of violent attacks to a model of stability and peace.\" The UK's Foreign, Commonwealth and Development Office (FCDO) echoed this by reclassifying Kaduna from \"red\" to \"amber\" in its travel advisory, citing improved security and inclusivity. Vice-Chancellors, traditional leaders, and even the Evangelical Church Winning All (ECWA) President have lauded Sani's fair, equitable leadership that fosters belonging for all citizens.</p><p>These efforts have not only reduced violence but also unlocked economic potential. With peace as the bedrock, farming, trade, and education have flourished, particularly in long-neglected Southern Kaduna. Gov Uba Sani's distribution of vehicles to traditional rulers underscores his recognition of their role in intelligence-sharing, further entrenching community-driven security.</p><p><em>Broader Achievements: Building a Prosperous and Inclusive Kaduna</em></p><p>Beyond security, Gov Uba Sani's administration has delivered across key sectors, aligning with his governance agenda of inclusive growth and sustainable development. In agriculture, Kaduna is emerging as a powerhouse. Sani approved the historic distribution of 500 trucks of fertilizer—yielding 240,000 free bags to 120,000 smallholder farmers—boosting yields and food security. The state attracted the Africa Quality Assurance Centre (AQAC) with AFREXIMbank support, enhancing export capabilities. With a N22.54 billion allocation in the 2024 budget (nearly 5% of total spending), initiatives like farmer empowerment and sustainable practices have positioned Kaduna as a model for rural development.</p><p>Infrastructure renewal has been equally impressive. Gov Uba Sani flagged off the reconstruction of the Jaba-Kwoi road, a \"lifeline\" for Southern Kaduna linking communities to markets and the Abuja highway. His road program includes 85 roads (785 km) in phase one (44 completed) and 550 km in phase two, alongside bridges and access roads to institutions like the Federal University of Applied Sciences in Kachia. A N100 billion investment in water supply addresses decades of scarcity, while urban renewal projects improve connectivity.</p><p>In education and health, progress is palpable. The Kaduna Vocational and Skills Development Institute admitted over 30,000 students, earning Vice President Kashim Shettima's praise as \"exemplary.\" Sani is remodeling 13 general hospitals for better access and has reduced maternal and child mortality through expanded services. Social welfare programs supported 8,600 micro-businesses with grants and empowered 4,912 women via the ‘A Kori Talauchi initiative’. Attracting a $62.8 million grant from international partners underscores global confidence in his vision.</p><p>Gov Uba Sani's open governance emphasizing transparency, accountability, and citizen participation has demystified leadership, bridging ethno-religious divides and fostering unity. As one aide noted, his two years have brought \"impactful and transformative leadership\" to rural and urban areas alike.</p><p><em>Why a Second Term? Continuity for Lasting Impact</em></p><p>Governor Uba Sani's achievements are not mere headlines; they are lived realities for Kaduna's 8 million residents. From a state of fear to one of flourishing opportunity, Sani has proven that visionary leadership can heal deep wounds and ignite progress. His pre-office philanthropy and legislative prowess laid the foundation, while his gubernatorial tenure has built upon it with equity and resolve. In a nation grappling with insecurity and inequality, Kaduna under Gov Uba Sani offers a blueprint worth emulating.</p><p>Against the run of play, where opposition might capitalize on fleeting challenges, Sani deserves a second term to consolidate gains, complete ongoing projects, and elevate Kaduna further. His story is one of redemption and renewal, let it continue. The people of Kaduna, and Nigeria at large, stand to benefit immensely.</p><p>Jabir Ishaq writes from kaduna state</p><p><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"mailto:Jabirishaq5@gmail.com\">Jabirishaq5@gmail.com</a></p>",
+        "author": "Jabir Ishaq",
+        "date": "2025-09-16T10:33:40.641Z",
+        "thumbnail": "https://res.cloudinary.com/dob19lapx/image/upload/v1758018763/aib2gjttxprio6ivxtsl.jpg",
+        "comments": []
+      },
+      {
+        "id": "f8ddb443-9a2c-44f3-a649-564602b771f3",
+        "title": "Facts and Figures from Tokyo World Athletics Championships: Setting the Records Straight",
+        "content": "<p><span style=\"font-size: 17px;\">Earlier in the week, the National Sports Commission Chairman Mallam Shehu Dikko addressed the Media where he offered clarifications regarding misleading and false reports that have circulated, suggesting an inflated number of officials that are more than the athletes accompanied Team Nigeria to the World Athletics Championships in Tokyo holding from 13 - 21 September 2025.</span></p><p><span style=\"font-size: 17px;\">From the official approval records, the delegation comprised:</span></p><p><span style=\"font-size: 17px;\">- 15 athletes</span></p><p><span style=\"font-size: 17px;\">- 4 coaches</span></p><p><span style=\"font-size: 17px;\">- 2 medical personnel (doctors)</span></p><p><span style=\"font-size: 17px;\">Additionally, the President and Secretary of the Federation attended in line with sponsorship arrangements with the World Body, as they were required for the federation congress.</span></p><p><span style=\"font-size: 17px;\">On the issue of the Athletes Kits and apparels arrangement made by the Atheletics Federation of Nigeria (AFN), It is important to emphasize:</span></p><p><span style=\"font-size: 17px;\">- No public funds were used to purchase athletes’ kits. These were fully covered through sponsorship. At elite sports level, athletes kits and apparels are normally procured through sponsorships which is negotiated by the individual federation not the National Sports Commission (NSC) and in this case it is what exactly the AFN did to secure the sponsorship with HiRacer, a global kit brand.</span></p><p><span style=\"font-size: 17px;\">- Thus, the kits were provided free of charge by HiRacer and the arrangements included decent performance bonus structure for the athletes should they win a medal using the kits: $30,000 for gold, $20,000 for silver, and $10,000 for bronze.</span></p><p><span style=\"font-size: 17px;\">- ⁠It is worth noting to state that HiRacer is one of growing global brands and over 15 countries at the Word Championship currently in Tokyo are using the same brand for their athletes.</span></p><p><span style=\"font-size: 17px;\">- ⁠Indeed, Nigeria’s&nbsp;superstar Athlete, Tobi Amusan, by getting Silver have earned about $24,000 bonus from HiRacer ($20, 000 for wining and other benefits for participating in the semi finals and finals or her events).</span></p><p><span style=\"font-size: 17px;\">While support structures are in place, federations have the responsibility to engage directly with athletes on transitional matters and ensure clarity in communication.</span></p><p><span style=\"font-size: 17px;\">The National Sports Commission remains committed to transparency, accountability, and providing the enablers necessary for Nigerian athletes to thrive on the global stage.</span></p>",
+        "author": "Admin",
+        "date": "2025-09-19T18:37:44.631Z",
+        "thumbnail": "https://res.cloudinary.com/dob19lapx/image/upload/v1758306998/d5ymzcznngay28r19alj.jpg",
+        "comments": []
+      },
+      {
+        "id": "b4a83399-c572-4c26-b0da-6caa8d08aeb2",
+        "title": "PLANE Trains 504 Kaduna Teachers in Digital Learning Skills",
+        "content": "<p style=\"text-align: left;\">The Acting Executive Chairman of the Kaduna State Universal Basic Education Board (KADSUBEB), Mr. Mubarak Mohammed, has reaffirmed the state government's commitment to improving education through strategic investments in human capital, particularly in teacher development.</p><p style=\"text-align: left;\">According to him, more than 26,000 teachers across Kaduna State have been trained in key areas such as literacy and numeracy.</p><p style=\"text-align: left;\">He highlighted ongoing collaborations with the Partnership for Learning for All in Nigerian Education (PLANE) and the Teachers Registration Council of Nigeria (TRCN), aimed at providing formal certification and Continuous Professional Development (CPD) credits for teachers. The goal, he said, is to enhance teaching effectiveness and ultimately improve student learning outcomes.</p><p style=\"text-align: left;\">Mr. Mohammed also revealed plans to train over 6,000 additional teachers during the current academic session. The training, he noted, is delivered online at a low cost, enabling teachers to learn flexibly at their own pace—minimising the need for travel or large gatherings.</p><p style=\"text-align: left;\">He expressed appreciation for TRCN’s role in promoting digital literacy among educators and reaffirmed KADSUBEB’s readiness to collaborate further in ensuring every teacher benefits from the initiative.</p><p style=\"text-align: left;\">The Chairman also commended PLANE for its support, congratulating the trained teachers on earning their certifications and urging them to apply their new skills to improve classroom instruction and student achievement.</p><p style=\"text-align: left;\">During the certificate presentation ceremony for the first batch of trained teachers, held on Friday in Kaduna, PLANE’s State Team Lead, Mrs. Diana Agabi, explained that the training focused on Foundational Literacy and Numeracy (FLN). The programme utilises digital platforms like WhatsApp to facilitate peer learning, professional interaction, and the sharing of effective classroom practices.</p><p style=\"text-align: left;\">Implemented in four pilot Local Government Areas (LGAs), the programme also enabled teachers to earn credit units recognised by TRCN.</p><p style=\"text-align: left;\">Speaking at the event, TRCN State Coordinator Esther Natsa, represented by Nafisa Abbas, described TRCN’s role as the regulatory authority for the teaching profession in Nigeria. She emphasised the council's dedication to teacher development, enforcement of professional standards, and provision of continuous growth opportunities through structured programmes and accredited training institutions.</p>",
+        "author": "Admin",
+        "date": "2025-09-26T16:59:56.010Z",
+        "thumbnail": "https://res.cloudinary.com/dob19lapx/image/upload/v1758905876/a53vdbmd3o70wwfdma5r.jpg",
+        "comments": []
+      },
+      {
+        "id": "a99a0b8b-4eb8-4be0-ae02-97c91e6e84cc",
+        "title": "Ahmadu Bello Stadium; Gov Sani’s Vision and the Sports Economy in the Renewed Hope Era",
+        "content": "<p></p><p><span style=\"font-size: 17px;\">Sports in Nigeria, especially across states of the Federation is the most popular activity among young people. The ability to harness the energy of the youth towards proper upbringing, community progress and economic development can be achieved through sports. That is the vision of the Renewed Hope Initiative for Nigeria’s Sports Economy; a bottom - top approach from the grassroots to national and international platforms where talents are nurtured, mentored and rewarded for their successes accordingly.</span></p><p><span style=\"font-size: 17px;\">The reconstruction of Ahmadu Bello Stadium is a masterpiece project borne out of a shared vision between the Kaduna State Government and the Federal Government, where the standard infrastructure will be provided in order to re-activate the sports economy in Kaduna State. The project, fully funded by the Kaduna State Government defines the commitment of His Excellency Governor Uba Sani, to provide enabling environment for sporting activities to thrive in Kaduna State.</span></p><p><span style=\"font-size: 17px;\">Founded in 1964, the stadium served as a hub for major sporting events, regularly hosting international matches. It was the home ground for famous Nigerian clubs and the national team, contributing to the rise of many national stars.&nbsp;However, Ahmadu Bello Stadium’s infrastructure has deteriorated overtime. The pavilion has become a major eyesore; changing rooms are unkept; audiovisual systems have collapsed and training pitches are nothing to write home about. The entire stadium has fallen short of global standards and requires a total overhaul.</span></p><p><span style=\"font-size: 17px;\">The ABS reconstruction project started in August 2025. During a recent inspection visit in October 2025, Governor Uba Sani noted that the project aligns with President Bola Ahmed Tinubu’s vision to re-engineer the sports industry and according to him, “that can only be achieved through the provision of proper infrastructure in accordance with FIFA and Global Athletic Standards, as well as prudent management systems across sporting facilities”</span></p><p><span style=\"font-size: 17px;\">The reconstruction aims to deliver a safer and modern venue for athletes and fans alike, with expected upgrades such as Modern playing pitches and drainages, Modern seating, roofing and spectator safety features, Modern lighting and audiovisual systems for evening matches, Modern changing rooms, medical and media facilities, as well as Enhanced accessibility and community training spaces.</span></p><p><span style=\"font-size: 17px;\">Upon completion of this important and timely project, Ahmadu Bello Stadium will reclaim its rightful glory, serving as a model sporting avenue for grassroots sports development, community reorientation, hosting of national and international games; thereby strengthening local talents, attracting FDIs and improving tourism in order to boost the state’s Internally Generated Revenue (IGR).</span></p>",
+        "author": "Admin",
+        "date": "2025-10-02T12:51:44.692Z",
+        "thumbnail": "https://res.cloudinary.com/dob19lapx/image/upload/v1759409395/eqpnzal2csxlrnbuurlt.jpg",
+        "comments": []
+      },
+      {
+        "id": "1cc65d98-5472-444f-9cb5-e58d3c3f7110",
+        "title": "First African Karting Slalom Cup; Nigeria Is Set To Make Motorsport History as NSC receives FIA Delegation",
+        "content": "<p><span style=\"font-size: 17px;\">The Chairman, National Sports Commission, Mallam Shehu Dikko was pleased to receive top officials of the Fédération Internationale de l'Automobile (FIA), alongside the leadership of the Automobile and Touring Club of Nigeria (ATCN) led by President Ishaku Bamaiyi, on a working visit to the Commission’s headquarters in Abuja on Thursday, 9th October 2025.</span></p><p><span style=\"font-size: 17px;\">The visit comes as part of preparations for Nigeria’s hosting of the first-ever FIA African Karting Slalom Cup in April 2026, following FIA’s official approval and endorsement in a letter dated 11th July 2025.</span></p><p><span style=\"font-size: 17px;\">To ensure successful delivery, a training programme for officials and marshals has been scheduled in Abuja from 10th–12th October 2025, where FIA-appointed Motorsport Officials Mr. Miguel Tiago and Mr. Derek Jacobs will facilitate the sessions in line with international standards.</span></p><p><span style=\"font-size: 17px;\">In his remarks, the NSC Chairman, Mallam Shehu Dikko reiterated the commitment of the Federal Government of Nigeria towards ensuring the viability and development of all Sports, in line with the Renewed Hope Initiative for Nigeria’s Sports Economy (RHINSE).</span></p><p><span style=\"font-size: 17px;\">The National Sports Commission congratulates ATCN on securing this milestone for Nigeria and reaffirms its commitment to working closely with the FIA, ATCN, and all stakeholders to make the 2026 African Karting Slalom Cup a landmark moment for motorsport development in Africa.</span></p>",
+        "author": "Admin",
+        "date": "2025-10-09T16:36:11.083Z",
+        "thumbnail": "https://res.cloudinary.com/dob19lapx/image/upload/v1760027593/kvbwmgk7qx6au8ub1dgz.jpg",
+        "comments": []
+      },
+      {
+        "id": "d36bb5c0-30b4-4393-acc7-9cd2f65ac051",
+        "title": "Kaduna launches Nigeria’s first ever OC4IDS Infrastructure Data Portal",
+        "content": "<p><span style=\"font-size: 17px;\"><br>The Governor of Kaduna State, Senator Uba Sani, represented by the Commissioner for Planning and Budget Commission, Mukhtar Ahmed, launched </span><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://ipdata.kdsg.gov.ng/public/home\"><span style=\"font-size: 17px;\">Kaduna State’s Infrastructure Portal. </span></a><span style=\"font-size: 17px;\">This is the first platform in Nigeria to publish data using the </span><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://infrastructuretransparency.org/tools-and-standards/\"><span style=\"font-size: 17px;\">OC4IDS data standard</span></a><span style=\"font-size: 17px;\">.</span></p><p><span style=\"font-size: 17px;\">The state has also issued a Formal Disclosure Mandate to enhance compliance with data publication in the state. This launch took place at </span><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://www.eventbrite.com/e/transparency-and-tapas-a-networking-event-tickets-1634839973369\"><span style=\"font-size: 17px;\">CoST’s event</span></a><span style=\"font-size: 17px;\"> at the Open Government Partnership Global Summit.</span></p><p><span style=\"font-size: 17px;\">The World Bank supported states in Nigeria to have data platforms, with Kaduna publishing data on 1300 projects using the Open Contracting Data Standard (OCDS). But as a CoST member, Kaduna went one step further through their CoST membership, following civil society organisations highlighting gaps in data.</span></p><p><span style=\"font-size: 17px;\">Learning from their experience of applying the OCDS, Kaduna aligned their data to the OC4IDS. OC4IDS expands data publication, combining contract level publication using project-level publication from the CoST IDS. CoST Kaduna became validated as an OC4IDS which was publisher earlier this year.</span></p><p><span style=\"font-size: 17px;\">Since then, the Kaduna State Government has been working hard to undertake training for uploading the data, proceeding to upload data from almost 1500 projects to the new platform, and ensuring that the portal is accessible. Kaduna’s Formal Disclosure Mandate will help to solidify data publication.</span></p><p><span style=\"font-size: 17px;\">Mukhtar Ahmed said: “Kaduna’s infrastructure data is now open to the world, empowering citizens, civil society, private sector and development partners to monitor progress which opens the door to trust, innovation, and inclusive development. We invite the world to explore, engage, and emulate. The future of infrastructure is open, and Kaduna is leading the way.”</span></p><p><span style=\"font-size: 17px;\">CoST Kaduna manager, Tara said: “This new portal means that more data will be available in priority sectors such as healthcare, education, agriculture and transport. Publishing and reviewing data in these sectors are vital for improving quality of life for over 10 million people living in Kaduna. We’re proud of how this work and has enabled us to work with a wide range of stakeholders.”</span></p><p><span style=\"font-size: 17px;\">The creation of this platform also supports Nigeria’s Open Government Partnership commitment, as well as the several of the aims in CoST Kaduna’s annual plan. It also builds on CoST Kaduna’s achievements, including a </span><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://gazettengr.com/kaduna-govt-commits-to-strengthening-social-accountability-in-infrastructure-sector/\"><span style=\"font-size: 17px;\">recent affirmation</span></a><span style=\"font-size: 17px;\"> of government commitment; </span><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://infrastructuretransparency.org/news/kaduna-training-24/\"><span style=\"font-size: 17px;\">training</span></a><span style=\"font-size: 17px;\"> civil society, government, and media; and participation in events like </span><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://infrastructuretransparency.org/news/ogp-africa-25/\"><span style=\"font-size: 17px;\">OGP Africa</span></a><span style=\"font-size: 17px;\">.</span></p><p><span style=\"font-size: 17px;\">Take a look at the portal here: </span><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://ipdata.kdsg.gov.ng/public/home\"><span style=\"font-size: 17px;\">https://ipdata.kdsg.gov.ng/public/home</span></a><span style=\"font-size: 17px;\">.</span></p><p></p>",
+        "author": "Admin",
+        "date": "2025-10-10T09:04:49.194Z",
+        "thumbnail": "https://res.cloudinary.com/dob19lapx/image/upload/v1760087038/hgjffszjgutcqferiyc4.jpg",
+        "comments": []
+      },
+      {
+        "id": "ff5385b3-a8c5-46e5-9b5a-526d509231a9",
+        "title": "Abuja - Kaduna - Kano Road Project: FG moves to Expedite Completion as Uba Sani Mounts Pressure.",
+        "content": "<p><span style=\"font-size: 17px;\">In the commitment of the Renewed Hope administration towards achieving timely completion of the outstanding works on Abuja-Kaduna-Zaria-Kano road project, handled by Messrs Infiouest International Limited, the Honorable Minister of Works, His Excellency, Sen. Engr. Nweze David Umahi CON has directed the contractor to fastrack the delivery of the two sections of the road project particularly by increasing the number of work zones between Jere and kaduna in Kaduna State and ensuring that the project is delivered in record time.</span></p><p style=\"text-align: left;\"><span style=\"font-size: 17px;\">The Honourable Minister of Works gave this directive after a meeting he had with the Governor of Kaduna State, His Excellency, Sen. Uba Sani CON together with the contractor handling the project, held at the Honourable Minister’s office, Federal Ministry of Works, Mabushi, Abuja on 10th October, 2025.</span></p><p style=\"text-align: left;\"><span style=\"font-size: 17px;\">The Governor of Kaduna State expressed satisfaction with the outcome of the meeting and the quality of the job being done on the project. He said that he had no doubt&nbsp; that in the next two weeks, the contractor should be able to record commendable milestones given the quality of the meeting held with the Honourable Minister of Works and the contractor handling&nbsp; the job. He further stated that the road is a very important transport corridor that connects not only the economic corridors of the North West but also that of the North Central and the North East; \"What is more important for us here is for you to understand that Abuja, Kaduna, Kano road connects about 12 States. States from North West, as well as some States from North Central and North East. So it is a very important road that I believe that by the time you complete this project, many people, apart from Kaduna, will be very happy.\" He commended the professionalism, passion, and innovation brought to bare by the Honourable Minister of Works, whom he described as a rare gem in public service delivery; \"We are proud&nbsp; to have a Minister of the caliber of Engr. David Umahi, who is of very top profession. I am surprised, when I came here he had to break down the entire project (off hand)&nbsp; from the size of the project to the level of the project as well as the quality of what is going on there, and I can say that if we have a lot of Honourable Ministers like him in Nigeria,we have to go to sleep without having any problems”</span></p><p style=\"text-align: left;\"><span style=\"font-size: 17px;\">Speaking on the importance and priority accorded to the project by the President of the Federal Republic of Nigeria, His Excellency, Bola Ahmed Tinubu GCFR, the Hounourable Minister&nbsp; stated; “We have been monitoring this project almost every week, and so we&nbsp; insisted that we must do a meeting with the MD of Infiouest who has the contract of these sections, lot 1, which is N252,000,000,000.00 (Two Hundred and Fifty Two Billion Naira), and lot 2 which is basically in Kaduna, 82 kilometres by 2 that is 164 kilometres costing Federal Government N502,000,000,000.00 (Five Hundred and Two Billion Naira), so altogether to complete all the sections from Abuja down to Kaduna, down Kano is costing the Federal Government N754,000,000,000.00 (Seven Hundred and Fifty Four Billion). Lot 1 is 118 kilometres, costing N252,000,000,000.00 (Two Hundred and Fifty Two Billion Naira), and lot 2 is 164 kilometres, costing N502,000,000,000.00 (Five Hundred and Two Billion)”.</span></p><p style=\"text-align: left;\"><span style=\"font-size: 17px;\">This collaborative support and encouragement from the Governor of Kaduna State&nbsp;is made possible because of his interest to tap into the massive infrastructural development programmes of the federal government across the Geo-Political Zones of Nigeria. He is a visionary leader and development advocate who&nbsp; is widely recognized for his contributions to democracy, governance, and social transformation. He is a product of Nigeria’s diverse educational system, a financial guru, business administrator, and engineer in thought. He played a frontline role in the struggle against the military rule in Nigeria. He was a courageous pro-democracy activist, organizing and mobilizing citizens in Northern Nigeria against military dictatorship. Today, he is on the saddle as the Governor of Kaduna State and he is one of the serving Governors in Nigeria who have shown untiring determination to right the wrong in the socio-economic conditions of their people and he is achieving progressive and exponential result given the unprecedented wave of support and leverage provided by the Renewed Hope administration of President&nbsp;Tinubu to the sub-national governments.</span></p>",
+        "author": "Admin ",
+        "date": "2025-10-10T18:49:04.110Z",
+        "thumbnail": "https://res.cloudinary.com/dob19lapx/image/upload/v1760122127/nmckzjfhauikxzw4zvvr.jpg",
+        "comments": []
+      }
+    ],
+    "events": [],
+    "comments": [
+      {
+        "id": "a6c92327-52ae-4fe1-87c2-e5511d769809",
+        "content": "testing",
+        "userId": "900b8867-5240-420c-8656-6b9776384e51",
+        "userName": "Abdullah Gumi",
+        "postId": null,
+        "eventId": null,
+        "parentId": null,
+        "createdAt": "2025-09-07T14:06:42.372Z",
+        "user": {
+          "id": "900b8867-5240-420c-8656-6b9776384e51",
+          "name": "Abdullah Gumi",
+          "email": "abdulgumi77@gmail.com",
+          "password": "$2b$10$6ETMMU3aIzneFFLddNo39.Zr2GypeBP20RqA0zJ0Gu8gJY6co0Rru",
+          "role": "admin",
+          "createdAt": "2025-09-06T22:47:32.956Z"
+        },
+        "post": null,
+        "event": null,
+        "parent": null,
+        "replies": [
+          {
+            "id": "cf5e4087-4bad-4c02-9bd0-96feca4daaed",
+            "content": "testing",
+            "userId": "900b8867-5240-420c-8656-6b9776384e51",
+            "userName": "Abdullah Gumi",
+            "postId": null,
+            "eventId": null,
+            "parentId": "a6c92327-52ae-4fe1-87c2-e5511d769809",
+            "createdAt": "2025-09-07T14:06:51.082Z",
+            "user": {
+              "id": "900b8867-5240-420c-8656-6b9776384e51",
+              "name": "Abdullah Gumi",
+              "email": "abdulgumi77@gmail.com",
+              "password": "$2b$10$6ETMMU3aIzneFFLddNo39.Zr2GypeBP20RqA0zJ0Gu8gJY6co0Rru",
+              "role": "admin",
+              "createdAt": "2025-09-06T22:47:32.956Z"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cf5e4087-4bad-4c02-9bd0-96feca4daaed",
+        "content": "testing",
+        "userId": "900b8867-5240-420c-8656-6b9776384e51",
+        "userName": "Abdullah Gumi",
+        "postId": null,
+        "eventId": null,
+        "parentId": "a6c92327-52ae-4fe1-87c2-e5511d769809",
+        "createdAt": "2025-09-07T14:06:51.082Z",
+        "user": {
+          "id": "900b8867-5240-420c-8656-6b9776384e51",
+          "name": "Abdullah Gumi",
+          "email": "abdulgumi77@gmail.com",
+          "password": "$2b$10$6ETMMU3aIzneFFLddNo39.Zr2GypeBP20RqA0zJ0Gu8gJY6co0Rru",
+          "role": "admin",
+          "createdAt": "2025-09-06T22:47:32.956Z"
+        },
+        "post": null,
+        "event": null,
+        "parent": {
+          "id": "a6c92327-52ae-4fe1-87c2-e5511d769809",
+          "content": "testing",
+          "userId": "900b8867-5240-420c-8656-6b9776384e51",
+          "userName": "Abdullah Gumi",
+          "postId": null,
+          "eventId": null,
+          "parentId": null,
+          "createdAt": "2025-09-07T14:06:42.372Z"
+        },
+        "replies": []
+      },
+      {
+        "id": "f949c1cb-1fbe-484b-8822-45daad12b63e",
+        "content": "test",
+        "userId": "900b8867-5240-420c-8656-6b9776384e51",
+        "userName": "Abdullah Gumi",
+        "postId": null,
+        "eventId": null,
+        "parentId": null,
+        "createdAt": "2025-09-07T22:42:04.231Z",
+        "user": {
+          "id": "900b8867-5240-420c-8656-6b9776384e51",
+          "name": "Abdullah Gumi",
+          "email": "abdulgumi77@gmail.com",
+          "password": "$2b$10$6ETMMU3aIzneFFLddNo39.Zr2GypeBP20RqA0zJ0Gu8gJY6co0Rru",
+          "role": "admin",
+          "createdAt": "2025-09-06T22:47:32.956Z"
+        },
+        "post": null,
+        "event": null,
+        "parent": null,
+        "replies": [
+          {
+            "id": "e3124ceb-7029-4028-a0b9-e292b4dd1d3b",
+            "content": "1",
+            "userId": "900b8867-5240-420c-8656-6b9776384e51",
+            "userName": "Abdullah Gumi",
+            "postId": null,
+            "eventId": null,
+            "parentId": "f949c1cb-1fbe-484b-8822-45daad12b63e",
+            "createdAt": "2025-09-07T22:42:09.244Z",
+            "user": {
+              "id": "900b8867-5240-420c-8656-6b9776384e51",
+              "name": "Abdullah Gumi",
+              "email": "abdulgumi77@gmail.com",
+              "password": "$2b$10$6ETMMU3aIzneFFLddNo39.Zr2GypeBP20RqA0zJ0Gu8gJY6co0Rru",
+              "role": "admin",
+              "createdAt": "2025-09-06T22:47:32.956Z"
+            }
+          }
+        ]
+      },
+      {
+        "id": "e3124ceb-7029-4028-a0b9-e292b4dd1d3b",
+        "content": "1",
+        "userId": "900b8867-5240-420c-8656-6b9776384e51",
+        "userName": "Abdullah Gumi",
+        "postId": null,
+        "eventId": null,
+        "parentId": "f949c1cb-1fbe-484b-8822-45daad12b63e",
+        "createdAt": "2025-09-07T22:42:09.244Z",
+        "user": {
+          "id": "900b8867-5240-420c-8656-6b9776384e51",
+          "name": "Abdullah Gumi",
+          "email": "abdulgumi77@gmail.com",
+          "password": "$2b$10$6ETMMU3aIzneFFLddNo39.Zr2GypeBP20RqA0zJ0Gu8gJY6co0Rru",
+          "role": "admin",
+          "createdAt": "2025-09-06T22:47:32.956Z"
+        },
+        "post": null,
+        "event": null,
+        "parent": {
+          "id": "f949c1cb-1fbe-484b-8822-45daad12b63e",
+          "content": "test",
+          "userId": "900b8867-5240-420c-8656-6b9776384e51",
+          "userName": "Abdullah Gumi",
+          "postId": null,
+          "eventId": null,
+          "parentId": null,
+          "createdAt": "2025-09-07T22:42:04.231Z"
+        },
+        "replies": []
+      },
+      {
+        "id": "0b59ba48-93cd-45a5-b735-fee95cf8aab1",
+        "content": "test",
+        "userId": "b6c2bbd9-6263-4fe0-b688-7dfeffd302a3",
+        "userName": "Al amin Ahmad",
+        "postId": null,
+        "eventId": null,
+        "parentId": null,
+        "createdAt": "2025-09-08T14:46:31.925Z",
+        "user": {
+          "id": "b6c2bbd9-6263-4fe0-b688-7dfeffd302a3",
+          "name": "Al amin Ahmad",
+          "email": "aalamin730@gmail.com",
+          "password": "$2b$10$r8nWyanrK9KlHj88N8lCceJ6Y5wLYH4rXM/RWsOWTVGbkhRg4Voaq",
+          "role": "admin",
+          "createdAt": "2025-09-06T22:46:15.040Z"
+        },
+        "post": null,
+        "event": null,
+        "parent": null,
+        "replies": []
+      }
+    ],
+    "mdas": [
+      {
+        "id": "7b33bd18-09aa-41a8-a831-e7c9c3263a7b",
+        "name": "Kaduna SUBEB",
+        "content": "<p><strong>KADUNA SUBEB FLAGS-OFF DISTRIBUTION OF 317,000 TEXTBOOKS TO SIX (6) LGAs</strong></p><p></p><p>The Acting Executive Chairman Mubarak Mohammed, officially flagged off the distribution of 317,882 literacy and numeracy materials to 6 LGAs namely Kaduna North, Kaduna South, Soba, Jaba, Sanga and Sabon Gari. This initiative is supported by the Partnership for Learning for all in Nigeria (PLANE).</p><p>The books include Hausa Literacy, Hausa Numeracy and the corresponding teacher’s guide for Basic 5 and Basic 6. Further distributions will be made for English Literacy and Numeracy for Basic 1-4. </p><p></p><p>The Ag. Executive Chairman expressed gratitude to the Kaduna State Government under the leadership of His Excellency, Sen Dr Uba Sani for prioritizing Education in the State. He also extended the KDSG’s appreciation to FCDO-PLANE for their unwavering support in complimenting government’s efforts towards addressing challenges within the basic education system. </p><p></p><p>The flag-off ceremony took place at the Kaduna North Local Government Education Authority was attended by the Kaduna North Local Government Council Chairman Hon Gambo Zion, the Education Secretary of the LGEA and other education stakeholders.</p>",
+        "author": "Admin",
+        "date": "2025-09-08T03:34:34.321Z",
+        "thumbnail": "https://res.cloudinary.com/dob19lapx/image/upload/v1757302347/fwiqk0v8q6bpvnkaisep.jpg"
+      },
+      {
+        "id": "66d9c2e4-92fe-4e8a-bcad-0741b9ae6916",
+        "name": "PLANE Trains 504 Kaduna Teachers in Digital Learning Skills ",
+        "content": "<p>The Acting Executive Chairman of the Kaduna State Universal Basic Education Board (KADSUBEB), Mr. Mubarak Mohammed, has reaffirmed the state government's commitment to improving education through strategic investments in human capital, particularly in teacher development.</p><p style=\"text-align: left;\">According to him, more than 26,000 teachers across Kaduna State have been trained in key areas such as literacy and numeracy.</p><p style=\"text-align: left;\">He highlighted ongoing collaborations with the Partnership for Learning for All in Nigerian Education (PLANE) and the Teachers Registration Council of Nigeria (TRCN), aimed at providing formal certification and Continuous Professional Development (CPD) credits for teachers. The goal, he said, is to enhance teaching effectiveness and ultimately improve student learning outcomes.</p><p style=\"text-align: left;\">Mr. Mohammed also revealed plans to train over 6,000 additional teachers during the current academic session. The training, he noted, is delivered online at a low cost, enabling teachers to learn flexibly at their own pace—minimising the need for travel or large gatherings.</p><p style=\"text-align: left;\">He expressed appreciation for TRCN’s role in promoting digital literacy among educators and reaffirmed KADSUBEB’s readiness to collaborate further in ensuring every teacher benefits from the initiative.</p><p style=\"text-align: left;\">The Chairman also commended PLANE for its support, congratulating the trained teachers on earning their certifications and urging them to apply their new skills to improve classroom instruction and student achievement.</p><p style=\"text-align: left;\">During the certificate presentation ceremony for the first batch of trained teachers, held on Friday in Kaduna, PLANE’s State Team Lead, Mrs. Diana Agabi, explained that the training focused on Foundational Literacy and Numeracy (FLN). The programme utilises digital platforms like WhatsApp to facilitate peer learning, professional interaction, and the sharing of effective classroom practices.</p><p style=\"text-align: left;\">Implemented in four pilot Local Government Areas (LGAs), the programme also enabled teachers to earn credit units recognised by TRCN.</p><p style=\"text-align: left;\">Speaking at the event, TRCN State Coordinator Esther Natsa, represented by Nafisa Abbas, described TRCN’s role as the regulatory authority for the teaching profession in Nigeria. She emphasised the council's dedication to teacher development, enforcement of professional standards, and provision of continuous growth opportunities through structured programmes and accredited training institutions.</p>",
+        "author": "Admin",
+        "date": "2025-09-26T17:11:47.782Z",
+        "thumbnail": "https://res.cloudinary.com/dob19lapx/image/upload/v1758906656/ccy2roqi68thc5phhje4.jpg"
+      }
+    ]
+  }
+}

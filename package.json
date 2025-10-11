@@ -2,6 +2,7 @@
   "name": "better-kaduna-fullstack",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "prisma": {
     "schema": "prisma/schema.prisma"
   },
@@ -10,7 +11,8 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "backup": "node scripts/backup-database.js"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
