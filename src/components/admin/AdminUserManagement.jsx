@@ -197,7 +197,7 @@ const AdminUserManagement = () => {
             </div>
             <button
               type="submit"
-              className="btn-green px-4 py-2 rounded-md hover:shadow-sm transition transform hover:scale-105"
+              className="btn-green px-4 py-3 sm:py-2 rounded-md hover:shadow-sm transition transform active:scale-95 sm:hover:scale-105 w-full sm:w-auto relative z-10"
             >
               {editingUser ? "Update User" : "Create User"}
             </button>
@@ -231,16 +231,19 @@ const AdminUserManagement = () => {
                       {u.email} ({u.role})
                     </p>
                   </div>
-                  <div className="flex items-center space-x-4 sm:space-x-2 border-t sm:border-t-0 pt-4 sm:pt-0">
+                  <div className="flex items-center space-x-3 sm:space-x-2 border-t sm:border-t-0 pt-3 sm:pt-0 relative z-10">
                     <button
-                      onClick={() => setEditingUser(u)}
-                      className="text-green-600 hover:text-green-700 p-2 border sm:border-0 rounded-md sm:rounded-none flex-1 sm:flex-initial text-center"
+                      onClick={() => {
+                        setEditingUser(u);
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }}
+                      className="text-green-600 hover:text-green-700 p-2 border border-green-100 sm:border-0 rounded-md sm:rounded-none flex-1 sm:flex-initial text-center transition-all active:scale-95"
                     >
                       Edit
                     </button>
                     <button
                       onClick={() => handleDeleteUser(u.id)}
-                      className="text-red-600 hover:text-red-800 p-2 border sm:border-0 rounded-md sm:rounded-none flex-1 sm:flex-initial text-center"
+                      className="text-red-600 hover:text-red-800 p-2 border border-red-100 sm:border-0 rounded-md sm:rounded-none flex-1 sm:flex-initial text-center transition-all active:scale-95"
                     >
                       Delete
                     </button>
@@ -253,7 +256,7 @@ const AdminUserManagement = () => {
       </div>
       <button
         onClick={() => router.push("/admin")}
-        className="text-green-600 hover:text-green-700 mt-6 inline-block"
+        className="text-green-600 hover:text-green-700 mt-6 inline-block transition-all active:scale-95"
       >
         Back to Dashboard
       </button>

@@ -934,7 +934,7 @@ const AdminEditor = ({
           </div>
           <button
             onClick={() => router.push("/admin/dashboard")}
-            className="text-kaduna-gray hover:text-kaduna-green flex items-center justify-center py-2 transition transform sm:hover:scale-105 hover:shadow-sm text-sm sm:text-base"
+            className="text-kaduna-gray hover:text-kaduna-green flex items-center justify-center py-2 transition-all active:scale-95 sm:hover:scale-105 hover:shadow-sm text-sm sm:text-base relative z-10"
             aria-label="Back to dashboard"
           >
             <ArrowLeft className="w-5 h-5 mr-2" />
@@ -975,10 +975,10 @@ const AdminEditor = ({
                       type="button"
                       onClick={triggerThumbnailUpload}
                       disabled={isUploadingThumbnail}
-                      className={`px-4 py-2 rounded-md flex items-center ${isUploadingThumbnail
+                      className={`px-4 py-2 rounded-md flex items-center transition-all active:scale-95 ${isUploadingThumbnail
                         ? "bg-gray-400 cursor-not-allowed"
                         : "btn-green hover:bg-kaduna-green-dark"
-                        } transition-colors`}
+                        }`}
                     >
                       {isUploadingThumbnail ? (
                         <>

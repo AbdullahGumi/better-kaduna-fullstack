@@ -234,16 +234,17 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           </div>
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-kaduna-gray hover:text-green-800"
+            className="md:hidden p-2 text-kaduna-gray hover:text-green-800 transition transform active:scale-90 relative z-50"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMenuOpen}
           >
             <svg
-              className="w-6 h-6"
+              className="w-8 h-8"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 strokeLinecap="round"
@@ -299,7 +300,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </Link>
               <Link
                 href="/contact"
-                className="text-kaduna-gray hover:text-green-800"
+                className="text-kaduna-gray hover:text-green-800 transition-all active:scale-95 py-2 border-b border-gray-50 font-medium"
                 onClick={handleMobileNavClick}
               >
                 Contact Us

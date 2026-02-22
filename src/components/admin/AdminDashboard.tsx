@@ -340,11 +340,11 @@ const AdminDashboard = () => {
         {/* Posts Tab */}
         {activeTab === "posts" && (
           <div className="space-y-6">
-            <div className="flex justify-between items-center">
-              <h2 className="text-2xl font-bold text-gray-800">Manage Posts</h2>
+            <div className="flex flex-col xs:flex-row justify-between items-stretch xs:items-center gap-3">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Manage Posts</h2>
               <Link
                 href="/admin/post"
-                className="btn-green px-4 py-2 rounded-md flex items-center"
+                className="btn-green px-4 py-3 sm:py-2 rounded-md flex items-center justify-center transition-all active:scale-95 sm:hover:scale-105"
               >
                 <Plus className="w-4 h-4 mr-2" />
                 Create Post
@@ -388,20 +388,23 @@ const AdminDashboard = () => {
                             {new Date(post.date).toLocaleDateString()}
                           </p>
                         </div>
-                        <div className="flex items-center space-x-4 sm:space-x-2 border-t sm:border-t-0 pt-4 sm:pt-0 justify-end">
+                        <div className="flex items-center space-x-3 sm:space-x-2 border-t sm:border-t-0 pt-3 sm:pt-0 justify-end mt-2 sm:mt-0 relative z-10">
                           <Link
                             href={`/admin/post/${post.id}`}
-                            className="text-blue-600 hover:text-blue-800 p-3 sm:p-2 rounded-md hover:bg-blue-50 flex items-center gap-2"
+                            className="text-blue-600 hover:text-blue-800 p-2 sm:p-2 rounded-md hover:bg-blue-50 flex items-center gap-1 transition-all active:scale-95 border border-blue-100 sm:border-0"
                           >
                             <Edit className="w-5 h-5 sm:w-4 sm:h-4" />
-                            <span className="sm:hidden text-sm uppercase font-bold">Edit</span>
+                            <span className="sm:hidden text-xs uppercase font-bold">Edit</span>
                           </Link>
                           <button
-                            onClick={() => handleDelete("post", post.id)}
-                            className="text-red-600 hover:text-red-800 p-3 sm:p-2 rounded-md hover:bg-red-50 flex items-center gap-2"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleDelete("post", post.id);
+                            }}
+                            className="text-red-600 hover:text-red-800 p-2 sm:p-2 rounded-md hover:bg-red-50 flex items-center gap-1 transition-all active:scale-95 border border-red-100 sm:border-0"
                           >
                             <Trash2 className="w-5 h-5 sm:w-4 sm:h-4" />
-                            <span className="sm:hidden text-sm uppercase font-bold">Delete</span>
+                            <span className="sm:hidden text-xs uppercase font-bold">Delete</span>
                           </button>
                         </div>
                       </div>
@@ -421,13 +424,13 @@ const AdminDashboard = () => {
         {/* Events Tab */}
         {activeTab === "events" && (
           <div className="space-y-6">
-            <div className="flex justify-between items-center">
-              <h2 className="text-2xl font-bold text-gray-800">
+            <div className="flex flex-col xs:flex-row justify-between items-stretch xs:items-center gap-3">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
                 Manage Events
               </h2>
               <Link
                 href="/admin/event"
-                className="btn-green px-4 py-2 rounded-md flex items-center"
+                className="btn-green px-4 py-3 sm:py-2 rounded-md flex items-center justify-center transition-all active:scale-95 sm:hover:scale-105"
               >
                 <Plus className="w-4 h-4 mr-2" />
                 Create Event
@@ -471,20 +474,23 @@ const AdminDashboard = () => {
                             {new Date(event.date).toLocaleDateString()}
                           </p>
                         </div>
-                        <div className="flex items-center space-x-4 sm:space-x-2 border-t sm:border-t-0 pt-4 sm:pt-0 justify-end">
+                        <div className="flex items-center space-x-3 sm:space-x-2 border-t sm:border-t-0 pt-3 sm:pt-0 justify-end mt-2 sm:mt-0 relative z-10">
                           <Link
                             href={`/admin/event/${event.id}`}
-                            className="text-blue-600 hover:text-blue-800 p-3 sm:p-2 rounded-md hover:bg-blue-50 flex items-center gap-2"
+                            className="text-blue-600 hover:text-blue-800 p-2 sm:p-2 rounded-md hover:bg-blue-50 flex items-center gap-1 transition-all active:scale-95 border border-blue-100 sm:border-0"
                           >
                             <Edit className="w-5 h-5 sm:w-4 sm:h-4" />
-                            <span className="sm:hidden text-sm uppercase font-bold">Edit</span>
+                            <span className="sm:hidden text-xs uppercase font-bold">Edit</span>
                           </Link>
                           <button
-                            onClick={() => handleDelete("event", event.id)}
-                            className="text-red-600 hover:text-red-800 p-3 sm:p-2 rounded-md hover:bg-red-50 flex items-center gap-2"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleDelete("event", event.id);
+                            }}
+                            className="text-red-600 hover:text-red-800 p-2 sm:p-2 rounded-md hover:bg-red-50 flex items-center gap-1 transition-all active:scale-95 border border-red-100 sm:border-0"
                           >
                             <Trash2 className="w-5 h-5 sm:w-4 sm:h-4" />
-                            <span className="sm:hidden text-sm uppercase font-bold">Delete</span>
+                            <span className="sm:hidden text-xs uppercase font-bold">Delete</span>
                           </button>
                         </div>
                       </div>
@@ -504,17 +510,16 @@ const AdminDashboard = () => {
         {/* MDAs Tab */}
         {activeTab === "mdas" && (
           <div className="space-y-6">
-            <div className="flex justify-between items-center">
-              <h2 className="text-2xl font-bold text-gray-800">Manage MDAs</h2>
+            <div className="flex flex-col xs:flex-row justify-between items-stretch xs:items-center gap-3">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Manage MDAs</h2>
               <Link
                 href="/admin/mda"
-                className="btn-green px-4 py-2 rounded-md flex items-center"
+                className="btn-green px-4 py-3 sm:py-2 rounded-md flex items-center justify-center transition-all active:scale-95 sm:hover:scale-105"
               >
                 <Plus className="w-4 h-4 mr-2" />
                 Create MDA
               </Link>
             </div>
-
             {/* Search */}
             <div className="bg-white p-4 rounded-lg shadow-sm border">
               <div className="flex items-center space-x-4">
@@ -552,20 +557,23 @@ const AdminDashboard = () => {
                             {new Date(mda.date).toLocaleDateString()}
                           </p>
                         </div>
-                        <div className="flex items-center space-x-4 sm:space-x-2 border-t sm:border-t-0 pt-4 sm:pt-0 justify-end">
+                        <div className="flex items-center space-x-3 sm:space-x-2 border-t sm:border-t-0 pt-3 sm:pt-0 justify-end mt-2 sm:mt-0 relative z-10">
                           <Link
                             href={`/admin/mda/${mda.id}`}
-                            className="text-blue-600 hover:text-blue-800 p-3 sm:p-2 rounded-md hover:bg-blue-50 flex items-center gap-2"
+                            className="text-blue-600 hover:text-blue-800 p-2 sm:p-2 rounded-md hover:bg-blue-50 flex items-center gap-1 transition-all active:scale-95 border border-blue-100 sm:border-0"
                           >
                             <Edit className="w-5 h-5 sm:w-4 sm:h-4" />
-                            <span className="sm:hidden text-sm uppercase font-bold">Edit</span>
+                            <span className="sm:hidden text-xs uppercase font-bold">Edit</span>
                           </Link>
                           <button
-                            onClick={() => handleDelete("mda", mda.id)}
-                            className="text-red-600 hover:text-red-800 p-3 sm:p-2 rounded-md hover:bg-red-50 flex items-center gap-2"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleDelete("mda", mda.id);
+                            }}
+                            className="text-red-600 hover:text-red-800 p-2 sm:p-2 rounded-md hover:bg-red-50 flex items-center gap-1 transition-all active:scale-95 border border-red-100 sm:border-0"
                           >
                             <Trash2 className="w-5 h-5 sm:w-4 sm:h-4" />
-                            <span className="sm:hidden text-sm uppercase font-bold">Delete</span>
+                            <span className="sm:hidden text-xs uppercase font-bold">Delete</span>
                           </button>
                         </div>
                       </div>
@@ -589,7 +597,7 @@ const AdminDashboard = () => {
               <h2 className="text-2xl font-bold text-gray-800">Manage Users</h2>
               <Link
                 href="/admin/users"
-                className="btn-green px-4 py-2 rounded-md flex items-center"
+                className="btn-green px-4 py-3 sm:py-2 rounded-md flex items-center justify-center transition-all active:scale-95 sm:hover:scale-105"
               >
                 <Settings className="w-4 h-4 mr-2" />
                 User Management
