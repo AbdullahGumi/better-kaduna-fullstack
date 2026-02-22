@@ -123,9 +123,8 @@ export default function EventDetailClient({
     return comments.map((c) => (
       <div
         key={c.id}
-        className={`border-b border-gray-200 pb-4 flex justify-between items-start ${
-          depth > 0 ? "ml-8" : ""
-        }`}
+        className={`border-b border-gray-200 pb-4 flex justify-between items-start ${depth > 0 ? "ml-4 sm:ml-8" : ""
+          }`}
       >
         <div>
           <p className="text-kaduna-gray font-medium">{c.userName}</p>
@@ -201,9 +200,9 @@ export default function EventDetailClient({
   return (
     <Layout>
       <div className="container mx-auto px-4 py-8 font-sans">
-        <div className="relative bg-gradient-to-r from-kaduna-green to-kaduna-green-dark text-white py-16 rounded-lg mb-8">
+        <div className="relative bg-gradient-to-r from-kaduna-green to-kaduna-green-dark text-white py-10 sm:py-16 rounded-lg mb-8">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl font-bold font-lora">{event.title}</h1>
+            <h1 className="text-2xl sm:text-4xl font-bold font-lora leading-tight">{event.title}</h1>
             <p className="mt-4 text-lg text-gray-400">
               {new Date(event.date).toLocaleString()} | {event.location}
             </p>
@@ -214,9 +213,8 @@ export default function EventDetailClient({
           dangerouslySetInnerHTML={{ __html: event.description }}
         />
         <SocialShareButtons
-          url={`${
-            typeof window !== "undefined" ? window.location.origin : ""
-          }/events/${event.id}`}
+          url={`${typeof window !== "undefined" ? window.location.origin : ""
+            }/events/${event.id}`}
           title={event.title}
           label="Share this event:"
         />

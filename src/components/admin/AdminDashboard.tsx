@@ -140,14 +140,14 @@ const AdminDashboard = () => {
       {/* Header */}
       <header className="bg-white shadow-sm border-b">
         <div className="container mx-auto px-4 py-4">
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col sm:justify-between sm:items-center sm:flex-row gap-2">
             <div className="flex items-center space-x-4">
-              <BarChart3 className="w-8 h-8 text-kaduna-green" />
+              <BarChart3 className="w-8 h-8 text-kaduna-green flex-shrink-0" />
               <div>
-                <h1 className="text-2xl font-bold text-gray-800">
+                <h1 className="text-xl sm:text-2xl font-bold text-gray-800">
                   Admin Dashboard
                 </h1>
-                <p className="text-sm text-gray-600">
+                <p className="text-xs sm:text-sm text-gray-600">
                   Welcome back, {user.name}
                 </p>
               </div>
@@ -158,8 +158,8 @@ const AdminDashboard = () => {
 
       <div className="container mx-auto px-4 py-8">
         {/* Navigation Tabs */}
-        <div className="mb-8">
-          <nav className="flex space-x-1 bg-white p-1 rounded-lg shadow-sm">
+        <div className="mb-8 overflow-x-auto scrollbar-hide">
+          <nav className="flex space-x-1 bg-white p-1 rounded-lg shadow-sm min-w-max sm:min-w-0">
             {[
               { id: "overview", label: "Overview", icon: Activity },
               { id: "posts", label: "Posts", icon: FileText },
@@ -170,11 +170,10 @@ const AdminDashboard = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                  activeTab === tab.id
-                    ? "bg-green-900 text-white"
-                    : "text-gray-600 hover:text-gray-800 hover:bg-gray-100"
-                }`}
+                className={`flex items-center px-4 py-3 sm:py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${activeTab === tab.id
+                  ? "bg-green-900 text-white"
+                  : "text-gray-600 hover:text-gray-800 hover:bg-gray-100"
+                  }`}
               >
                 <tab.icon className="w-4 h-4 mr-2" />
                 {tab.label}
@@ -377,30 +376,32 @@ const AdminDashboard = () => {
                 <div className="divide-y divide-gray-200">
                   {filteredPosts.map((post) => (
                     <div key={post.id} className="p-6 hover:bg-gray-50">
-                      <div className="flex items-center justify-between">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div className="flex-1">
-                          <h3 className="text-lg font-medium text-gray-900">
+                          <h3 className="text-lg font-medium text-gray-900 leading-tight">
                             {post.title}
                           </h3>
-                          <p className="text-sm text-gray-600">
+                          <p className="text-sm text-gray-600 mt-1">
                             By {post.author}
                           </p>
-                          <p className="text-sm text-gray-500">
+                          <p className="text-xs text-gray-500">
                             {new Date(post.date).toLocaleDateString()}
                           </p>
                         </div>
-                        <div className="flex items-center space-x-2">
+                        <div className="flex items-center space-x-4 sm:space-x-2 border-t sm:border-t-0 pt-4 sm:pt-0 justify-end">
                           <Link
                             href={`/admin/post/${post.id}`}
-                            className="text-blue-600 hover:text-blue-800 p-2 rounded-md hover:bg-blue-50"
+                            className="text-blue-600 hover:text-blue-800 p-3 sm:p-2 rounded-md hover:bg-blue-50 flex items-center gap-2"
                           >
-                            <Edit className="w-4 h-4" />
+                            <Edit className="w-5 h-5 sm:w-4 sm:h-4" />
+                            <span className="sm:hidden text-sm uppercase font-bold">Edit</span>
                           </Link>
                           <button
                             onClick={() => handleDelete("post", post.id)}
-                            className="text-red-600 hover:text-red-800 p-2 rounded-md hover:bg-red-50"
+                            className="text-red-600 hover:text-red-800 p-3 sm:p-2 rounded-md hover:bg-red-50 flex items-center gap-2"
                           >
-                            <Trash2 className="w-4 h-4" />
+                            <Trash2 className="w-5 h-5 sm:w-4 sm:h-4" />
+                            <span className="sm:hidden text-sm uppercase font-bold">Delete</span>
                           </button>
                         </div>
                       </div>
@@ -458,30 +459,32 @@ const AdminDashboard = () => {
                 <div className="divide-y divide-gray-200">
                   {filteredEvents.map((event) => (
                     <div key={event.id} className="p-6 hover:bg-gray-50">
-                      <div className="flex items-center justify-between">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div className="flex-1">
-                          <h3 className="text-lg font-medium text-gray-900">
+                          <h3 className="text-lg font-medium text-gray-900 leading-tight">
                             {event.title}
                           </h3>
-                          <p className="text-sm text-gray-600">
+                          <p className="text-sm text-gray-600 mt-1">
                             {event.location}
                           </p>
-                          <p className="text-sm text-gray-500">
+                          <p className="text-xs text-gray-500">
                             {new Date(event.date).toLocaleDateString()}
                           </p>
                         </div>
-                        <div className="flex items-center space-x-2">
+                        <div className="flex items-center space-x-4 sm:space-x-2 border-t sm:border-t-0 pt-4 sm:pt-0 justify-end">
                           <Link
                             href={`/admin/event/${event.id}`}
-                            className="text-blue-600 hover:text-blue-800 p-2 rounded-md hover:bg-blue-50"
+                            className="text-blue-600 hover:text-blue-800 p-3 sm:p-2 rounded-md hover:bg-blue-50 flex items-center gap-2"
                           >
-                            <Edit className="w-4 h-4" />
+                            <Edit className="w-5 h-5 sm:w-4 sm:h-4" />
+                            <span className="sm:hidden text-sm uppercase font-bold">Edit</span>
                           </Link>
                           <button
                             onClick={() => handleDelete("event", event.id)}
-                            className="text-red-600 hover:text-red-800 p-2 rounded-md hover:bg-red-50"
+                            className="text-red-600 hover:text-red-800 p-3 sm:p-2 rounded-md hover:bg-red-50 flex items-center gap-2"
                           >
-                            <Trash2 className="w-4 h-4" />
+                            <Trash2 className="w-5 h-5 sm:w-4 sm:h-4" />
+                            <span className="sm:hidden text-sm uppercase font-bold">Delete</span>
                           </button>
                         </div>
                       </div>
@@ -537,30 +540,32 @@ const AdminDashboard = () => {
                 <div className="divide-y divide-gray-200">
                   {filteredMdas.map((mda) => (
                     <div key={mda.id} className="p-6 hover:bg-gray-50">
-                      <div className="flex items-center justify-between">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div className="flex-1">
-                          <h3 className="text-lg font-medium text-gray-900">
+                          <h3 className="text-lg font-medium text-gray-900 leading-tight">
                             {mda.name}
                           </h3>
-                          <p className="text-sm text-gray-600">
+                          <p className="text-sm text-gray-600 mt-1">
                             By {mda.author}
                           </p>
-                          <p className="text-sm text-gray-500">
+                          <p className="text-xs text-gray-500">
                             {new Date(mda.date).toLocaleDateString()}
                           </p>
                         </div>
-                        <div className="flex items-center space-x-2">
+                        <div className="flex items-center space-x-4 sm:space-x-2 border-t sm:border-t-0 pt-4 sm:pt-0 justify-end">
                           <Link
                             href={`/admin/mda/${mda.id}`}
-                            className="text-blue-600 hover:text-blue-800 p-2 rounded-md hover:bg-blue-50"
+                            className="text-blue-600 hover:text-blue-800 p-3 sm:p-2 rounded-md hover:bg-blue-50 flex items-center gap-2"
                           >
-                            <Edit className="w-4 h-4" />
+                            <Edit className="w-5 h-5 sm:w-4 sm:h-4" />
+                            <span className="sm:hidden text-sm uppercase font-bold">Edit</span>
                           </Link>
                           <button
                             onClick={() => handleDelete("mda", mda.id)}
-                            className="text-red-600 hover:text-red-800 p-2 rounded-md hover:bg-red-50"
+                            className="text-red-600 hover:text-red-800 p-3 sm:p-2 rounded-md hover:bg-red-50 flex items-center gap-2"
                           >
-                            <Trash2 className="w-4 h-4" />
+                            <Trash2 className="w-5 h-5 sm:w-4 sm:h-4" />
+                            <span className="sm:hidden text-sm uppercase font-bold">Delete</span>
                           </button>
                         </div>
                       </div>
@@ -663,11 +668,10 @@ const AdminDashboard = () => {
                       </div>
                       <div className="flex items-center space-x-2">
                         <span
-                          className={`px-2 py-1 text-xs rounded-full ${
-                            user.role === "admin"
-                              ? "bg-purple-100 text-purple-800"
-                              : "bg-green-100 text-green-800"
-                          }`}
+                          className={`px-2 py-1 text-xs rounded-full ${user.role === "admin"
+                            ? "bg-purple-100 text-purple-800"
+                            : "bg-green-100 text-green-800"
+                            }`}
                         >
                           {user.role}
                         </span>

@@ -90,12 +90,12 @@ const Color = Extension.create({
     return {
       setColor:
         (color) =>
-        ({ chain }) =>
-          chain().setMark("textStyle", { color }).run(),
+          ({ chain }) =>
+            chain().setMark("textStyle", { color }).run(),
       unsetColor:
         () =>
-        ({ chain }) =>
-          chain().setMark("textStyle", { color: null }).run(),
+          ({ chain }) =>
+            chain().setMark("textStyle", { color: null }).run(),
     };
   },
 });
@@ -127,12 +127,12 @@ const FontSize = Extension.create({
     return {
       setFontSize:
         (fontSize) =>
-        ({ chain }) =>
-          chain().setMark("textStyle", { fontSize }).run(),
+          ({ chain }) =>
+            chain().setMark("textStyle", { fontSize }).run(),
       unsetFontSize:
         () =>
-        ({ chain }) =>
-          chain().setMark("textStyle", { fontSize: null }).run(),
+          ({ chain }) =>
+            chain().setMark("textStyle", { fontSize: null }).run(),
     };
   },
 });
@@ -843,6 +843,7 @@ const AdminEditor = ({
           }
           .preview-content {
             overflow: hidden;
+            width: 100%;
           }
           .preview-content img {
             max-width: 100% !important;
@@ -873,6 +874,20 @@ const AdminEditor = ({
             overflow-y: auto;
             padding: 1rem;
           }
+          .toolbar-scroll {
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+          }
+          .toolbar-scroll::-webkit-scrollbar {
+            display: none;
+          }
+          @media (max-width: 640px) {
+            .btn-responsive {
+              width: 100%;
+              justify-content: center;
+            }
+          }
         `}
       </style>
       <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
@@ -884,12 +899,12 @@ const AdminEditor = ({
           {error}
         </div>
       )}
-      <div className="bg-white p-6 rounded-lg shadow-md">
-        <div className="flex justify-between items-center mb-6">
-          <div className="flex space-x-4">
+      <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md">
+        <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-6">
+          <div className="flex flex-col sm:flex-row gap-4">
             <button
               onClick={() => setIsPreview(!isPreview)}
-              className="btn-green px-4 py-2 rounded-md flex items-center transition transform hover:scale-105 hover:shadow-sm"
+              className="btn-green px-4 py-3 sm:py-2 rounded-md flex items-center justify-center transition transform active:scale-95 sm:hover:scale-105 hover:shadow-sm btn-responsive"
               aria-label={
                 isPreview ? "Switch to edit mode" : "Switch to preview mode"
               }
@@ -899,9 +914,8 @@ const AdminEditor = ({
             </button>
             <button
               onClick={handleSubmit}
-              className={`btn-green px-4 py-2 rounded-md flex items-center transition transform hover:scale-105 hover:shadow-sm ${
-                isSaving ? "opacity-50 cursor-not-allowed" : ""
-              }`}
+              className={`btn-green px-4 py-3 sm:py-2 rounded-md flex items-center justify-center transition transform active:scale-95 sm:hover:scale-105 hover:shadow-sm btn-responsive ${isSaving ? "opacity-50 cursor-not-allowed" : ""
+                }`}
               disabled={isSaving}
               aria-label={`Save ${type}`}
             >
@@ -911,7 +925,7 @@ const AdminEditor = ({
           </div>
           <button
             onClick={() => router.push("/admin/dashboard")}
-            className="text-kaduna-gray hover:text-kaduna-green flex items-center transition transform hover:scale-105 hover:shadow-sm"
+            className="text-kaduna-gray hover:text-kaduna-green flex items-center justify-center py-2 transition transform sm:hover:scale-105 hover:shadow-sm"
             aria-label="Back to dashboard"
           >
             <ArrowLeft className="w-5 h-5 mr-2" />
@@ -952,11 +966,10 @@ const AdminEditor = ({
                       type="button"
                       onClick={triggerThumbnailUpload}
                       disabled={isUploadingThumbnail}
-                      className={`px-4 py-2 rounded-md flex items-center ${
-                        isUploadingThumbnail
+                      className={`px-4 py-2 rounded-md flex items-center ${isUploadingThumbnail
                           ? "bg-gray-400 cursor-not-allowed"
                           : "btn-green hover:bg-kaduna-green-dark"
-                      } transition-colors`}
+                        } transition-colors`}
                     >
                       {isUploadingThumbnail ? (
                         <>
@@ -987,11 +1000,28 @@ const AdminEditor = ({
                         Content
                       </label>
                       <div
-                        className={`border border-gray-300 rounded-md bg-white shadow-sm ${
-                          isFullScreen ? "editor-fullscreen" : ""
-                        }`}
+                        className={`border border-gray-300 rounded-md bg-white shadow-sm flex flex-col ${isFullScreen ? "editor-fullscreen" : ""
+                          }`}
                       >
-                        <div className="toolbar flex flex-wrap gap-2 p-2 bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200 sticky top-0 w-full z-50">
+                        <div className="toolbar flex flex-wrap sm:flex-nowrap gap-2 p-2 bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200 sticky top-0 w-full z-50 toolbar-scroll">
+                          {isFullScreen && (
+                            <div className="flex gap-2 mr-2 border-r border-gray-300 pr-2">
+                              <button
+                                onClick={handleSubmit}
+                                className="p-2 rounded bg-kaduna-green text-white hover:bg-kaduna-green-dark transition active:scale-95"
+                                title={`Save ${titleLabel}`}
+                              >
+                                <Save className="w-5 h-5" />
+                              </button>
+                              <button
+                                onClick={() => setIsPreview(true)}
+                                className="p-2 rounded bg-white text-kaduna-green border border-kaduna-green hover:bg-gray-50 transition active:scale-95"
+                                title="Preview"
+                              >
+                                <Eye className="w-5 h-5" />
+                              </button>
+                            </div>
+                          )}
                           {toolbarGroups.map((group, index) => (
                             <div key={index} className="flex gap-1">
                               {group.map((item) =>
@@ -1007,13 +1037,12 @@ const AdminEditor = ({
                                     key={item.label}
                                     onClick={item.action}
                                     disabled={item.disabled}
-                                    className={`p-2 rounded ${
-                                      item.active
+                                    className={`p-2 rounded ${item.active
                                         ? "bg-kaduna-green text-white"
                                         : item.disabled
-                                        ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                                        : "bg-white hover:bg-gray-100 hover:shadow-sm"
-                                    } transition duration-200`}
+                                          ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                                          : "bg-white hover:bg-gray-100 hover:shadow-sm"
+                                      } transition duration-200`}
                                     title={item.label}
                                     aria-label={item.label}
                                   >

@@ -155,7 +155,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <img
               src="https://res.cloudinary.com/dos3s9rhz/image/upload/v1771756533/logo_pvnwq1_jbf4hv.png"
               alt="Better Kaduna Logo"
-              className="h-24 max-w-full"
+              className="h-12 sm:h-24 max-w-full transition-all duration-300"
             />
           </Link>
           <div className="hidden md:flex items-center space-x-6">
@@ -260,11 +260,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         </div>
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden bg-white shadow-md">
-            <nav className="flex flex-col p-4 space-y-2" role="navigation">
+          <div className="md:hidden bg-white shadow-lg border-t border-gray-100 animate-fade-in">
+            <nav className="flex flex-col p-6 space-y-4" role="navigation">
               <Link
                 href="/"
-                className="text-kaduna-gray hover:text-green-800 transition-colors"
+                className="text-kaduna-gray hover:text-green-800 transition-colors py-2 border-b border-gray-50 font-medium"
                 onClick={handleMobileNavClick}
               >
                 Home
@@ -292,7 +292,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </Link>
               <Link
                 href="/mdas"
-                className="text-kaduna-gray hover:text-green-800"
+                className="text-kaduna-gray hover:text-green-800 py-2 border-b border-gray-50 font-medium"
                 onClick={handleMobileNavClick}
               >
                 Inside Kaduna MDAs
@@ -349,12 +349,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         )}
       </header>
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-6 md:py-8 flex flex-col md:flex-row flex-grow">
-        <div className={isHomePage ? "w-full md:w-2/3 pr-0 md:pr-8" : "w-full"}>
+      <main className="container mx-auto px-4 py-4 md:py-8 flex flex-col md:flex-row flex-grow">
+        <div className={isHomePage ? "w-full md:w-2/3 md:pr-8" : "w-full"}>
           {children}
         </div>
         {isHomePage && (
-          <aside className="w-full md:w-1/3 mt-8 md:mt-0">
+          <aside className="w-full md:w-1/3 mt-8 md:mt-0 border-t md:border-t-0 pt-8 md:pt-0">
             <div className="sticky top-28">
               <EventList />
             </div>

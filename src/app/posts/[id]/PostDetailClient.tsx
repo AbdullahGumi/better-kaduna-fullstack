@@ -119,9 +119,8 @@ export default function PostDetailClient({
     return comments.map((c) => (
       <div
         key={c.id}
-        className={`border-b border-gray-200 pb-4 flex justify-between items-start ${
-          depth > 0 ? "ml-8" : ""
-        }`}
+        className={`border-b border-gray-200 pb-4 flex justify-between items-start ${depth > 0 ? "ml-4 sm:ml-8" : ""
+          }`}
       >
         <div>
           <p className="text-kaduna-gray font-medium">{c.userName}</p>
@@ -378,9 +377,9 @@ export default function PostDetailClient({
             }
           `}
         </style>
-        <div className="relative bg-gradient-to-r from-kaduna-green to-kaduna-green-dark text-white py-16 rounded-lg mb-8">
+        <div className="relative bg-gradient-to-r from-kaduna-green to-kaduna-green-dark text-white py-10 sm:py-16 rounded-lg mb-8">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl font-bold font-lora">{post.title}</h1>
+            <h1 className="text-2xl sm:text-4xl font-bold font-lora leading-tight">{post.title}</h1>
             <p className="mt-4 text-lg text-gray-400">
               By {post.author} | {new Date(post.date).toLocaleString()}
             </p>
@@ -408,9 +407,8 @@ export default function PostDetailClient({
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
         <SocialShareButtons
-          url={`${
-            typeof window !== "undefined" ? window.location.origin : ""
-          }/posts/${post.id}`}
+          url={`${typeof window !== "undefined" ? window.location.origin : ""
+            }/posts/${post.id}`}
           title={post.title}
           label="Share this post:"
         />

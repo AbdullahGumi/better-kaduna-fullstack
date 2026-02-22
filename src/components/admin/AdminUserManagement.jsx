@@ -112,8 +112,8 @@ const AdminUserManagement = () => {
 
   return (
     <div className="container mx-auto px-4 py-8 font-sans">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-4xl font-bold text-gray-800">Manage Users</h1>
+      <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-6">
+        <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 text-center sm:text-left">Manage Users</h1>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
@@ -223,7 +223,7 @@ const AdminUserManagement = () => {
               {users.map((u) => (
                 <div
                   key={u.id}
-                  className="flex justify-between items-center border-b py-2"
+                  className="flex flex-col sm:flex-row justify-between sm:items-center border-b py-4 sm:py-2 gap-4"
                 >
                   <div>
                     <p className="text-gray-800 font-medium">{u.name}</p>
@@ -231,16 +231,16 @@ const AdminUserManagement = () => {
                       {u.email} ({u.role})
                     </p>
                   </div>
-                  <div className="space-x-2">
+                  <div className="flex items-center space-x-4 sm:space-x-2 border-t sm:border-t-0 pt-4 sm:pt-0">
                     <button
                       onClick={() => setEditingUser(u)}
-                      className="text-green-600 hover:text-green-700"
+                      className="text-green-600 hover:text-green-700 p-2 border sm:border-0 rounded-md sm:rounded-none flex-1 sm:flex-initial text-center"
                     >
                       Edit
                     </button>
                     <button
                       onClick={() => handleDeleteUser(u.id)}
-                      className="text-red-600 hover:text-red-800"
+                      className="text-red-600 hover:text-red-800 p-2 border sm:border-0 rounded-md sm:rounded-none flex-1 sm:flex-initial text-center"
                     >
                       Delete
                     </button>
