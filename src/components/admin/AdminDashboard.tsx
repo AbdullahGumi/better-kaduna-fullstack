@@ -139,7 +139,7 @@ const AdminDashboard = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white shadow-sm border-b">
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-2 sm:px-4 py-4">
           <div className="flex flex-col sm:justify-between sm:items-center sm:flex-row gap-2">
             <div className="flex items-center space-x-4">
               <BarChart3 className="w-8 h-8 text-kaduna-green flex-shrink-0" />
@@ -156,7 +156,7 @@ const AdminDashboard = () => {
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-2 sm:px-4 py-8">
         {/* Navigation Tabs */}
         <div className="mb-8 overflow-x-auto scrollbar-hide">
           <nav className="flex space-x-1 bg-white p-1 rounded-lg shadow-sm min-w-max sm:min-w-0">
@@ -186,7 +186,7 @@ const AdminDashboard = () => {
         {activeTab === "overview" && (
           <div className="space-y-8">
             {/* Statistics Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               <div className="bg-white p-6 rounded-lg shadow-sm border">
                 <div className="flex items-center justify-between">
                   <div>
@@ -375,8 +375,8 @@ const AdminDashboard = () => {
               ) : (
                 <div className="divide-y divide-gray-200">
                   {filteredPosts.map((post) => (
-                    <div key={post.id} className="p-6 hover:bg-gray-50">
-                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div key={post.id} className="p-4 sm:p-6 hover:bg-gray-50">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
                         <div className="flex-1">
                           <h3 className="text-lg font-medium text-gray-900 leading-tight">
                             {post.title}
@@ -458,8 +458,8 @@ const AdminDashboard = () => {
               ) : (
                 <div className="divide-y divide-gray-200">
                   {filteredEvents.map((event) => (
-                    <div key={event.id} className="p-6 hover:bg-gray-50">
-                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div key={event.id} className="p-4 sm:p-6 hover:bg-gray-50">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
                         <div className="flex-1">
                           <h3 className="text-lg font-medium text-gray-900 leading-tight">
                             {event.title}
@@ -539,8 +539,8 @@ const AdminDashboard = () => {
               ) : (
                 <div className="divide-y divide-gray-200">
                   {filteredMdas.map((mda) => (
-                    <div key={mda.id} className="p-6 hover:bg-gray-50">
-                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div key={mda.id} className="p-4 sm:p-6 hover:bg-gray-50">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
                         <div className="flex-1">
                           <h3 className="text-lg font-medium text-gray-900 leading-tight">
                             {mda.name}

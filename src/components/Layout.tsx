@@ -150,7 +150,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <div className="min-h-screen bg-white font-serif flex flex-col">
       {/* Navbar */}
       <header className="bg-white shadow-md sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div className="container mx-auto px-2 sm:px-4 py-4 flex justify-between items-center">
           <Link href="/" aria-label="Better Kaduna Home">
             <img
               src="https://res.cloudinary.com/dos3s9rhz/image/upload/v1771756533/logo_pvnwq1_jbf4hv.png"
@@ -349,7 +349,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         )}
       </header>
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-4 md:py-8 flex flex-col md:flex-row flex-grow">
+      <main className="container mx-auto px-2 sm:px-4 py-4 md:py-8 flex flex-col md:flex-row flex-grow">
         <div className={isHomePage ? "w-full md:w-2/3 md:pr-8" : "w-full"}>
           {children}
         </div>
