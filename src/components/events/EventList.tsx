@@ -3,6 +3,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import apiService from "../../services/apiService";
 
 interface Event {
@@ -16,7 +17,9 @@ interface Event {
 const EventList = () => {
   const [events, setEvents] = useState<Event[]>([]);
   const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
   const [hasMore, setHasMore] = useState(true);
   const loaderRef = useRef(null);
 
@@ -92,92 +95,119 @@ const EventList = () => {
         <h2 className="text-2xl font-bold text-kaduna-gray">Upcoming Events</h2>
       </div>
 
-      {/* Mobile: Vertical column layout for events */}
-      <div className="md:hidden">
-        <div className="p-4 border-b border-gray-100">
-          <h2 className="text-xl font-bold text-kaduna-gray">
-            Upcoming Events
-          </h2>
-        </div>
-
-        <div className="p-4">
-          <div className="space-y-3">
-            {events.slice(0, 3).map((event) => (
-              <div
-                key={event.id}
-                className="bg-gray-50 rounded-lg p-4 border border-gray-200 hover:border-kaduna-green transition-colors"
-              >
-                <h3 className="text-base font-semibold text-kaduna-gray mb-2 line-clamp-2">
-                  <Link
-                    href={`/events/${event.id}`}
-                    className="text-kaduna-green hover:text-kaduna-green-dark cursor-pointer transition-colors"
-                  >
-                    {event.title}
-                  </Link>
-                </h3>
-                <div className="flex items-center text-xs text-gray-500 mb-2">
-                  <span className="mr-3">
-                    📅 {new Date(event.date).toLocaleDateString()}
-                  </span>
-                  <span>📍 {event.location}</span>
-                </div>
-                <p className="text-sm text-gray-600 line-clamp-2">
-                  {getPreviewText(event.description, 100)}
-                </p>
+      {isLoading && events.length === 0 ? (
+        <div className="animate-pulse p-4">
+          {/* Mobile Skeleton */}
+          <div className="md:hidden space-y-3">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                <div className="h-5 bg-gray-200 rounded w-3/4 mb-2"></div>
+                <div className="h-4 bg-gray-200 rounded w-1/2 mb-2"></div>
+                <div className="h-10 bg-gray-200 rounded w-full"></div>
               </div>
             ))}
           </div>
-          {events.length > 3 && (
-            <div className="text-center mt-4">
-              <Link
-                href="#"
-                className="text-kaduna-green hover:text-kaduna-green-dark font-semibold text-sm cursor-pointer"
-              >
-                View All Events →
-              </Link>
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Desktop: Full event list */}
-      <div className="hidden md:block p-4">
-        <div className="space-y-4">
-          {events.map((event) => (
-            <div
-              key={event.id}
-              className="border-b border-gray-200 pb-4 last:border-b-0 hover:bg-gray-50 p-3 rounded-lg transition-colors"
-            >
-              <h3 className="text-lg font-semibold text-kaduna-gray mb-2">
-                <Link
-                  href={`/events/${event.id}`}
-                  className="text-kaduna-green hover:text-kaduna-green-dark cursor-pointer transition-colors"
-                >
-                  {event.title}
-                </Link>
-              </h3>
-              <div className="flex items-center text-sm text-gray-500 mb-2">
-                <span className="mr-4">
-                  📅 {new Date(event.date).toLocaleDateString()}
-                </span>
-                <span>📍 {event.location}</span>
+          {/* Desktop Skeleton */}
+          <div className="hidden md:block space-y-4">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="border-b border-gray-200 pb-4 mb-4">
+                <div className="h-6 bg-gray-200 rounded w-2/3 mb-2"></div>
+                <div className="h-4 bg-gray-200 rounded w-1/3 mb-2"></div>
+                <div className="h-12 bg-gray-200 rounded w-full"></div>
               </div>
-              <p className="text-sm text-gray-600 line-clamp-2">
-                {getPreviewText(event.description, 150)}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-        <div ref={loaderRef} className="h-10"></div>
-        {isLoading && (
-          <p className="text-center text-kaduna-gray text-sm">Loading...</p>
-        )}
-        {!hasMore && !isLoading && (
-          <p className="text-center text-kaduna-gray text-sm">
-            No more events to load.
-          </p>
-        )}
-      </div>
+      ) : (
+        <>
+          {/* Mobile: Vertical column layout for events */}
+          <div className="md:hidden">
+            <div className="p-4 border-b border-gray-100">
+              <h2 className="text-xl font-bold text-kaduna-gray">
+                Upcoming Events
+              </h2>
+            </div>
+
+            <div className="p-4">
+              <div className="space-y-3">
+                {(isHomePage ? events.slice(0, 3) : events).map((event) => (
+                  <div
+                    key={event.id}
+                    className="bg-gray-50 rounded-lg p-4 border border-gray-200 hover:border-kaduna-green transition-colors"
+                  >
+                    <h3 className="text-base font-semibold text-kaduna-gray mb-2 line-clamp-2">
+                      <Link
+                        href={`/events/${event.id}`}
+                        className="text-kaduna-green hover:text-kaduna-green-dark cursor-pointer transition-colors"
+                      >
+                        {event.title}
+                      </Link>
+                    </h3>
+                    <div className="flex items-center text-xs text-gray-500 mb-2">
+                      <span className="mr-3">
+                        📅 {new Date(event.date).toLocaleDateString()}
+                      </span>
+                      <span>📍 {event.location}</span>
+                    </div>
+                    <p className="text-sm text-gray-600 line-clamp-2">
+                      {getPreviewText(event.description, 100)}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              {isHomePage && events.length > 3 && (
+                <div className="text-center mt-4">
+                  <Link
+                    href="/events"
+                    className="text-kaduna-green hover:text-kaduna-green-dark font-semibold text-sm cursor-pointer"
+                  >
+                    View All Events →
+                  </Link>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Desktop: Full event list */}
+          <div className="hidden md:block p-4">
+            <div className="space-y-4">
+              {events.map((event) => (
+                <div
+                  key={event.id}
+                  className="border-b border-gray-200 pb-4 last:border-b-0 hover:bg-gray-50 p-3 rounded-lg transition-colors"
+                >
+                  <h3 className="text-lg font-semibold text-kaduna-gray mb-2">
+                    <Link
+                      href={`/events/${event.id}`}
+                      className="text-kaduna-green hover:text-kaduna-green-dark cursor-pointer transition-colors"
+                    >
+                      {event.title}
+                    </Link>
+                  </h3>
+                  <div className="flex items-center text-sm text-gray-500 mb-2">
+                    <span className="mr-4">
+                      📅 {new Date(event.date).toLocaleDateString()}
+                    </span>
+                    <span>📍 {event.location}</span>
+                  </div>
+                  <p className="text-sm text-gray-600 line-clamp-2">
+                    {getPreviewText(event.description, 150)}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <div ref={loaderRef} className="h-10"></div>
+            {isLoading && (
+              <p className="text-center text-kaduna-gray text-sm">Loading...</p>
+            )}
+            {!hasMore && !isLoading && (
+              <p className="text-center text-kaduna-gray text-sm">
+                No more events to load.
+              </p>
+            )}
+          </div>
+        </>
+      )}
     </div>
   );
 };

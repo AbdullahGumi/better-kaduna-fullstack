@@ -3,6 +3,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import apiService from "../../services/apiService";
 
 interface Post {
@@ -17,7 +18,9 @@ interface Post {
 const PostList = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
   const [hasMore, setHasMore] = useState(true);
   const loaderRef = useRef(null);
 
@@ -116,185 +119,221 @@ const PostList = () => {
         </p>
       </div>
 
-      {/* Mobile: Vertical column layout for posts */}
-      <div className="block md:hidden mb-6">
-        <h2 className="text-xl font-bold text-kaduna-gray mb-4 px-4">
-          Latest Stories
-        </h2>
-        <div className="space-y-4 px-4">
-          {posts.slice(0, 3).map((post) => (
-            <div
-              key={post.id}
-              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300"
-            >
-              {post.thumbnail && (
-                <div
-                  className="h-32 bg-gray-200"
-                  style={{
-                    backgroundImage: `url(${post.thumbnail})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
-                ></div>
-              )}
-              <div className="p-4">
-                <div className="flex items-center text-xs text-gray-500 mb-2">
-                  <span>{new Date(post.date).toLocaleDateString()}</span>
+      {isLoading && posts.length === 0 ? (
+        <div className="animate-pulse">
+          {/* Mobile Skeleton */}
+          <div className="block md:hidden mb-6 px-4">
+            <div className="h-6 bg-gray-200 rounded w-1/3 mb-4"></div>
+            <div className="space-y-4">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="bg-white rounded-lg shadow-md p-4">
+                  <div className="h-32 bg-gray-200 rounded mb-4"></div>
+                  <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+                  <div className="h-4 bg-gray-200 rounded w-1/2"></div>
                 </div>
-                <h3 className="text-lg font-semibold text-kaduna-gray mb-2 line-clamp-2">
-                  <Link
-                    href={`/posts/${post.id}`}
-                    className="text-kaduna-green hover:text-kaduna-green-dark transition-colors"
-                  >
-                    {post.title}
-                  </Link>
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed mb-3 line-clamp-2">
-                  {getPreviewText(post.content, 100)}
-                </p>
-                <Link
-                  href={`/posts/${post.id}`}
-                  className="text-kaduna-green hover:text-kaduna-green-dark font-semibold text-sm transition-colors cursor-pointer"
-                >
-                  Read More →
-                </Link>
-              </div>
+              ))}
             </div>
-          ))}
-        </div>
-        {posts.length > 3 && (
-          <div className="text-center mt-4 px-4">
-            <Link
-              href="#"
-              className="text-kaduna-green hover:text-kaduna-green-dark font-semibold text-sm cursor-pointer"
-            >
-              View All Stories →
-            </Link>
           </div>
-        )}
-      </div>
-
-      {/* Desktop: Featured Post (First post) */}
-      {posts.length > 0 && (
-        <div className="hidden md:block mb-12">
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-            {posts[0].thumbnail && (
-              <div className="relative">
-                <div
-                  className="h-96 bg-gray-200"
-                  style={{
-                    backgroundImage: `url(${posts[0].thumbnail})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
-                ></div>
-                <div className="absolute top-4 left-4">
-                  <span className="bg-kaduna-green text-white px-3 py-1 rounded-full text-sm font-semibold">
-                    Featured
-                  </span>
+          {/* Desktop Skeleton */}
+          <div className="hidden md:block mb-12">
+            <div className="bg-white rounded-xl shadow-lg p-8 mb-12">
+              <div className="h-96 bg-gray-200 rounded mb-4"></div>
+              <div className="h-8 bg-gray-200 rounded w-1/2 mb-4"></div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="bg-white rounded-lg shadow-md p-6">
+                  <div className="h-48 bg-gray-200 rounded mb-4"></div>
+                  <div className="h-6 bg-gray-200 rounded w-3/4 mb-2"></div>
+                  <div className="h-4 bg-gray-200 rounded w-full mb-2"></div>
                 </div>
-              </div>
-            )}
-            <div className="p-8">
-              <div className="flex items-center text-sm text-gray-500 mb-3">
-                <span>By {posts[0].author || "Kaduna News"}</span>
-                <span className="mx-2">•</span>
-                <span>{new Date(posts[0].date).toLocaleDateString()}</span>
-              </div>
-              <h2 className="text-3xl font-bold text-kaduna-gray mb-4">
-                <Link
-                  href={`/posts/${posts[0].id}`}
-                  className="text-kaduna-green hover:text-kaduna-green-dark transition-colors"
-                >
-                  {posts[0].title}
-                </Link>
-              </h2>
-              <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                {getPreviewText(posts[0].content, 200)}
-              </p>
-              <Link
-                href={`/posts/${posts[0].id}`}
-                className="inline-flex items-center bg-kaduna-green text-white px-6 py-3 rounded-lg hover:bg-kaduna-green-dark transition-colors font-semibold cursor-pointer"
-              >
-                Read More
-                <svg
-                  className="ml-2 w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 5l7 7-7 7"
-                  ></path>
-                </svg>
-              </Link>
+              ))}
             </div>
           </div>
         </div>
-      )}
-
-      {/* Desktop: Regular Posts Grid */}
-      {posts.length > 1 && (
-        <div className="hidden md:block mb-12">
-          <h2 className="text-2xl font-bold text-kaduna-gray mb-6">
-            More Stories
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {posts.slice(1).map((post) => (
-              <div
-                key={post.id}
-                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
-              >
-                {post.thumbnail && (
-                  <div
-                    className="h-48 bg-gray-200"
-                    style={{
-                      backgroundImage: `url(${post.thumbnail})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                    }}
-                  ></div>
-                )}
-                <div className="p-6">
-                  <div className="flex items-center text-sm text-gray-500 mb-2">
-                    <span>By {post.author || "Kaduna News"}</span>
-                    <span className="mx-2">•</span>
-                    <span>{new Date(post.date).toLocaleDateString()}</span>
-                  </div>
-                  <h3 className="text-xl font-semibold text-kaduna-gray mb-3">
+      ) : (
+        <>
+          {/* Mobile: Vertical column layout for posts */}
+          <div className="block md:hidden mb-6">
+            <h2 className="text-xl font-bold text-kaduna-gray mb-4 px-4">
+              Latest Stories
+            </h2>
+            <div className="space-y-4 px-4">
+              {(isHomePage ? posts.slice(0, 3) : posts).map((post) => (
+                <div
+                  key={post.id}
+                  className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300"
+                >
+                  {post.thumbnail && (
+                    <div
+                      className="h-32 bg-gray-200"
+                      style={{
+                        backgroundImage: `url(${post.thumbnail})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                      }}
+                    ></div>
+                  )}
+                  <div className="p-4">
+                    <div className="flex items-center text-xs text-gray-500 mb-2">
+                      <span>{new Date(post.date).toLocaleDateString()}</span>
+                    </div>
+                    <h3 className="text-lg font-semibold text-kaduna-gray mb-2 line-clamp-2">
+                      <Link
+                        href={`/posts/${post.id}`}
+                        className="text-kaduna-green hover:text-kaduna-green-dark transition-colors"
+                      >
+                        {post.title}
+                      </Link>
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed mb-3 line-clamp-2">
+                      {getPreviewText(post.content, 100)}
+                    </p>
                     <Link
                       href={`/posts/${post.id}`}
+                      className="text-kaduna-green hover:text-kaduna-green-dark font-semibold text-sm transition-colors cursor-pointer"
+                    >
+                      Read More →
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {isHomePage && posts.length > 3 && (
+              <div className="text-center mt-4 px-4">
+                <Link
+                  href="/posts"
+                  className="text-kaduna-green hover:text-kaduna-green-dark font-semibold text-sm cursor-pointer"
+                >
+                  View All Stories →
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Desktop: Featured Post (First post) */}
+          {posts.length > 0 && (
+            <div className="hidden md:block mb-12">
+              <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                {posts[0].thumbnail && (
+                  <div className="relative">
+                    <div
+                      className="h-96 bg-gray-200"
+                      style={{
+                        backgroundImage: `url(${posts[0].thumbnail})`,
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                      }}
+                    ></div>
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-kaduna-green text-white px-3 py-1 rounded-full text-sm font-semibold">
+                        Featured
+                      </span>
+                    </div>
+                  </div>
+                )}
+                <div className="p-8">
+                  <div className="flex items-center text-sm text-gray-500 mb-3">
+                    <span>By {posts[0].author || "Kaduna News"}</span>
+                    <span className="mx-2">•</span>
+                    <span>{new Date(posts[0].date).toLocaleDateString()}</span>
+                  </div>
+                  <h2 className="text-3xl font-bold text-kaduna-gray mb-4">
+                    <Link
+                      href={`/posts/${posts[0].id}`}
                       className="text-kaduna-green hover:text-kaduna-green-dark transition-colors"
                     >
-                      {post.title}
+                      {posts[0].title}
                     </Link>
-                  </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                    {getPreviewText(post.content, 120)}
+                  </h2>
+                  <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                    {getPreviewText(posts[0].content, 200)}
                   </p>
                   <Link
-                    href={`/posts/${post.id}`}
-                    className="text-kaduna-green hover:text-kaduna-green-dark font-semibold text-sm transition-colors cursor-pointer"
+                    href={`/posts/${posts[0].id}`}
+                    className="inline-flex items-center bg-kaduna-green text-white px-6 py-3 rounded-lg hover:bg-kaduna-green-dark transition-colors font-semibold cursor-pointer"
                   >
-                    Read More →
+                    Read More
+                    <svg
+                      className="ml-2 w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M9 5l7 7-7 7"
+                      ></path>
+                    </svg>
                   </Link>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      )}
+            </div>
+          )}
 
-      {/* Single Post Message */}
-      {posts.length === 1 && (
-        <div className="text-center py-8">
-          <p className="text-gray-500 text-lg">
-            This is our latest story. Check back soon for more updates!
-          </p>
-        </div>
+          {/* Desktop: Regular Posts Grid */}
+          {posts.length > 1 && (
+            <div className="hidden md:block mb-12">
+              <h2 className="text-2xl font-bold text-kaduna-gray mb-6">
+                More Stories
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {posts.slice(1).map((post) => (
+                  <div
+                    key={post.id}
+                    className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+                  >
+                    {post.thumbnail && (
+                      <div
+                        className="h-48 bg-gray-200"
+                        style={{
+                          backgroundImage: `url(${post.thumbnail})`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                        }}
+                      ></div>
+                    )}
+                    <div className="p-6">
+                      <div className="flex items-center text-sm text-gray-500 mb-2">
+                        <span>By {post.author || "Kaduna News"}</span>
+                        <span className="mx-2">•</span>
+                        <span>{new Date(post.date).toLocaleDateString()}</span>
+                      </div>
+                      <h3 className="text-xl font-semibold text-kaduna-gray mb-3">
+                        <Link
+                          href={`/posts/${post.id}`}
+                          className="text-kaduna-green hover:text-kaduna-green-dark transition-colors"
+                        >
+                          {post.title}
+                        </Link>
+                      </h3>
+                      <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                        {getPreviewText(post.content, 120)}
+                      </p>
+                      <Link
+                        href={`/posts/${post.id}`}
+                        className="text-kaduna-green hover:text-kaduna-green-dark font-semibold text-sm transition-colors cursor-pointer"
+                      >
+                        Read More →
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Single Post Message */}
+          {posts.length === 1 && (
+            <div className="text-center py-8">
+              <p className="text-gray-500 text-lg">
+                This is our latest story. Check back soon for more updates!
+              </p>
+            </div>
+          )}
+        </>
       )}
 
       {/* Loading States */}
