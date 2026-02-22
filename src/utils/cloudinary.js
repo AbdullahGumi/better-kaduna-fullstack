@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 
 // Cloudinary configuration
-const CLOUDINARY_CLOUD_NAME = "dob19lapx";
+const CLOUDINARY_CLOUD_NAME = "dos3s9rhz";
 const CLOUDINARY_UPLOAD_PRESET = "betterkaduna";
 
 const uploadToCloudinary = async (file) => {
