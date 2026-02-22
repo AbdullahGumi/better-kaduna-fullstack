@@ -149,7 +149,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="min-h-screen bg-white font-serif flex flex-col">
       {/* Navbar */}
-      <header className="bg-white shadow-md sticky top-0 z-50">
+      <header className="bg-white shadow-md sticky top-0 z-[100]">
         <div className="container mx-auto px-2 sm:px-4 py-4 flex justify-between items-center">
           <Link href="/" aria-label="Better Kaduna Home">
             <img

@@ -1012,7 +1012,7 @@ const AdminEditor = ({
                         className={`border border-gray-300 rounded-md bg-white shadow-sm flex flex-col ${isFullScreen ? "editor-fullscreen" : ""
                           }`}
                       >
-                        <div className="toolbar flex flex-wrap sm:flex-nowrap gap-1 sm:gap-2 p-1 sm:p-2 bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200 sticky top-0 w-full z-50 toolbar-scroll">
+                        <div className="toolbar flex flex-wrap sm:flex-nowrap gap-1 sm:gap-2 p-1 sm:p-2 bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200 sticky top-20 sm:top-[128px] w-full z-40 toolbar-scroll">
                           {isFullScreen && (
                             <div className="flex gap-2 mr-2 border-r border-gray-300 pr-2">
                               <button
