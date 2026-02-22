@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   description:
     "Stay informed with the latest stories and updates from Kaduna State and across the Nation",
   icons: {
-    icon: "https://res.cloudinary.com/dob19lapx/image/upload/v1756322927/logo_pvnwq1.png",
+    icon: "https://res.cloudinary.com/dos3s9rhz/image/upload/v1771756533/logo_pvnwq1_jbf4hv.png",
   },
   openGraph: {
     title: "Better Kaduna",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
       "Stay informed with the latest stories and updates from Kaduna State and across the Nation",
     images: [
       {
-        url: "https://res.cloudinary.com/dob19lapx/image/upload/v1756322927/logo_pvnwq1.png",
+        url: "https://res.cloudinary.com/dos3s9rhz/image/upload/v1771756533/logo_pvnwq1_jbf4hv.png",
         width: 800,
         height: 600,
         alt: "Better Kaduna Logo",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
       "Stay informed with the latest stories and updates from Kaduna State and across the Nation",
     images: [
       {
-        url: "https://res.cloudinary.com/dob19lapx/image/upload/v1756322927/logo_pvnwq1.png",
+        url: "https://res.cloudinary.com/dos3s9rhz/image/upload/v1771756533/logo_pvnwq1_jbf4hv.png",
         width: 800,
         height: 600,
         alt: "Better Kaduna Logo",

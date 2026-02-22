@@ -153,7 +153,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" aria-label="Better Kaduna Home">
             <img
-              src="https://res.cloudinary.com/dob19lapx/image/upload/v1756322927/logo_pvnwq1.png"
+              src="https://res.cloudinary.com/dos3s9rhz/image/upload/v1771756533/logo_pvnwq1_jbf4hv.png"
               alt="Better Kaduna Logo"
               className="h-24 max-w-full"
             />
@@ -165,6 +165,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 className="text-kaduna-gray hover:text-green-800 transition-colors"
               >
                 Home
+              </Link>
+              <Link
+                href="/posts"
+                className="text-kaduna-gray hover:text-green-800 transition-colors"
+              >
+                All News
               </Link>
               <Link
                 href="/about"
@@ -264,6 +270,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 Home
               </Link>
               <Link
+                href="/posts"
+                className="text-kaduna-gray hover:text-green-800"
+                onClick={handleMobileNavClick}
+              >
+                All News
+              </Link>
+              <Link
                 href="/about"
                 className="text-kaduna-gray hover:text-green-800"
                 onClick={handleMobileNavClick}
@@ -352,7 +365,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <footer className="bg-green-800 text-white py-6 mt-auto">
         <div className="container mx-auto px-4 text-center">
           <img
-            src="https://res.cloudinary.com/dob19lapx/image/upload/v1756322927/logo_pvnwq1.png"
+            src="https://res.cloudinary.com/dos3s9rhz/image/upload/v1771756533/logo_pvnwq1_jbf4hv.png"
             alt="Better Kaduna Logo"
             className="h-24 max-w-full mx-auto mb-4"
           />
@@ -360,6 +373,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <nav className="mt-2 space-x-4" role="navigation">
             <Link href="/" className="hover:underline text-white">
               Home
+            </Link>
+            <Link href="/posts" className="hover:underline text-white">
+              All News
             </Link>
             <Link href="/about" className="hover:underline text-white">
               About Us

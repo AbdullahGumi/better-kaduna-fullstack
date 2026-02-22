@@ -21,7 +21,7 @@ export async function generateMetadata({
   }
 
   const imageUrl =
-    "https://res.cloudinary.com/dob19lapx/image/upload/v1756322927/logo_pvnwq1.png";
+    "https://res.cloudinary.com/dos3s9rhz/image/upload/v1771756533/logo_pvnwq1_jbf4hv.png";
 
   const cleanedDescription = cleanOpenGraphDescription(event.description);
 

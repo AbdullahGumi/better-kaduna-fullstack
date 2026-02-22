@@ -53,7 +53,7 @@ const AboutUs = () => {
           publisher: {
             "@type": "Organization",
             name: "Better Kaduna",
-            logo: "https://res.cloudinary.com/dob19lapx/image/upload/v1756322927/logo_pvnwq1.png",
+            logo: "https://res.cloudinary.com/dos3s9rhz/image/upload/v1771756533/logo_pvnwq1_jbf4hv.png",
             url: "https://betterkaduna.com",
           },
           mainEntity: {
@@ -62,7 +62,7 @@ const AboutUs = () => {
             description: "News, Events & Community Platform for Kaduna State",
             foundingDate: "2025",
             url: "https://betterkaduna.com",
-            logo: "https://res.cloudinary.com/dob19lapx/image/upload/v1756322927/logo_pvnwq1.png",
+            logo: "https://res.cloudinary.com/dos3s9rhz/image/upload/v1771756533/logo_pvnwq1_jbf4hv.png",
             address: {
               "@type": "PostalAddress",
               addressRegion: "Kaduna",
@@ -77,7 +77,7 @@ const AboutUs = () => {
         <div className="container mx-auto px-4 text-center">
           <div className="mb-8 animate-fade-in">
             <img
-              src="https://res.cloudinary.com/dob19lapx/image/upload/v1756322927/logo_pvnwq1.png"
+              src="https://res.cloudinary.com/dos3s9rhz/image/upload/v1771756533/logo_pvnwq1_jbf4hv.png"
               alt="Better Kaduna - News, Events & Community Platform for Kaduna State"
               className="h-20 mx-auto mb-6 transform hover:scale-110 transition-transform duration-500 drop-shadow-lg"
             />
