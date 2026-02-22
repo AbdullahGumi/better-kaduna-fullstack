@@ -18,7 +18,8 @@ interface Post {
 const PostList = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
   const pathname = usePathname();
   const isHomePage = pathname === "/";
   const [hasMore, setHasMore] = useState(true);
@@ -75,6 +76,7 @@ const PostList = () => {
         console.log(error);
       } finally {
         setIsLoading(false);
+        setIsInitialLoad(false);
       }
     },
     [isLoading, hasMore, page]
@@ -119,7 +121,7 @@ const PostList = () => {
         </p>
       </div>
 
-      {isLoading && posts.length === 0 ? (
+      {(isLoading || isInitialLoad) && posts.length === 0 ? (
         <div className="animate-pulse">
           {/* Mobile Skeleton */}
           <div className="block md:hidden mb-6 px-4">
@@ -373,7 +375,7 @@ const PostList = () => {
       )}
 
       {/* Empty State */}
-      {!isLoading && posts.length === 0 && (
+      {!isLoading && !isInitialLoad && posts.length === 0 && (
         <div className="text-center py-20">
           <div className="bg-gray-100 rounded-full p-6 inline-block mb-6">
             <svg

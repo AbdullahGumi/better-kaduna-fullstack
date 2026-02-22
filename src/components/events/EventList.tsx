@@ -17,7 +17,8 @@ interface Event {
 const EventList = () => {
   const [events, setEvents] = useState<Event[]>([]);
   const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
   const pathname = usePathname();
   const isHomePage = pathname === "/";
   const [hasMore, setHasMore] = useState(true);
@@ -60,6 +61,7 @@ const EventList = () => {
       // Error handling is managed by apiService
     } finally {
       setIsLoading(false);
+      setIsInitialLoad(false);
     }
   }, [isLoading, hasMore, page]);
 
@@ -95,7 +97,7 @@ const EventList = () => {
         <h2 className="text-2xl font-bold text-kaduna-gray">Upcoming Events</h2>
       </div>
 
-      {isLoading && events.length === 0 ? (
+      {(isLoading || isInitialLoad) && events.length === 0 ? (
         <div className="animate-pulse p-4">
           {/* Mobile Skeleton */}
           <div className="md:hidden space-y-3">
