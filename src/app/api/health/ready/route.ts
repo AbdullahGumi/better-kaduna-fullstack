@@ -25,9 +25,7 @@ export async function GET(request: NextRequest) {
       {
         status: "Not Ready",
         database: "Disconnected",
-        error: process.env.NODE_ENV === "development"
-          ? (error as Error).message
-          : "Service unavailable"
+        error: (error as Error).message || "Service unavailable"
       },
       { status: 503 }
     );

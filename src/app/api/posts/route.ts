@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(
       {
         error: "Failed to fetch posts",
-        details: process.env.NODE_ENV === "development" ? (error as Error).message : undefined
+        details: (error as Error).message
       },
       { status: 500 }
     );
