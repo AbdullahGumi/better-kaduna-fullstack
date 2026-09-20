@@ -5,8 +5,7 @@ const getApiBaseUrl = () => {
   const isServer = typeof window === "undefined";
 
   if (isServer) {
-    // Server-side: use localhost for development
-    return "http://localhost:3000";
+    return process.env.NEXT_PUBLIC_API_BASE_URL || "https://betterkaduna.com";
   } else {
     // Client-side: use current domain + /api
     return window.location.origin;
