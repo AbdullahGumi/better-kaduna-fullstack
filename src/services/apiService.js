@@ -1,12 +1,20 @@
 // API Service for Next.js frontend
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000";
+const getBaseUrl = () => {
+  if (process.env.NEXT_PUBLIC_API_BASE_URL) {
+    return process.env.NEXT_PUBLIC_API_BASE_URL;
+  }
+  if (typeof window !== "undefined") {
+    return window.location.origin;
+  }
+  return "http://localhost:3000";
+};
 
 const apiService = {
   // Generic GET request
   async get(endpoint, params = {}) {
     try {
-      const url = new URL(endpoint, API_BASE_URL);
+      const baseUrl = getBaseUrl();
+      const url = new URL(endpoint, baseUrl);
       Object.keys(params).forEach((key) =>
         url.searchParams.append(key, params[key])
       );
@@ -25,7 +33,8 @@ const apiService = {
   // Generic POST request
   async post(endpoint, data) {
     try {
-      const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+      const baseUrl = getBaseUrl();
+      const response = await fetch(`${baseUrl}${endpoint}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,7 +55,8 @@ const apiService = {
   // Generic PUT request
   async put(endpoint, data) {
     try {
-      const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+      const baseUrl = getBaseUrl();
+      const response = await fetch(`${baseUrl}${endpoint}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -67,7 +77,8 @@ const apiService = {
   // Generic DELETE request
   async delete(endpoint, id) {
     try {
-      const response = await fetch(`${API_BASE_URL}${endpoint}/${id}`, {
+      const baseUrl = getBaseUrl();
+      const response = await fetch(`${baseUrl}${endpoint}/${id}`, {
         method: "DELETE",
       });
 
@@ -121,7 +132,8 @@ const apiService = {
   // Auth methods
   login: async (data) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
+      const baseUrl = getBaseUrl();
+      const response = await fetch(`${baseUrl}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -141,7 +153,8 @@ const apiService = {
 
   register: async (data) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
+      const baseUrl = getBaseUrl();
+      const response = await fetch(`${baseUrl}/api/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
