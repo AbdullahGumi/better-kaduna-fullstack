@@ -1,17 +1,20 @@
 FROM node:22-alpine
 
+# Install OpenSSL for Prisma engine compatibility on Alpine
+RUN apk add --no-cache openssl
+
 # Set working directory
 WORKDIR /app
 
 # Copy package files
 COPY package.json yarn.lock ./
 
-
 # Copy Prisma schema files
 COPY prisma/ prisma/
 
-# Install dependencies
+# Install dependencies and generate Prisma client
 RUN yarn install --frozen-lockfile --production=false
+RUN npx prisma generate
 
 # Set NODE_ENV for production build to ensure consistent behavior
 ENV NODE_ENV=production
