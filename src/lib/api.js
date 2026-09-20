@@ -1,20 +1,11 @@
 // API Configuration with environment support
 const getApiBaseUrl = () => {
-  // Get the base URL from environment variable
-  const baseUrl = import.meta.env.VITE_API_BASE_URL;
-
-  if (baseUrl) {
-    // If production (contains onrender.com), add /api suffix
-    // If local development, use as-is
-    const isProduction =
-      baseUrl.includes("onrender.com") ||
-      baseUrl.includes("vercel.app") ||
-      baseUrl.includes("netlify.app");
-
-    return isProduction ? `${baseUrl}/api` : baseUrl;
+  if (process.env.NEXT_PUBLIC_API_BASE_URL) {
+    return process.env.NEXT_PUBLIC_API_BASE_URL;
   }
-
-  // Fallback for development
+  if (typeof window !== "undefined") {
+    return window.location.origin;
+  }
   return "http://localhost:3000";
 };
 
